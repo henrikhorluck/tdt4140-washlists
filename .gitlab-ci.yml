@@ -13,8 +13,8 @@ before_script:
 
 lint:
   script:
-    - isort -rc -c
-    - black --check
+    - isort -rc -c .
+    - black --check .
 
 test:
   script:
