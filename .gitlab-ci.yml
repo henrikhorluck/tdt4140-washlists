@@ -1,0 +1,23 @@
+image: python:3.8
+
+services:
+  - sqlite:latest
+
+cache:
+  paths:
+    - ~/.cache/pip/
+
+before_script:
+  - pip install poetry
+  - poetry install
+  # Uncomment next line if your Django app needs a JS runtime:
+  # - apt-get update -q && apt-get install nodejs -yqq
+
+lint:
+  script:
+    - isort -rc -c
+    - black --check
+
+test:
+  script:
+    - python sif_vaskelister/manage.py test
