@@ -1,8 +1,5 @@
 image: python:3.8
 
-services:
-  - sqlite:latest
-
 cache:
   paths:
     - ~/.cache/pip/
