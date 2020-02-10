@@ -18,7 +18,7 @@ lint:
 
 test:
   script:
-    - python sif_vaskelister/manage.py test
+    - python manage.py test
 
 variables:
   POETRY_VIRTUALENVS_CREATE: "false"
