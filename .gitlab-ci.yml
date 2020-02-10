@@ -6,14 +6,14 @@ cache:
 
 before_script:
   - pip install poetry
-  - poetry install
+  - ./sif_vaskelister poetry install
   # Uncomment next line if your Django app needs a JS runtime:
   # - apt-get update -q && apt-get install nodejs -yqq
 
 lint:
   script:
-    - isort -rc -c
-    - black --check
+    - ./sif_vaskelister isort -rc -c
+    - ./sif_vaskelister black --check
 
 test:
   script:
