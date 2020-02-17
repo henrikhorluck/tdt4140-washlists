@@ -1,11 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
+import style from "./nav.module.css"
 
 const Nav = () => (
-  <nav>
-    <ul>
+  <nav >
+    <ul className={style.test}>
       <li>
-        <Link href="/">
+        <Link href="https://www.siost.hiof.no/bolig">
           <a>Home</a>
         </Link>
       </li>

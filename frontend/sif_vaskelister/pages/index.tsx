@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
+import styles from "./login.module.css";
+
 
 const login = async (username: String, password: String) => {
     const clientId = "9NqDDj7qdZIVJi0sSketxpBg57ajSicGvU3ovDhi"
@@ -31,17 +33,21 @@ const Home = () => {
 
         <Nav/>
 
-        <div>
+        <div className={styles.test}>
             <h1>Velkommen til SIF Vaskelister!</h1>
+            <h2>Logg inn</h2>
             <label>
-                <p>Brukernavn</p>
-                <input type="text" required value={username} onChange={(e) => setUsername(e.target.value)}/>
+                <p className={styles.label}>Brukernavn</p>
+                <input type="text" placeholder="Brukernavn" required value={username} onChange={(e) => setUsername(e.target.value)}/>
             </label>
             <label>
-                <p>Passord</p>
-                <input type="password" required onChange={(e) => setPassword(e.target.value)} value={password}/>
+                <p className={styles.label}>Passord</p>
+                <input type="password" placeholder="Passord" required onChange={(e) => setPassword(e.target.value)} value={password}/>
             </label>
-            <button type="button" onClick={async () => {
+            <label>
+                <input type="checkbox" name="remember"/> Husk meg!
+            </label>
+            <button className={styles.button} type="button" onClick={async () => {
                 await login(username, password)
             }}>
                 <p>Logg inn</p>
