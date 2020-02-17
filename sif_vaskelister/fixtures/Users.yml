@@ -1,0 +1,45 @@
+- model: auth.user
+  pk: 6
+  fields:
+    password: pbkdf2_sha256$180000$AW4jrcVWN4dJ$Qfn0LuzKG8XG4MkYX5ornWHNgbw84NtJHncfgvZcQ6I=
+    last_login: null
+    is_superuser: false
+    username: KariNordmann
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-02-14 10:49:34+00:00
+    groups: []
+    user_permissions: []
+- model: auth.user
+  pk: 7
+  fields:
+    password: pbkdf2_sha256$180000$dyvinyWZDvUC$eiD+/CAHBaSe06RHzYN8KMpvutEm39xW2StNJY+kpT4=
+    last_login: null
+    is_superuser: false
+    username: OlaNordmann
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-02-14 10:49:49+00:00
+    groups: []
+    user_permissions: []
+- model: auth.user
+  pk: 8
+  fields:
+    password: pbkdf2_sha256$180000$Qf1VXJc36lOc$/1wBUNS0ukKNWmYTuG4VSdaTfha34y3yDcg+NYlu82c=
+    last_login: null
+    is_superuser: false
+    username: MohammedAli
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-02-14 10:50:04.692564+00:00
+    groups: []
+    user_permissions: []
