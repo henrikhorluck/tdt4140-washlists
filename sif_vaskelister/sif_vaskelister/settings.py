@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "oauth2_provider",
     "rest_framework",
     "corsheaders",
+    "SIFUser",
 ]
 
 MIDDLEWARE = [
@@ -61,8 +62,7 @@ OAUTH2_PROVIDER = {
         "read": "Read scope",
         "write": "Write scope",
         "groups": "Access to your groups",
-    },
-    "DEFAULT_SCOPES": ["read"],
+    }
 }
 
 REST_FRAMEWORK = {
@@ -115,6 +115,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
+
+AUTH_USER_MODEL = "SIFUser.User"
 
 
 # Internationalization

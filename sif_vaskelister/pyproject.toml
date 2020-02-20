@@ -29,7 +29,7 @@ sections = [ "FUTURE",
              "DJANGO",
              "THIRDPARTY",
              "FIRSTPARTY",
-             "LOCALFOLDER"]
+             "LOCALFOLDER" ]
 
 [build-system]
 requires = ["poetry>=0.12"]
