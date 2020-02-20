@@ -23,7 +23,7 @@ const login = async (username: String, password: String) => {
 
 const Home = () => {
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [password, setPassworgit d] = useState("");
 
     return <div>
         <Head>
