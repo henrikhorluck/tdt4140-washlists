@@ -1,23 +1,29 @@
-image: python:3.8
-
 cache:
   paths:
     - ~/.cache/pip/
 
-before_script:
-  - cd sif_vaskelister
-  - pip install poetry
-  - poetry install
-  # Uncomment next line if your Django app needs a JS runtime:
-  # - apt-get update -q && apt-get install nodejs -yqq
-
-lint:
+lint-python:
+  image: python:3.8
   script:
+    - cd sif_vaskelister
+    - pip install poetry
+    - poetry install
     - isort -rc -c .
     - black --check .
 
-test:
+lint-typescript:
+  image: node:12
   script:
+    - cd frontend/sif_vaskelister
+    - npm ci
+    - node_modules/eslint/bin/eslint.js --ext .tsx,.ts .
+
+test:
+  image: python:3.8
+  script:
+    - cd sif_vaskelister
+    - pip install poetry
+    - poetry install
     - python manage.py test
 
 variables:
