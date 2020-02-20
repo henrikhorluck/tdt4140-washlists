@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Head from 'next/head'
-import Nav from '../components/nav'
+import Nav from '../components/atoms/nav/nav'
 import styles from "./login.module.css";
 
 
