@@ -17,20 +17,20 @@ You will also see any lint errors in the console.
 ### `npm run start`
 
 
-##Sturcture
+## Sturcture
 
-###Atoms:
+### Atoms:
 
 Basic building blocks of matter, such as a button, input or a form label. They’re not useful on their own, and is purely functional (same input always result in same output).
 
-###Molecules:
+### Molecules:
 
 Grouping atoms together, such as combining a button, input and form label to build functionality.
 
-###Organisms:
+### Organisms:
 
 Combining molecules together to form organisms that make up a distinct section of an interface (i.e. navigation bar)
 
-###Pages:
+### Pages:
 
 A distinct ecosystem that consists of several distinkt organisms.
