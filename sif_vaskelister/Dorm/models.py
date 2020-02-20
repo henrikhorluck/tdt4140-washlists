@@ -8,4 +8,6 @@ class Dorm(models.Model):
     village = models.ForeignKey(StudentVillage, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ("number", "village")
+        constraints = [
+            models.UniqueConstraint(fields=["number", "village"], name="unique_dorm")
+        ]

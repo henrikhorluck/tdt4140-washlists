@@ -5,4 +5,10 @@ from Dorm.models import Dorm
 
 
 class User(AbstractUser):
-    dorm = models.ForeignKey(Dorm, on_delete=models.SET_NULL)
+    dorm = models.ForeignKey(
+        Dorm,
+        help_text="Kollektivet personen bor i",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
