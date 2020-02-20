@@ -33,6 +33,9 @@ Grouping atoms together, such as combining a button, input and form label to bui
 
 Combining molecules together to form organisms that make up a distinct section of an interface (i.e. navigation bar)
 
+### Templates:
+Templates for pages.
+
 ### Pages:
 
 A distinct ecosystem that consists of several distinkt organisms.
