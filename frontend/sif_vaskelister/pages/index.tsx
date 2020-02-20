@@ -25,7 +25,7 @@ const Home = () => {
     const [username, setUsername] = useState("");
     const [password, setPassworgit d] = useState("");
 
-    return <div>
+    return( <div>
         <Head>
             <title>SIF Vaskelister - Hjem</title>
             <link rel="icon" href="/favicon.ico"/>
