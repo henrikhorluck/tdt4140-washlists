@@ -8,6 +8,9 @@ class Dormroom(models.Model):
     number = models.SmallIntegerField(help_text=_("Kollektivnummer i studentby"))
     village = models.ForeignKey(StudentVillage, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.village}: Nr: {self.number}"
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=["number", "village"], name="unique_dorm")
