@@ -38,4 +38,4 @@ Templates for pages.
 
 ### Pages:
 
-A distinct ecosystem that consists of several distinkt organisms.
+A distinct ecosystem that consists of several distinct organisms.
