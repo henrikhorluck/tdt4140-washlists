@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, FC} from 'react'
 import Head from 'next/head'
 import Nav from '../atoms/nav/nav'
 import styles from "./main.module.css";
 
 
+interface IProps {
+    children: React.ReactNode;
+}
 
-const Main = ( props: any ) => {
+const Main: FC<IProps> = ( {children} ) => {
     return( <div>
         <Head>
             <title>SIF Vaskelister - Hjem</title>
@@ -15,7 +18,7 @@ const Main = ( props: any ) => {
         <Nav/>
 
         <div className={styles.test}>
-            {props.children}
+            {children}
         </div>
     </div>
   );
