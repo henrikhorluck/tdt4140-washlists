@@ -1,14 +1,14 @@
-import React, {useState, FC} from 'react'
+import React, {FC} from 'react'
 import Head from 'next/head'
 import Nav from '../atoms/nav/nav'
 import styles from "./main.module.css";
 
 
-interface IProps {
+interface Props {
     children: React.ReactNode;
 }
 
-const Main: FC<IProps> = ( {children} ) => {
+const Main: FC<Props> = ( {children} ) => {
     return( <div>
         <Head>
             <title>SIF Vaskelister - Hjem</title>
