@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "SIFUser",
-    "Dorm",
+    "Dormroom",
     "StudentVillage",
 ]
 
