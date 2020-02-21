@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import Head from 'next/head'
-import Nav from '../components/nav'
+import Nav from '../components/atoms/nav/nav'
 import styles from "./login.module.css";
 
 
-const login = async (username: String, password: String) => {
+const login = async (username: string, password: string) => {
     const clientId = "9NqDDj7qdZIVJi0sSketxpBg57ajSicGvU3ovDhi"
     const clientSecret = "TKvX7d0PbCVcmbkMbcXgNoMn9WqL8W3Pzmkhbe3xtYF2GEFkW4efm6SRng4MzoN5GMiXDsjqoqZrro9XwHouaZ26I4qIrxcf6QqnHDS8uCaICAocvVU5uKwfldiy8HTF"
 
-    let req = new Request(`http://localhost:8000/o/token/`, {
+    const req = new Request(`http://localhost:8000/o/token/`, {
         method: 'POST',
         body: `grant_type=password&username=${username}&password=${password}`,
         headers: {

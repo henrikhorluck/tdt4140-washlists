@@ -7,7 +7,7 @@ const Nav = () => (
     <ul className={style.test}>
       <li>
         <Link href="https://www.siost.hiof.no/bolig">
-          <a>Home</a>
+          <a>Test Home</a>
         </Link>
       </li>
       {[{key: 0, href:"", label:"Label"}].map(({ key, href, label }) => (
