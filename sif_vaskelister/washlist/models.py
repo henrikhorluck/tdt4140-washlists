@@ -4,8 +4,9 @@ from Dormroom.models import Dormroom
 
 
 class WashList(models.Model):
+    title = models.CharField(max_length=250, default="")    
     def __str__(self):
-        return "This is a washlist!"
+        return self.title
 
 
 class ListItem(models.Model):
