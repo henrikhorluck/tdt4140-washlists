@@ -9,5 +9,5 @@ class StudentVillage(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = _("Studenby")
+        verbose_name = _("Studentby")
         verbose_name_plural = _("Studentbyer")
