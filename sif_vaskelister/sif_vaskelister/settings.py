@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "SIFUser",
     "Dormroom",
     "StudentVillage",
+    "washlist",
 ]
 
 MIDDLEWARE = [
