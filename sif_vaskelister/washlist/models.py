@@ -11,9 +11,9 @@ class WashList(models.Model):
 
 class ListItem(models.Model):
     washlist = models.ForeignKey(WashList, on_delete=models.CASCADE)
-    list_name = models.CharField(
+    item_name = models.CharField(
         max_length=150, default="", help_text="Hva skal vaskes?"
     )
 
     def __str__(self):
-        return f"Vask: {self.list_name}"
+        return self.item_name
