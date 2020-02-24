@@ -14,6 +14,7 @@ class ListItem(models.Model):
     item_name = models.CharField(
         max_length=150, default="", help_text="Hva skal vaskes?"
     )
+    completed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.item_name
