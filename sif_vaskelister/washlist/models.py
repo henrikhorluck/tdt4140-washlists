@@ -5,7 +5,7 @@ from Dormroom.models import Dormroom
 
 class WashList(models.Model):
     title = models.CharField(max_length=250, default="")
-    dorm_room = models.OneToOneField(Dormroom, on_delete=models.CASCADE)
+    dorm_room = models.OneToOneField(Dormroom, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.title
