@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
-import Link from 'next/link'
-
+import React, {useState, useEffect} from 'react'
+import styles from "./kollektiv.module.css"
 
 interface kollektiv {
     navn: string;
@@ -23,16 +22,26 @@ const Kollektiv = () => {
 
     const [residents, setResidents] = useState<kollektiv[]>(kollektivData.Kollektiv_1);
 
+//     async function fetchData() {
+//         const res = await fetch("https://localhost:8000/.....");
+//         res.json()
+//            .then(res => setResidents(res));
+//     }
+//
+//     useEffect(() => {
+//        fetchData();
+//     });
+
     const addField = () => {
         setResidents(residents => [...residents, {navn:"",rom:NaN}])
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
+        // Send data til backend
     }
 
     const onUpdate = (index: any, property: string) => (e: any) => {
-        console.log("Change");
         let newResidents = [...residents];
         if (property == "navn") {
             newResidents[index].navn = e.target.value;
@@ -44,18 +53,23 @@ const Kollektiv = () => {
     }
 
     return (
-    <div>
+    <div className={styles.h1}>
         <h1>Beboere i Kollektiv 1</h1>
         <form onSubmit={handleSubmit}>
-            {residents.map(({navn, rom}, index) => (
-                <div key={index}>
-                    <input type="text" name="navn" value={navn} onChange={onUpdate(index, "navn")} />
-                    <input type="number" name="rom" value={rom} onChange={onUpdate(index, "rom")}/>
-                </div>
-            ))}
-            <input type="button" value="Legg til" onClick={addField}/>
-            <br/>
-            <input type="button" value="Lagre" onClick={handleSubmit}/>
+            <div className={styles.labels}>
+                <h2 className={styles.h2}>Navn</h2>
+                <h2 className={styles.h2}>Rom</h2>
+            </div>
+                {residents.map(({navn, rom}, index) => (
+                    <div className={styles.inputPair} key={index}>
+                        <input className={styles.input} type="text" name="navn" value={navn} onChange={onUpdate(index, "navn")} />
+                        <input className={styles.input} type="number" name="rom" value={rom} onChange={onUpdate(index, "rom")}/>
+                    </div>
+                ))}
+            <div className={styles.buttons}>
+                <input className={styles.button} type="button" value="Legg til" onClick={addField}/>
+                <input className={styles.button} type="button" value="Lagre" onClick={handleSubmit}/>
+            </div>
         </form>
     </div>
 
