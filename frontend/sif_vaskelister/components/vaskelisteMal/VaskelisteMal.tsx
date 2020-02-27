@@ -1,18 +1,9 @@
 import React, {useState} from 'react'
 import styles from "./vaskelistemal.module.css"
+import Router from 'next/router'
+import {Vaskeliste} from "./types";
+import {vaskelisteData} from "./exampleData";
 
-
-interface Vaskeliste {
-    vaskepunkt: string;
-    beskrivelse: string;
-}
-
-const vaskelisteData = {
-    "Studentby_1": [
-        {vaskepunkt: "Bad", beskrivelse: "Vaske do, dusj, vask"},
-        {vaskepunkt: "Kjøkken", beskrivelse: "Vaske benk, ovn, kjøleskap"}
-    ]
-};
 
 const VaskelisteMal = () => {
 
@@ -35,6 +26,7 @@ const VaskelisteMal = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Send data til backend
+        Router.push("/kollektivOversikt")
     }
 
     const onUpdate = (index: number, property: string) => (e: React.ChangeEvent<HTMLInputElement>) => {

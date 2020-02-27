@@ -1,21 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import styles from "./kollektiv.module.css"
-
-interface Kollektiv {
-    navn: string;
-    rom: number;
-}
+import Router from 'next/router'
+import {Kollektiv} from "./types"
+import {kollektivData} from "./exampleData";
 
 // Eksempeldata
-const kollektivData = {
-    "Kollektiv_1":[
-        {navn: "Ola Nordmann", rom: 1},
-        {navn: "Kari Nordmann", rom: 2}
-    ],
-    "Kollektiv_2":[
-        {navn: "Karl Gustav", rom: 3}
-    ],
-};
+
 
 
 const Kollektiv = () => {
@@ -39,6 +29,7 @@ const Kollektiv = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Send data til backend
+        Router.push("/kollektivOversikt")
     }
 
     const onUpdate = (index: number, property: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
