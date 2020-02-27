@@ -1,14 +1,12 @@
 import TodoList from "../components/TodoList/molecules/TodoList/TodoList";
-import Main from "../components/template/Main"
+import Main from "../components/template/Main";
 
 const Vaskeliste = () => {
-
-    return( 
-        <Main>
-            <TodoList></TodoList>
-        </Main>
+  return (
+    <Main>
+      <TodoList></TodoList>
+    </Main>
   );
 };
 
 export default Vaskeliste;
-

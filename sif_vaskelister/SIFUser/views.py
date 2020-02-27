@@ -15,6 +15,7 @@ from .serializer import GroupSerializer, UserSerializer
 
 class UserViewSet(RetrieveUpdateAPIView, ListCreateAPIView, viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticatedOrTokenHasScope]
+    required_scopes = ["read", "write"]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

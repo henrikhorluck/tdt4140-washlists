@@ -1,9 +1,8 @@
 from django.contrib import admin
 from django.urls import include, path
 
-from rest_framework.routers import DefaultRouter
-
 from Dormroom.urls import router as DormroomRouter
+from rest_framework.routers import DefaultRouter
 from SIFUser.urls import router as UserRouter
 from StudentVillage.urls import router as VillageRouter
 
