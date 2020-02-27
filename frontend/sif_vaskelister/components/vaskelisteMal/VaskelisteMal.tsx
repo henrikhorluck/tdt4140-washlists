@@ -32,12 +32,12 @@ const VaskelisteMal = () => {
         setVaskeliste(vaskeliste => [...vaskeliste, {vaskepunkt:"",beskrivelse:""}])
     }
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Send data til backend
     }
 
-    const onUpdate = (index: any, property: string) => (e: any) => {
+    const onUpdate = (index: number, property: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
         const newVaskeliste = [...vaskeliste];
         if (property == "vaskepunkt") {
             newVaskeliste[index].vaskepunkt = e.target.value;
@@ -64,7 +64,7 @@ const VaskelisteMal = () => {
                 ))}
             <div className={styles.buttons}>
                 <input className={styles.button} type="button" value="Legg til" onClick={addField}/>
-                <input className={styles.button} type="button" value="Lagre" onClick={handleSubmit}/>
+                <input className={styles.button} type="submit" value="Lagre"/>
             </div>
         </form>
     </div>

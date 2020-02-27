@@ -36,18 +36,18 @@ const Kollektiv = () => {
         setResidents(residents => [...residents, {navn:"",rom:NaN}])
     }
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Send data til backend
     }
 
-    const onUpdate = (index: any, property: string) => (e: any) => {
+    const onUpdate = (index: number, property: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
         const newResidents = [...residents];
         if (property == "navn") {
             newResidents[index].navn = e.target.value;
         }
         else if ((property == "rom")) {
-            newResidents[index].rom = e.target.value;
+            newResidents[index].rom = Number(e.target.value);
         }
         setResidents(newResidents);
     }
@@ -68,7 +68,7 @@ const Kollektiv = () => {
                 ))}
             <div className={styles.buttons}>
                 <input className={styles.button} type="button" value="Legg til" onClick={addField}/>
-                <input className={styles.button} type="button" value="Lagre" onClick={handleSubmit}/>
+                <input className={styles.button} type="submit" value="Lagre"/>
             </div>
         </form>
     </div>
