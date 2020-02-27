@@ -9,8 +9,7 @@ interface Props {
   completeTodo: (n: number) => void;
   removeTodo: (n: number) => void;
 }
-
-export const TodoItem: FC<Props> = ({
+ const TodoItem: FC<Props> = ({
   todo,
   index,
   completeTodo,
@@ -29,3 +28,5 @@ export const TodoItem: FC<Props> = ({
     </div>
   );
 };
+
+export default TodoItem;

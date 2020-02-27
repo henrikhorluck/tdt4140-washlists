@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import TodoForm from "./TodoForm";
-import { TodoItem } from "./TodoItem";
+import TodoAdd from "../../atoms/TodoAdd/TodoAdd";
+import TodoItem from "../../atoms/TodoItem/TodoItem";
 
 import styles from './index.module.css';
 
-const App = () => {
+const TodoList = () => {
   const [todos, setTodos] = useState([
     {
       text: "Vaske bad",
@@ -39,7 +39,7 @@ const App = () => {
   };
 
   return (
-    <div className={styles.App}>
+    <div className={styles.list}>
       <h1>VASKELISTE</h1>
       <div className={styles.todo_list}>
         {todos.map((todo, index) => (
@@ -51,10 +51,10 @@ const App = () => {
             removeTodo={removeTodo}
           />
         ))}
-        <TodoForm addTodo={addTodo} />
+        <TodoAdd addTodo={addTodo} />
       </div>
     </div>
   );
 };
 
-export default App;
+export default TodoList;

@@ -1,3 +1,14 @@
-import App from "../components/todos";
+import TodoList from "../components/TodoList/molecules/TodoList/TodoList";
+import Main from "../components/template/Main"
 
-export default App;
+const Vaskeliste = () => {
+
+    return( 
+        <Main>
+            <TodoList></TodoList>
+        </Main>
+  );
+};
+
+export default Vaskeliste;
+

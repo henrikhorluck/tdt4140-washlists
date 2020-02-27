@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
 import Head from 'next/head'
-import Nav from '../atoms/nav/nav'
+import Nav from './nav/nav'
 import styles from "./main.module.css";
 
 
