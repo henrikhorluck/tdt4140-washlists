@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styles from "./login.module.css";
-import Main from "../components/templates/Main"
+import Main from "../components/template/Main"
 
 const login = async (username: string, password: string) => {
     const clientId = "9NqDDj7qdZIVJi0sSketxpBg57ajSicGvU3ovDhi"

@@ -1,6 +1,6 @@
 import React from 'react'
-import Main from "../components/templates/Main"
-import VaskelisteMal from "../components/atoms/vaskelisteMal/VaskelisteMal"
+import Main from "../components/template/Main"
+import VaskelisteMal from "../components/vaskelisteMal/VaskelisteMal"
 
 const Mal = () => {
     return (

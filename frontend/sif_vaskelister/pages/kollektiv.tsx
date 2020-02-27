@@ -1,6 +1,6 @@
 import React from 'react'
-import Main from "../components/templates/Main"
-import Kollektiv from "../components/atoms/kollektiv/Kollektiv"
+import Main from "../components/template/Main"
+import Kollektiv from "../components/kollektiv/Kollektiv"
 
 const EndreKollektiv = () => {
     return (
