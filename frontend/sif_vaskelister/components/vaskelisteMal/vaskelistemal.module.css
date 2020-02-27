@@ -1,0 +1,30 @@
+.h1 {
+    text-align: center;
+}
+
+.h2 {
+    text-decoration: underline;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-around;
+}
+
+.inputPair {
+    margin-right: -1em;
+    margin-left: -1em;
+}
+
+.input {
+    margin: 1em;
+}
+
+.button {
+    margin-top: 1em;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}

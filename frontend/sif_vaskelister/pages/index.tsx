@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
-import Head from 'next/head'
-import Nav from '../components/atoms/nav/nav'
 import styles from "./login.module.css";
-
+import Main from "../components/template/Main"
 
 const login = async (username: string, password: string) => {
     const clientId = "9NqDDj7qdZIVJi0sSketxpBg57ajSicGvU3ovDhi"
@@ -21,20 +19,16 @@ const login = async (username: string, password: string) => {
     Object.keys(json).forEach(key => window.localStorage.setItem(key, json[key]))
 }
 
+
 const Home = () => {
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    return( <div>
-        <Head>
-            <title>SIF Vaskelister - Hjem</title>
-            <link rel="icon" href="/favicon.ico"/>
-        </Head>
-
-        <Nav/>
-
-        <div className={styles.test}>
-            <h1>Velkommen til SIF Vaskelister!</h1>
+    return( 
+    <div>
+        <Main>
+        <h1>Velkommen til SIF Vaskelister!</h1>
             <h2>Logg inn</h2>
             <label>
                 <p className={styles.label}>Brukernavn</p>
@@ -52,9 +46,34 @@ const Home = () => {
             }}>
                 <p>Logg inn</p>
             </button>
-        </div>
+        </Main>
     </div>
   );
 };
 
 export default Home;
+
+
+
+// import React, {useState} from 'react'
+// import Head from 'next/head'
+// import Nav from '../components/atoms/nav/nav'
+// import styles from "./login.module.css";
+
+
+
+// const Home = () => {
+//     const [username, setUsername] = useState("");
+//     const [password, setPassword] = useState("");
+
+//     return( <div>
+
+//         <div className={styles.test}>
+            
+//         </div>
+
+//     </div>
+//   );
+// };
+
+// export default Home;
