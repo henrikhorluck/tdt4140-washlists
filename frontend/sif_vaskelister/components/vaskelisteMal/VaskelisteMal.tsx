@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 import styles from "./vaskelistemal.module.css"
 
 
-interface vaskeliste {
+interface Vaskeliste {
     vaskepunkt: string;
     beskrivelse: string;
-};
+}
 
 const vaskelisteData = {
     "Studentby_1": [
@@ -16,7 +16,7 @@ const vaskelisteData = {
 
 const VaskelisteMal = () => {
 
-    const [vaskeliste, setVaskeliste] = useState<vaskeliste[]>(vaskelisteData.Studentby_1);
+    const [vaskeliste, setVaskeliste] = useState<Vaskeliste[]>(vaskelisteData.Studentby_1);
 
 //     async function fetchData() {
 //         const res = await fetch("https://localhost:8000/.....");
@@ -38,7 +38,7 @@ const VaskelisteMal = () => {
     }
 
     const onUpdate = (index: any, property: string) => (e: any) => {
-        let newVaskeliste = [...vaskeliste];
+        const newVaskeliste = [...vaskeliste];
         if (property == "vaskepunkt") {
             newVaskeliste[index].vaskepunkt = e.target.value;
         }

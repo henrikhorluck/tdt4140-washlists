@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styles from "./kollektiv.module.css"
 
-interface kollektiv {
+interface Kollektiv {
     navn: string;
     rom: number;
 }
@@ -20,7 +20,7 @@ const kollektivData = {
 
 const Kollektiv = () => {
 
-    const [residents, setResidents] = useState<kollektiv[]>(kollektivData.Kollektiv_1);
+    const [residents, setResidents] = useState<Kollektiv[]>(kollektivData.Kollektiv_1);
 
 //     async function fetchData() {
 //         const res = await fetch("https://localhost:8000/.....");
@@ -42,7 +42,7 @@ const Kollektiv = () => {
     }
 
     const onUpdate = (index: any, property: string) => (e: any) => {
-        let newResidents = [...residents];
+        const newResidents = [...residents];
         if (property == "navn") {
             newResidents[index].navn = e.target.value;
         }
