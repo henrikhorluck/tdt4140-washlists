@@ -1,7 +1,9 @@
-import React, {FC} from 'react'
+import React, {FC, useState} from 'react'
 import Head from 'next/head'
 import Nav from './nav/nav'
 import styles from "./main.module.css";
+import AppState from '../../context/AppState'
+
 
 
 interface Props {
@@ -9,7 +11,8 @@ interface Props {
 }
 
 const Main: FC<Props> = ( {children} ) => {
-    return( <div>
+    return( 
+    <AppState>
         <Head>
             <title>SIF Vaskelister - Hjem</title>
             <link rel="icon" href="/favicon.ico"/>
@@ -20,7 +23,7 @@ const Main: FC<Props> = ( {children} ) => {
         <div className={styles.test}>
             {children}
         </div>
-    </div>
+    </AppState>
   );
 };
 

@@ -5,7 +5,7 @@ import styles from './DormItem.module.css';
 interface Props {
     dorm:{
         dormID: number,
-        occupants: number,
+        residentNumber: number,
         building: string,
         floor: number
     };
@@ -20,7 +20,7 @@ interface Props {
         <button onClick={() => {}}>{dorm.dormID}</button>
         </li>
         <li>
-            {dorm.occupants}
+            {dorm.residentNumber}
         </li>
         <li>
             {dorm.building}-{dorm.floor}
