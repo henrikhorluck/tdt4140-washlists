@@ -13,6 +13,7 @@ class DormroomViewSet(RetrieveUpdateAPIView, ListCreateAPIView, viewsets.ViewSet
     required_scopes = ["read", "write"]
     queryset = Dormroom.objects.all()
     serializer_class = DormroomSerializer
+    required_scopes = ["read", "write"]
 
     @permission_required("Dormroom.change_dormroom")
     def put(self, request, *args, **kwargs):
@@ -20,4 +21,4 @@ class DormroomViewSet(RetrieveUpdateAPIView, ListCreateAPIView, viewsets.ViewSet
 
     @permission_required("Dormroom.add_dormroom")
     def create_dormroom(self, request, *args, **kwargs):
-        super.post(self, request, *args, **kwargs)
+        super().post(self, request, *args, **kwargs)

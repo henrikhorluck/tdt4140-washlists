@@ -12,6 +12,7 @@ class StudentVillageViewSet(RetrieveUpdateAPIView, ListCreateAPIView, viewsets.V
     permission_classes = [permissions.IsAuthenticatedOrTokenHasScope]
     queryset = StudentVillage.objects.all()
     serializer_class = StudentVillageSerializer
+    required_scopes = ["read", "write"]
 
     @permission_required("StudentVillage.change_studentvillage")
     def put(self, request, *args, **kwargs):
@@ -19,4 +20,4 @@ class StudentVillageViewSet(RetrieveUpdateAPIView, ListCreateAPIView, viewsets.V
 
     @permission_required("Studentvillage.add_studentvillage")
     def create_studentvillage(self, request, *args, **kwargs):
-        super.post(self, request, *args, **kwargs)
+        super().post(self, request, *args, **kwargs)
