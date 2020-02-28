@@ -15,6 +15,25 @@ interface Todos {
   todos: Array<Todo>;
 }
 
+interface User {
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  dormroom: number;
+  id: number;
+}
+
+interface Context {
+  todos: any;
+  dormList: any;
+  addTodo: any;
+  completeTodo: any;
+  removeTodo: any;
+  storeUser: any;
+}
+
+
 const AppState: FC<Props> = ( {children} ) => {
 
   // DATA:
@@ -101,6 +120,15 @@ const AppState: FC<Props> = ( {children} ) => {
         }
       ]);
 
+      const [user, setUser] = useState({
+        username: "jonathhe",
+        email: "jonathhe@stud.ntnu.no",
+        first_name: "Jonathan",
+        last_name: "Hermansen",
+        dormroom: null,
+        id: 9
+      });
+
 
       // METHODS:
 
@@ -121,12 +149,18 @@ const AppState: FC<Props> = ( {children} ) => {
         setTodos(newTodos);
       };
 
+      const storeUser = (user: any) => {
+        setUser(user);
+      };
+
       const state:any = {
         todos: todos,
         dormList: dormList,
         addTodo: addTodo,
         completeTodo: completeTodo,
-        removeTodo: removeTodo
+        removeTodo: removeTodo,
+        storeUser: storeUser,
+        user: user
       }
 
     return( 
