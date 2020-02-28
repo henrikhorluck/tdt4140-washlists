@@ -6,11 +6,13 @@ from rest_framework.routers import DefaultRouter
 from Dormroom.urls import router as DormroomRouter
 from SIFUser.urls import router as UserRouter
 from StudentVillage.urls import router as VillageRouter
+from washlist.urls import router as WashlistRouter
 
 APIrouter = DefaultRouter()
 APIrouter.registry.extend(UserRouter.registry)
 APIrouter.registry.extend(DormroomRouter.registry)
 APIrouter.registry.extend(VillageRouter.registry)
+APIrouter.registry.extend(WashlistRouter.registry)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
