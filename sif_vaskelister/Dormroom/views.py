@@ -10,6 +10,7 @@ from .serializer import DormroomSerializer
 
 class DormroomViewSet(RetrieveUpdateAPIView, ListCreateAPIView, viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticatedOrTokenHasScope]
+    required_scopes = ["read", "write"]
     queryset = Dormroom.objects.all()
     serializer_class = DormroomSerializer
 

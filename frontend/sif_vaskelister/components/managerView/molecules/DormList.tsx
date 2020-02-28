@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useContext } from "react";
 import DormItem from '../atoms/DormItem'
 
 import styles from './DormList.module.css';
@@ -11,12 +11,17 @@ interface dorm {
 }
 
 interface Props {
-    dormList: [dorm]
+  context: any
   }
 
   const DromList: FC<Props> = ({
-  dormList
+    context
 }) => {
+  useEffect(()=>{
+    console.log(context)
+    context.getDorms()
+  }, []);
+
   return (
       <>
       <ul className={styles.item}>
@@ -30,9 +35,9 @@ interface Props {
               Bygg - Etasje
           </li>
       </ul>
-    {dormList.map((dorm:any, i:number) =>(
+    {/* {context.dormList.map((dorm:any, i:number) =>(
         <DormItem key={i} dorm={dorm} />
-    ))}
+    ))} */}
     </>
   );
 };

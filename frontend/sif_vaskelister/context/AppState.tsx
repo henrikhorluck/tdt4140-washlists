@@ -1,5 +1,7 @@
 import React, {FC, useState} from 'react'
+import ClientOAuth2, { Token } from 'client-oauth2';
 import AppContext from './appContext'
+import { get } from '../components/api/.';
 
 
 interface Props {
@@ -15,14 +17,6 @@ interface Todos {
   todos: Array<Todo>;
 }
 
-interface User {
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  dormroom: number;
-  id: number;
-}
 
 interface Context {
   todos: any;
@@ -32,6 +26,27 @@ interface Context {
   removeTodo: any;
   storeUser: any;
 }
+
+export class AuthUser extends Token {
+  user?: User;
+}
+
+interface User {
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  dormroom: Number[];
+}
+
+interface Dorm {
+  data:
+  [{
+    number: number,
+    village: number
+  }]
+}
+
 
 
 const AppState: FC<Props> = ( {children} ) => {
@@ -120,17 +135,19 @@ const AppState: FC<Props> = ( {children} ) => {
         }
       ]);
 
-      const [user, setUser] = useState({
-        username: "jonathhe",
-        email: "jonathhe@stud.ntnu.no",
-        first_name: "Jonathan",
-        last_name: "Hermansen",
-        dormroom: null,
-        id: 9
-      });
+      const [user, setUser] = useState<AuthUser>();
+
+      const [dorms, setDorms] = useState<Dorm>();
 
 
       // METHODS:
+
+      const getDorms = async () => {
+        console.log(user);
+        const dorms = await get<Dorm>("/api/dormroom/", {}, { "token": user });
+        console.log(dorms);
+        setDorms(dorms);
+      };
 
       const addTodo = (text: string) => {
         const newTodos = [...todos, { text: text, completed: false }];
@@ -149,8 +166,8 @@ const AppState: FC<Props> = ( {children} ) => {
         setTodos(newTodos);
       };
 
-      const storeUser = (user: any) => {
-        setUser(user);
+      const storeUser = (userToStore: AuthUser) => {
+        setUser(userToStore);
       };
 
       const state:any = {
@@ -160,7 +177,8 @@ const AppState: FC<Props> = ( {children} ) => {
         completeTodo: completeTodo,
         removeTodo: removeTodo,
         storeUser: storeUser,
-        user: user
+        user: user,
+        getDorms:getDorms
       }
 
     return( 

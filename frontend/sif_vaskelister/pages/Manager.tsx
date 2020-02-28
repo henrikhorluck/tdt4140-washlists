@@ -1,5 +1,5 @@
 import Main from "../components/template/Main"
-import React, { FC } from "react";
+import React from "react";
 import DormList from '../components/managerView/molecules/DormList'
 import AppContext from '../context/appContext'
 
@@ -11,10 +11,11 @@ const Manager= () => {
         <Main>
             <AppContext.Consumer>
                 {(context: any) => (
-                    <DormList dormList={context.dormList}></DormList>
+                    <DormList context={context}></DormList>
                 )}
             </AppContext.Consumer>
         </Main>
+       
   );
 };
 

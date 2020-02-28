@@ -23,6 +23,7 @@ const vaskelisteAuth = new ClientOAuth2({
 
 export const login = async (username: string, password: string) => {
     const token: AuthUser = await vaskelisteAuth.owner.getToken(username, password);
+    console.log(token);
     const VaskeUser = await get<User>("/api/users/9", {}, { "token": token })
     token.user = VaskeUser;
     // Returns object with both user-data and accessTokens    
