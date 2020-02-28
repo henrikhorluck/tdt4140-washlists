@@ -7,7 +7,11 @@ from washlist.models.Templates import TemplateWashList
 class StudentVillage(models.Model):
     name = models.CharField(max_length=80, default="", help_text="Navn på studentby")
     templateWashList = models.ForeignKey(
-        TemplateWashList, on_delete=models.SET_NULL, null=True, blank=True
+        TemplateWashList,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="villages",
     )
 
     def __str__(self):
