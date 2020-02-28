@@ -12,6 +12,7 @@ class User(AbstractUser):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
+        related_name="residents",
     )
 
     class Meta:

@@ -16,14 +16,20 @@ class WashList(models.Model):
 
 
 class ListItem(models.Model):
-    washlist = models.ForeignKey(WashList, on_delete=models.CASCADE)
+    washlist = models.ForeignKey(
+        WashList, on_delete=models.CASCADE, related_name="items"
+    )
 
     desc = models.CharField(
         max_length=150, help_text="Hva skal vaskes?", null=True, blank=True
     )
 
     template = models.ForeignKey(
-        TemplateListItem, on_delete=models.SET_NULL, null=True, blank=True
+        TemplateListItem,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="based_items",
     )
 
     completed = models.BooleanField(default=False)

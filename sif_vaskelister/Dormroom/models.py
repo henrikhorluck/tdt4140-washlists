@@ -6,15 +6,12 @@ from StudentVillage.models import StudentVillage
 
 class Dormroom(models.Model):
     number = models.SmallIntegerField(help_text=_("Kollektivnummer i studentby"))
-    village = models.ForeignKey(StudentVillage, on_delete=models.CASCADE)
+    village = models.ForeignKey(
+        StudentVillage, on_delete=models.CASCADE, related_name="Dormrooms"
+    )
 
     def __str__(self):
         return f"Kollektiv {self.number}, {self.village}"
-
-    def get_tennants(self):
-        from SIFUser.models import User
-
-        return User.objects.filter(Dormroom=self)
 
     class Meta:
         constraints = [
