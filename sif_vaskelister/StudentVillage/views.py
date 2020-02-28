@@ -1,3 +1,22 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import permission_required
 
-# Create your views here.
+from oauth2_provider.contrib.rest_framework import permissions
+from rest_framework import viewsets
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
+
+from .models import StudentVillage
+from .serializer import StudentVillageSerializer
+
+
+class StudentVillageViewSet(RetrieveUpdateAPIView, ListCreateAPIView, viewsets.ViewSet):
+    permission_classes = [permissions.IsAuthenticatedOrTokenHasScope]
+    queryset = StudentVillage.objects.all()
+    serializer_class = StudentVillageSerializer
+
+    @permission_required("StudentVillage.change_studentvillage")
+    def put(self, request, *args, **kwargs):
+        super().put(self, request, *args, **kwargs)
+
+    @permission_required("Studentvillage.add_studentvillage")
+    def create_studentvillage(self, request, *args, **kwargs):
+        super.post(self, request, *args, **kwargs)

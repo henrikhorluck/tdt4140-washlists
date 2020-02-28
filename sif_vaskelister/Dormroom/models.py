@@ -9,7 +9,12 @@ class Dormroom(models.Model):
     village = models.ForeignKey(StudentVillage, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.village}: Nr: {self.number}"
+        return f"Kollektiv {self.number}, {self.village}"
+
+    def get_tennants(self):
+        from SIFUser.models import User
+
+        return User.objects.filter(Dormroom=self)
 
     class Meta:
         constraints = [

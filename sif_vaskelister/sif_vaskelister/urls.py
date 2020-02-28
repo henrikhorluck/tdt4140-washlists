@@ -1,28 +1,19 @@
 from django.contrib import admin
-from django.contrib.auth.models import Group
 from django.urls import include, path
 
-from oauth2_provider.contrib.rest_framework import TokenHasScope
-from rest_framework import generics, permissions, serializers
+from rest_framework.routers import DefaultRouter
 
+from Dormroom.urls import router as DormroomRouter
+from SIFUser.urls import router as UserRouter
+from StudentVillage.urls import router as VillageRouter
 
-class GroupSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Group
-        fields = ("name",)
+APIrouter = DefaultRouter()
+APIrouter.registry.extend(UserRouter.registry)
+APIrouter.registry.extend(DormroomRouter.registry)
+APIrouter.registry.extend(VillageRouter.registry)
 
-
-class GroupList(generics.ListAPIView):
-    permission_classes = [permissions.IsAuthenticated, TokenHasScope]
-    required_scopes = ["groups"]
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-
-
-# Setup the URLs and include login URLs for the browsable API.
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
-    path("groups/", GroupList.as_view()),
-    path("", include("SIFUser.urls")),
+    path("api/", include(APIrouter.urls)),
 ]

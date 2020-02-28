@@ -6,7 +6,7 @@ from Dormroom.models import Dormroom
 
 
 class User(AbstractUser):
-    dorm = models.ForeignKey(
+    dormroom = models.ForeignKey(
         Dormroom,
         help_text="Kollektivet personen bor i",
         null=True,

@@ -1,12 +1,11 @@
-from django.urls import path
+from rest_framework import routers
 
-from rest_framework.urlpatterns import format_suffix_patterns
+from .views import GroupViewSet, UserViewSet
 
-from .views import UserDetails, UserList
+router = routers.SimpleRouter()
 
-urlpatterns = [
-    path("users/", UserList.as_view()),
-    path("users/<int:pk>/", UserDetails.as_view()),
-]
+router.register("users", UserViewSet)
+router.register("groups", GroupViewSet)
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+
+urlpatterns = router.urls
