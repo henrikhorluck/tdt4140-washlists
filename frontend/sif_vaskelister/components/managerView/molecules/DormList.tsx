@@ -35,7 +35,7 @@ interface Props {
           </li>
       </ul>
     { context.dorms ? context.dorms.map((dorm:any, i:number) =>(
-        <DormItem key={i} dorm={dorm} />
+        <DormItem key={i} dorm={dorm} getDormManager={context.getDormManager}/>
     )):null}
     </>
   );

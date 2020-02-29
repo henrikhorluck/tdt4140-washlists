@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react'
 import ClientOAuth2, { Token } from 'client-oauth2';
 import AppContext from './appContext'
-import { get, patch } from '../components/api/.';
+import { get, patch, post } from '../components/api/.';
 
 
 interface Props {
@@ -230,6 +230,16 @@ const AppState: FC<Props> = ( {children} ) => {
         setDorm(dorm)
       };
 
+      const getDormManager = async (id: number) => {
+        console.log(id)
+        const dorm = await get<Dorm>("/api/dormroom/"+id, {}, { "token": user });
+        console.log(dorm)
+        setDorm(dorm)
+        const todoList = await get<TodoList>("/api/washlist/"+dorm.id, {}, { "token": user });
+        console.log(todoList)
+        setTodos(todoList);
+      };
+
       const getTodoList = async () => {
         const dorm = await get<Dorm>("/api/dormroom/"+user?.user?.dormroom, {}, { "token": user });
         setDorm(dorm)
@@ -238,10 +248,16 @@ const AppState: FC<Props> = ( {children} ) => {
         console.log(todoList);
       };
 
-      // const addTodo = (text: string) => {
-      //   const newTodos = [...todos, { text: text, completed: false }];
-      //   setTodos(newTodos);
-      // };
+      const addTodo = async (text: string) => {
+        const data = {
+          desc: text,
+          washlist: todos?.id
+        }
+        await post( "/api/washlistitem/", {},{}, { "token": user });
+        const newTodoList = await get<TodoList>("/api/washlist/"+dorm.id, {}, { "token": user });
+        console.log(newTodoList);
+        setTodos(newTodoList);
+      };
 
       const completeTodo = async (id: number) => {
         // const newTodos = [...todos];
@@ -272,14 +288,15 @@ const AppState: FC<Props> = ( {children} ) => {
       const state:any = {
         todos: todos,
         dorms: dorms,
-        // addTodo: addTodo,
+        addTodo: addTodo,
         completeTodo: completeTodo,
         // removeTodo: removeTodo,
         storeUser: storeUser,
         user: user,
         getDorms:getDorms,
         getDorm: getDorm,
-        getTodoList:getTodoList
+        getTodoList:getTodoList,
+        getDormManager: getDormManager
       }
 
     return( 
