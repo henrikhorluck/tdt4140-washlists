@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react'
 import ClientOAuth2, { Token } from 'client-oauth2';
 import AppContext from './appContext'
-import { get, post } from '../components/api/.';
+import { get, patch } from '../components/api/.';
 
 
 interface Props {
@@ -232,6 +232,7 @@ const AppState: FC<Props> = ( {children} ) => {
 
       const getTodoList = async () => {
         const dorm = await get<Dorm>("/api/dormroom/"+user?.user?.dormroom, {}, { "token": user });
+        setDorm(dorm)
         const todoList = await get<TodoList>("/api/washlist/"+dorm.id, {}, { "token": user });
         setTodos(todoList);
         console.log(todoList);
@@ -246,14 +247,14 @@ const AppState: FC<Props> = ( {children} ) => {
         // const newTodos = [...todos];
         // newTodos[index].completed = true;
         // setTodos(newTodos);
+        console.log(todos?.items.find((item:any)=>(item.id == id)));
 
         const completedTodo = todos?.items.find((item:any)=>(item.id == id));
         if(completedTodo){
           completedTodo.completed = true
         }
         const stringifiedTodo = JSON.stringify(completedTodo)
-        console.log(stringifiedTodo);
-        await post<TodoList>( "/api/washlistitem/"+id+"/", {stringifiedTodo}, {}, { "token": user });
+        await patch( {query:"/api/washlistitem/"+id+"/", data:{completedTodo}, parameters:{}, options:{ "token": user }});
         const newTodoList = await get<TodoList>("/api/washlist/"+dorm.id, {}, { "token": user });
         setTodos(newTodoList);
       };
