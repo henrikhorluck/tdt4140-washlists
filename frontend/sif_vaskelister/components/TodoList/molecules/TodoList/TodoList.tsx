@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect } from "react";
 
 import TodoAdd from "../../atoms/TodoAdd/TodoAdd";
 import TodoItem from "../../atoms/TodoItem/TodoItem";
@@ -10,6 +10,12 @@ interface Props {
 }
 
 const TodoList: FC<Props> = ({context}) => {
+
+  useEffect(()=>{
+    context.getTodoList()
+  }, []);
+
+
   return (
     <div className={styles.list}>
       <h1>VASKELISTE</h1>

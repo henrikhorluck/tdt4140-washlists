@@ -32,6 +32,7 @@ export class AuthUser extends Token {
 }
 
 interface User {
+  id: number;
   username: string;
   email: string;
   first_name: string;
@@ -144,9 +145,15 @@ const AppState: FC<Props> = ( {children} ) => {
 
       const getDorms = async () => {
         console.log(user);
-        const dorms = await get<Dorm>("/api/dormroom/", {}, { "token": user });
+        const dorms = await get<Dorm>("/api/dormroom/"+user?.user?.id, {}, { "token": user });
         console.log(dorms);
         setDorms(dorms);
+      };
+
+      const getTodoList = async () => {
+        console.log(user);
+        const dorms = await get<Dorm>("/api/dormroom/"+user?.user?.id, {}, { "token": user });
+        console.log(dorms);
       };
 
       const addTodo = (text: string) => {
@@ -178,7 +185,8 @@ const AppState: FC<Props> = ( {children} ) => {
         removeTodo: removeTodo,
         storeUser: storeUser,
         user: user,
-        getDorms:getDorms
+        getDorms:getDorms,
+        getTodoList:getTodoList
       }
 
     return( 

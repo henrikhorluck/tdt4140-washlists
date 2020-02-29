@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import style from "./nav.module.css"
+import Router from 'next/router'
 
 const Nav = () => (
   <nav >
@@ -15,6 +16,15 @@ const Nav = () => (
           <a href={href}>{label}</a>
         </li>
       ))}
+      <li>
+      <button
+          className={style.button}
+          type="button"
+          onClick={() => Router.push("/")}
+        >
+          <p>Logg ut</p>
+        </button>
+      </li>
     </ul>
   </nav>
 );

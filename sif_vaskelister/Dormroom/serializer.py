@@ -7,3 +7,4 @@ class DormroomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dormroom
         fields = ("id", "number", "village", "residents")
+        depth = 2

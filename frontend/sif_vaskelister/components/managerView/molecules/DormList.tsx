@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useContext } from "react";
+import React, { FC, useEffect} from "react";
 import DormItem from '../atoms/DormItem'
 
 import styles from './DormList.module.css';
@@ -18,7 +18,6 @@ interface Props {
     context
 }) => {
   useEffect(()=>{
-    console.log(context)
     context.getDorms()
   }, []);
 
