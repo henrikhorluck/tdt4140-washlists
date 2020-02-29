@@ -20,16 +20,16 @@ const TodoList: FC<Props> = ({context}) => {
     <div className={styles.list}>
       <h1>VASKELISTE</h1>
       <div className={styles.todo_list}>
-        {context.todos.map((todo:any, index:number) => (
+        {context.todos ? context.todos.items.map((todo:any, index:number) => (
           <TodoItem
             key={index}
-            index={index}
+            id={todo.id}
             todo={todo}
             completeTodo={context.completeTodo}
-            removeTodo={context.removeTodo}
+            // removeTodo={context.removeTodo}
           />
-        ))}
-        <TodoAdd addTodo={context.addTodo} />
+        )): null}
+        {/* <TodoAdd addTodo={context.addTodo} /> */}
       </div>
     </div>
   );

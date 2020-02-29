@@ -1,4 +1,11 @@
-export interface Todo {
+export interface Todo  {
+  id: number;
+  desc: null,
   completed: boolean;
-  text: string;
+  washlist: {
+    id: number;
+    title: string;
+    dormroom: number;
+  },
+  template: null;
 }

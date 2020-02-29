@@ -20,7 +20,9 @@ const Nav = () => (
       <button
           className={style.button}
           type="button"
-          onClick={() => Router.push("/")}
+          onClick={() => {
+            window.location.href = "http://localhost:3000";
+        }}
         >
           <p>Logg ut</p>
         </button>
