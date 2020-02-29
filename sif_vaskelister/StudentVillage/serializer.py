@@ -6,4 +6,4 @@ from .models import StudentVillage
 class StudentVillageSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentVillage
-        fields = ("name",)
+        fields = "__all__"
