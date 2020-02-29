@@ -41,11 +41,57 @@ interface User {
 }
 
 interface Dorms {
-  data:
-  [{
-    number: number,
-    village: number
-  }]
+  data:[
+    {
+      id: number;
+      number: number;
+      village: {
+        id: number;
+        name: string;
+        templateWashList: {
+          id: number;
+          title: string;
+        }
+      },
+      residents: [
+        {
+          id: number;
+          password: string;
+          last_login: any;
+          is_superuser: boolean;
+          username: string;
+          first_name:string;
+          last_name: string;
+          email: string;
+          is_staff: boolean;
+          is_active: boolean;
+          date_joined: string;
+          dormroom: {
+            id: number;
+            number: number;
+            village: number;
+          },
+          groups: [
+            {
+              id: number;
+              name: string;
+              permissions: []
+            }
+          ],
+          user_permissions: []
+        }
+      ],
+      washlist: {
+        id: number;
+        title: string;
+        dormroom: {
+          id: number;
+          number: number;
+          village: number;
+        }
+      }
+    }
+  ]
 }
 
 interface Dorm 
@@ -162,73 +208,6 @@ const AppState: FC<Props> = ( {children} ) => {
 
   // DATA:
 
-    const [dormList, setState] = useState([
-        {
-            dormID: 1,
-            residentNumber: 3,
-            building: 'A',
-            floor: 2,
-            residents:[
-              {navn: "Ola Nordmann", rom: 1},
-              {navn: "Kari Nordmann", rom: 2}
-            ],
-            cleaningList:[
-              {
-                task: 'bla bla bla',
-                description: 'more bla bla bla bla bla'
-              }
-            ]
-        },
-        {
-            dormID: 2,
-            residentNumber: 5,
-            building: 'B',
-            floor: 4,
-            residents:[
-              {navn: "Ola Nordmann", rom: 1},
-              {navn: "Kari Nordmann", rom: 2}
-            ],
-            cleaningList:[
-              {
-                task: 'bla bla bla',
-                description: 'more bla bla bla bla bla'
-              }
-            ]
-        },
-        {
-            dormID: 3,
-            residentNumber: 7,
-            building: 'A',
-            floor: 1,
-            residents:[
-              {navn: "Ola Nordmann", rom: 1},
-              {navn: "Kari Nordmann", rom: 2}
-            ],
-            cleaningList:[
-              {
-                task: 'bla bla bla',
-                description: 'more bla bla bla bla bla'
-              }
-            ]
-        },
-        {
-            dormID: 4,
-            residentNumber: 1,
-            building: 'C',
-            floor:6,
-            residents:[
-              {navn: "Ola Nordmann", rom: 1},
-              {navn: "Kari Nordmann", rom: 2}
-            ],
-            cleaningList:[
-              {
-                task: 'bla bla bla',
-                description: 'more bla bla bla bla bla'
-              }
-            ]
-        }
-    ]);
-
     const [todos, setTodos] = useState<TodoList>();
 
       const [user, setUser] = useState<AuthUser>();
@@ -241,7 +220,7 @@ const AppState: FC<Props> = ( {children} ) => {
 
       const getDorms = async () => {
         console.log(user);
-        const dorms = await get<Dorms>("/api/dormroom/"+user?.user?.id, {}, { "token": user });
+        const dorms = await get<Dorms>("/api/dormroom/", {}, { "token": user });
         console.log(dorms);
         setDorms(dorms);
       };
@@ -291,7 +270,7 @@ const AppState: FC<Props> = ( {children} ) => {
 
       const state:any = {
         todos: todos,
-        dormList: dormList,
+        dorms: dorms,
         // addTodo: addTodo,
         completeTodo: completeTodo,
         // removeTodo: removeTodo,

@@ -31,12 +31,12 @@ interface Props {
               Antall beboere
           </li>
           <li>
-              Bygg - Etasje
+              Studentby
           </li>
       </ul>
-    {/* {context.dormList.map((dorm:any, i:number) =>(
+    { context.dorms ? context.dorms.map((dorm:any, i:number) =>(
         <DormItem key={i} dorm={dorm} />
-    ))} */}
+    )):null}
     </>
   );
 };
