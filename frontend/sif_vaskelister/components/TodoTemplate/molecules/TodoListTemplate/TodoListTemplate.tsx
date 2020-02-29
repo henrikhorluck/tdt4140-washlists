@@ -26,6 +26,7 @@ const TodoListTemplate: FC<Props> = ({context}) => {
         </button>
     <div className={styles.list}>
       <h1>VASKELISTEMAL</h1>
+      <h3>Kollektiv {context.todos ? context.todos.dormroom.number : null}</h3>
       <div className={styles.todo_list}>
         {context.todos && context.todos.items? context.todos.items.map((todo:any, index:number) => (
           <TodoItemTemplate
