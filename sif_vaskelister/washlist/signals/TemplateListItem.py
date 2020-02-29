@@ -5,7 +5,7 @@ from django.dispatch import receiver
 from Dormroom.models import Dormroom
 from StudentVillage.models import StudentVillage
 from washlist.models.Templates import TemplateListItem
-from washlist.models.WashLists import ListItem
+from washlist.models.WashLists import ListItem, WashList
 
 
 @receiver(signal=post_save, sender=TemplateListItem)
@@ -18,4 +18,8 @@ def handle_template_change(sender, instance: TemplateListItem, created, **kwargs
             rooms |= Q(village=v)
 
         for r in Dormroom.objects.filter(rooms):
+            if r.washlist is None:
+                r.washlist = WashList.objects.create(
+                    title=f"Kollektiv {r.number} sin vaskeliste", dormroom=r
+                )
             ListItem.objects.create(template=instance, washlist=r.washlist)
