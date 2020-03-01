@@ -100,6 +100,7 @@ export const post = async <T>(
     'Content-Type': 'application/json',
   };
   const body = JSON.stringify(data);
+  console.log(body)
   const opts = { ...options, method: 'POST', body, headers };
   return performRequest(query, parameters, opts);
 };

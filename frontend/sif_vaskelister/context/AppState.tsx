@@ -220,6 +220,7 @@ const AppState: FC<Props> = ( {children} ) => {
 
       const getDorms = async () => {
         const dorms = await get<Dorms>("/api/dormroom/", {}, { "token": user });
+        console.log(dorms)
         setDorms(dorms);
       };
 
@@ -243,11 +244,12 @@ const AppState: FC<Props> = ( {children} ) => {
       };
 
       const addTodo = async (text: string) => {
-        const data = {
+        const washlist = {
           desc: text,
           washlist: todos?.id
         }
-        await post( "/api/washlistitem/", {},{}, { "token": user });
+        console.log(washlist)
+        await post( "/api/washlistitem/", {...washlist},{}, { "token": user });
         const newTodoList = await get<TodoList>("/api/washlist/"+dorm.id, {}, { "token": user });
         setTodos(newTodoList);
       };
