@@ -31,6 +31,7 @@ class TemplateWashListViewSet(viewsets.ModelViewSet):
     serializer_class = TemplateWashListSerializer
     required_scopes = ["read", "write"]
 
+
 class TemplateListItemViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrTokenHasScope]
     queryset = TemplateListItem.objects.all()
