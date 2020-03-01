@@ -219,9 +219,7 @@ const AppState: FC<Props> = ( {children} ) => {
       // METHODS:
 
       const getDorms = async () => {
-        console.log(user);
         const dorms = await get<Dorms>("/api/dormroom/", {}, { "token": user });
-        console.log(dorms);
         setDorms(dorms);
       };
 
@@ -231,12 +229,9 @@ const AppState: FC<Props> = ( {children} ) => {
       };
 
       const getDormManager = async (id: number) => {
-        console.log(id)
         const dorm = await get<Dorm>("/api/dormroom/"+id, {}, { "token": user });
-        console.log(dorm)
         setDorm(dorm)
         const todoList = await get<TodoList>("/api/washlist/"+dorm.id, {}, { "token": user });
-        console.log(todoList)
         setTodos(todoList);
       };
 
@@ -245,7 +240,6 @@ const AppState: FC<Props> = ( {children} ) => {
         setDorm(dorm)
         const todoList = await get<TodoList>("/api/washlist/"+dorm.id, {}, { "token": user });
         setTodos(todoList);
-        console.log(todoList);
       };
 
       const addTodo = async (text: string) => {
@@ -255,22 +249,13 @@ const AppState: FC<Props> = ( {children} ) => {
         }
         await post( "/api/washlistitem/", {},{}, { "token": user });
         const newTodoList = await get<TodoList>("/api/washlist/"+dorm.id, {}, { "token": user });
-        console.log(newTodoList);
         setTodos(newTodoList);
       };
 
       const completeTodo = async (id: number) => {
-        // const newTodos = [...todos];
-        // newTodos[index].completed = true;
-        // setTodos(newTodos);
-        console.log(todos?.items.find((item:any)=>(item.id == id)));
-
         const completedTodo = todos?.items.find((item:any)=>(item.id == id));
-        if(completedTodo){
-          completedTodo.completed = true
-        }
-        const stringifiedTodo = JSON.stringify(completedTodo)
-        await patch( {query:"/api/washlistitem/"+id+"/", data:{completedTodo}, parameters:{}, options:{ "token": user }});
+        const completed = completedTodo ? completedTodo.completed = true : null;
+        await patch( {query:"/api/washlistitem/"+id+"/", data:{completed}, parameters:{}, options:{ "token": user }});
         const newTodoList = await get<TodoList>("/api/washlist/"+dorm.id, {}, { "token": user });
         setTodos(newTodoList);
       };

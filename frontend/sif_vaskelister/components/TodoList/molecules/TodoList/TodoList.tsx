@@ -20,7 +20,7 @@ const TodoList: FC<Props> = ({context}) => {
     <div className={styles.list}>
       <h1>VASKELISTE</h1>
       <div className={styles.todo_list}>
-        {context.todos ? context.todos.items.map((todo:any, index:number) => (
+        {context.todos && context.todos.id ? context.todos.items.map((todo:any, index:number) => (
           <TodoItem
             key={index}
             id={todo.id}
