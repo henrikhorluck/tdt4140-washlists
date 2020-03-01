@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Router from 'next/router'
 
 import styles from './DormItem.module.css';
 
@@ -77,16 +78,21 @@ dorm: {
         village: number;
       }
     }
-  }
+  },
+  getDormManager: any
 }
 
  const DromItem: FC<Props> = ({
-  dorm
+  dorm,
+  getDormManager
 }) => {
   return (
     <ul className={styles.item}>
         <li>
-        <button onClick={() => {}}>{dorm.number}</button>
+        <button onClick={() => {
+          getDormManager(dorm.id)
+          Router.push('/todoTemplate')
+          }}>{dorm.number}</button>
         </li>
         <li>
             {dorm.residents.length}
