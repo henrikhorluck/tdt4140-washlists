@@ -20,9 +20,7 @@ class ListItem(models.Model):
         WashList, on_delete=models.CASCADE, related_name="items"
     )
 
-    desc = models.CharField(
-        max_length=150, help_text="Hva skal vaskes?", null=True, blank=True
-    )
+    desc = models.CharField(max_length=150, help_text="Hva skal vaskes?")
 
     template = models.ForeignKey(
         TemplateListItem,
