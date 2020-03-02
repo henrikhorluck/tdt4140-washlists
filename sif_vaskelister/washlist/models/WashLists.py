@@ -20,7 +20,9 @@ class ListItem(models.Model):
         WashList, on_delete=models.CASCADE, related_name="items"
     )
 
-    desc = models.CharField(max_length=150, help_text="Hva skal vaskes?")
+    desc = models.CharField(
+        max_length=150, help_text="Hva skal vaskes?", null=True, blank=True
+    )
 
     template = models.ForeignKey(
         TemplateListItem,
@@ -42,7 +44,7 @@ class ListItem(models.Model):
     class Meta:
         constraints = [
             models.CheckConstraint(
-                check=Q(template_id__isnull=True) | Q(desc__isnull=True),
-                name="Must have description",
+                check=Q(template_id__isnull=False) | Q(desc__isnull=False),
+                name="Must have description from either template or self",
             )
         ]
