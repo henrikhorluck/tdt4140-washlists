@@ -52,9 +52,9 @@ interface Props {
             value={password}
           />
         </label>
-        <label>
+        {/* <label>
           <input type="checkbox" name="remember" /> Husk meg!
-        </label>
+        </label> */}
         <button
           className={styles.button}
           type="button"
