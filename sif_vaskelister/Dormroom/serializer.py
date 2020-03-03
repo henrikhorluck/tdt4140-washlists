@@ -6,4 +6,5 @@ from .models import Dormroom
 class DormroomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dormroom
-        fields = ("number", "village")
+        fields = ("id", "number", "village", "residents", "washlist")
+        depth = 2

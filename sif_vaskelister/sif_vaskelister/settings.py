@@ -46,7 +46,13 @@ INSTALLED_APPS = [
     "SIFUser",
     "Dormroom",
     "StudentVillage",
+    "washlist",
 ]
+
+AUTHENTICATION_BACKENDS = (
+    "oauth2_provider.backends.OAuth2Backend",
+    "django.contrib.auth.backends.ModelBackend",
+)
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -57,6 +63,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "oauth2_provider.middleware.OAuth2TokenMiddleware",
 ]
 
 OAUTH2_PROVIDER = {"SCOPES": {"read": "Read scope", "write": "Write scope"}}
