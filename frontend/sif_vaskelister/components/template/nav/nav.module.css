@@ -1,0 +1,11 @@
+.test {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgb(141, 143, 51);
+    padding: 2em;
+    margin: 0em 5em;
+    border-radius: 1em;
+    justify-content: space-around;
+}
