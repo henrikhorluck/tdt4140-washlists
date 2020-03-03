@@ -10,7 +10,7 @@ export interface User {
     email: string;
     first_name: string;
     last_name: string;
-    dormrooms: Number[];
+    dormrooms: number[];
 }
 
 const vaskelisteAuth = new ClientOAuth2({

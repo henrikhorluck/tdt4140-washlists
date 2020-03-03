@@ -1,8 +1,6 @@
-import { Query, toQueryString } from './queryString';
-import { DOMAIN } from './defaults';
-import { Token } from 'client-oauth2';
-
-
+import { Query, toQueryString } from "./queryString";
+import { DOMAIN } from "./defaults";
+import { Token } from "client-oauth2";
 
 export interface RequestOptions extends RequestInit {
   token?: Token;
@@ -19,17 +17,21 @@ export interface APIData<T> {
 export interface BaseAPIParameters {
   page_size?: number;
   page?: number;
-  format?: 'json' | string;
+  format?: "json" | string;
 }
 
-const performRequest = async (query: string, parameters: Query = {}, options: RequestOptions = {}) => {
+const performRequest = async (
+  query: string,
+  parameters: Query = {},
+  options: RequestOptions = {}
+) => {
   const queryString = toQueryString(parameters);
   const { token, domain, ...restOptions } = options;
   const url = (domain || DOMAIN) + query + queryString;
 
   const headers = {
     ...options.headers,
-    Authorization: token ? `Bearer ${token.accessToken}` : '',
+    Authorization: token ? `Bearer ${token.accessToken}` : ""
   };
   const requestOptions = { ...restOptions, headers };
   const response = await fetch(url, requestOptions);
@@ -67,7 +69,11 @@ export async function getAllPages<T>(
 ): Promise<T[]> {
   const { page = 1, page_size = 80 } = parameters;
   /** Get the amount of objects to get in total by fetching a single object */
-  const { count }: APIData<T> = await get<APIData<T>>(query, { ...parameters, page, page_size: 1 }, options);
+  const { count }: APIData<T> = await get<APIData<T>>(
+    query,
+    { ...parameters, page, page_size: 1 },
+    options
+  );
   /** Prepare an array with an index for each page which will be fetched */
   const pageNumber = Math.ceil(count / page_size);
   const requestCount = [...Array(pageNumber)];
@@ -96,39 +102,43 @@ export const post = async <T>(
   options: RequestOptions = {}
 ): Promise<T> => {
   const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
+    Accept: "application/json",
+    "Content-Type": "application/json"
   };
   const body = JSON.stringify(data);
-  const opts = { ...options, method: 'POST', body, headers };
+  const opts = { ...options, method: "POST", body, headers };
   return performRequest(query, parameters, opts);
 };
 
-export interface IPutParams<T> {
+export interface PutParams<T> {
   query: string;
   data: T;
   parameters?: Query;
   options?: RequestOptions;
 }
 
-export const put = async <T, K = Partial<T>>(putParams: IPutParams<K>): Promise<T> => {
+export const put = async <T, K = Partial<T>>(
+  putParams: PutParams<K>
+): Promise<T> => {
   const { query, data, parameters = {}, options = {} } = putParams;
   const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
+    Accept: "application/json",
+    "Content-Type": "application/json"
   };
   const body = JSON.stringify(data);
-  const opts = { ...options, method: 'PUT', body, headers };
+  const opts = { ...options, method: "PUT", body, headers };
   return performRequest(query, parameters, opts);
 };
 
-export const patch = async <T, K = Partial<T>>(patchParams: IPutParams<K>): Promise<T> => {
+export const patch = async <T, K = Partial<T>>(
+  patchParams: PutParams<K>
+): Promise<T> => {
   const { query, data, parameters = {}, options = {} } = patchParams;
   const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
+    Accept: "application/json",
+    "Content-Type": "application/json"
   };
   const body = JSON.stringify(data);
-  const opts = { ...options, method: 'PATCH', body, headers };
+  const opts = { ...options, method: "PATCH", body, headers };
   return performRequest(query, parameters, opts);
 };
