@@ -1,3 +1,4 @@
+import React from 'react';
 import KollektivOversikt from "../components/kollektivOversikt/KollektivOversikt";
 import Main from "../components/template/Main"
 

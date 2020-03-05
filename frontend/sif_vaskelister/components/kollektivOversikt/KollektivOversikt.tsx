@@ -21,7 +21,7 @@ const KollektivOversikt = () => {
                     </div>
                     <ul className={styles.ul}>
                         {kollektivData.Kollektiv_1.map(({navn, rom}, index) => (
-                            <div className={styles.li}>
+                            <div className={styles.li} key={index}>
                                 <li>{navn}</li>
                                 <li>{rom}</li>
                             </div>
@@ -40,7 +40,7 @@ const KollektivOversikt = () => {
                     </div>
                     <ul className={styles.ul}>
                         {vaskelisteData.Studentby_1.map(({vaskepunkt, beskrivelse}, index) => (
-                            <div className={styles.li}>
+                            <div className={styles.li} key={index}>
                                 <li>{vaskepunkt}</li>
                             </div>
                         ))}
