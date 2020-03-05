@@ -3,7 +3,7 @@ import DormItem from "../atoms/DormItem";
 
 import styles from "./DormList.module.css";
 
-interface dorm {
+interface Dorm {
   dormID: number;
   occupants: number;
   building: string;

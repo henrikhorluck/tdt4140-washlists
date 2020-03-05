@@ -1,3 +1,4 @@
+import React from 'react';
 import TodoListTemplate from "../components/TodoTemplate/molecules/TodoListTemplate/TodoListTemplate";
 import Main from "../components/template/Main";
 import AppContext from "../context/appContext";
