@@ -1,21 +1,23 @@
 import React, { useState } from "react";
-import styles from "./vaskelistemal.module.css";
+import styles from "./kollektiv.module.css";
 
-interface Vaskeliste {
-  vaskepunkt: string;
-  beskrivelse: string;
+interface Kollektiv {
+  navn: string;
+  rom: number;
 }
 
-const vaskelisteData = {
-  Studentby_1: [
-    { vaskepunkt: "Bad", beskrivelse: "Vaske do, dusj, vask" },
-    { vaskepunkt: "Kjøkken", beskrivelse: "Vaske benk, ovn, kjøleskap" }
-  ]
+// Eksempeldata
+const kollektivData = {
+  Kollektiv_1: [
+    { navn: "Ola Nordmann", rom: 1 },
+    { navn: "Kari Nordmann", rom: 2 }
+  ],
+  Kollektiv_2: [{ navn: "Karl Gustav", rom: 3 }]
 };
 
-const VaskelisteMal = () => {
-  const [vaskeliste, setVaskeliste] = useState<Vaskeliste[]>(
-    vaskelisteData.Studentby_1
+const Kollektiv = () => {
+  const [residents, setResidents] = useState<Kollektiv[]>(
+    kollektivData.Kollektiv_1
   );
 
   //     async function fetchData() {
@@ -29,10 +31,7 @@ const VaskelisteMal = () => {
   //     });
 
   const addField = () => {
-    setVaskeliste(vaskeliste => [
-      ...vaskeliste,
-      { vaskepunkt: "", beskrivelse: "" }
-    ]);
+    setResidents(residents => [...residents, { navn: "", rom: NaN }]);
   };
 
   const handleSubmit = (e: any) => {
@@ -41,38 +40,38 @@ const VaskelisteMal = () => {
   };
 
   const onUpdate = (index: any, property: string) => (e: any) => {
-    const newVaskeliste = [...vaskeliste];
-    if (property == "vaskepunkt") {
-      newVaskeliste[index].vaskepunkt = e.target.value;
-    } else if (property == "beskrivelse") {
-      newVaskeliste[index].beskrivelse = e.target.value;
+    const newResidents = [...residents];
+    if (property == "navn") {
+      newResidents[index].navn = e.target.value;
+    } else if (property == "rom") {
+      newResidents[index].rom = e.target.value;
     }
-    setVaskeliste(newVaskeliste);
+    setResidents(newResidents);
   };
 
   return (
     <div className={styles.h1}>
-      <h1>Vaskelistemal for Studentby 1</h1>
+      <h1>Beboere i Kollektiv 1</h1>
       <form onSubmit={handleSubmit}>
         <div className={styles.labels}>
-          <h2 className={styles.h2}>Vaskepunkt</h2>
-          <h2 className={styles.h2}>Beskrivelse</h2>
+          <h2 className={styles.h2}>Navn</h2>
+          <h2 className={styles.h2}>Rom</h2>
         </div>
-        {vaskeliste.map(({ vaskepunkt, beskrivelse }, index) => (
+        {residents.map(({ navn, rom }, index) => (
           <div className={styles.inputPair} key={index}>
             <input
               className={styles.input}
               type="text"
-              name="vaskepunkt"
-              value={vaskepunkt}
-              onChange={onUpdate(index, "vaskepunkt")}
+              name="navn"
+              value={navn}
+              onChange={onUpdate(index, "navn")}
             />
             <input
               className={styles.input}
-              type="text"
-              name="beskrivelse"
-              value={beskrivelse}
-              onChange={onUpdate(index, "beskrivelse")}
+              type="number"
+              name="rom"
+              value={rom}
+              onChange={onUpdate(index, "rom")}
             />
           </div>
         ))}
@@ -95,4 +94,4 @@ const VaskelisteMal = () => {
   );
 };
 
-export default VaskelisteMal;
+export default Kollektiv;

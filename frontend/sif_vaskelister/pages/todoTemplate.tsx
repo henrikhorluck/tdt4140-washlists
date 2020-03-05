@@ -1,5 +1,5 @@
-import React from "react";
-import TodoList from "../components/TodoList/molecules/TodoList/TodoList";
+import React from 'react';
+import TodoListTemplate from "../components/TodoTemplate/molecules/TodoListTemplate/TodoListTemplate";
 import Main from "../components/template/Main";
 import AppContext from "../context/appContext";
 
@@ -7,7 +7,9 @@ const Vaskeliste = () => {
   return (
     <Main>
       <AppContext.Consumer>
-        {(context: any) => <TodoList context={context}></TodoList>}
+        {(context: any) => (
+          <TodoListTemplate context={context}></TodoListTemplate>
+        )}
       </AppContext.Consumer>
     </Main>
   );
