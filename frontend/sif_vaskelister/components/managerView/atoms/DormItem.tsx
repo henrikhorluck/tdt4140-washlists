@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import Router from 'next/router'
+import Router from "next/router";
 
-import styles from './DormItem.module.css';
+import styles from "./DormItem.module.css";
 
-interface Props{ 
-dorm: {
+interface Props {
+  dorm: {
     id: number;
     number: number;
     village: {
@@ -13,8 +13,8 @@ dorm: {
       templateWashList: {
         id: number;
         title: string;
-      }
-    },
+      };
+    };
     residents: [
       {
         id: number;
@@ -32,14 +32,14 @@ dorm: {
           id: number;
           number: number;
           village: number;
-        },
+        };
         groups: [
           {
             id: number;
             name: string;
             permissions: any;
           }
-        ],
+        ];
         user_permissions: any;
       },
       {
@@ -58,17 +58,17 @@ dorm: {
           id: number;
           number: number;
           village: number;
-        },
+        };
         groups: [
           {
             id: number;
             name: string;
             permissions: any;
           }
-        ],
+        ];
         user_permissions: any;
       }
-    ],
+    ];
     washlist: {
       id: number;
       title: string;
@@ -76,30 +76,27 @@ dorm: {
         id: number;
         number: number;
         village: number;
-      }
-    }
-  },
-  getDormManager: any
+      };
+    };
+  };
+  getDormManager: any;
 }
 
- const DromItem: FC<Props> = ({
-  dorm,
-  getDormManager
-}) => {
+const DromItem: FC<Props> = ({ dorm, getDormManager }) => {
   return (
     <ul className={styles.item}>
-        <li>
-        <button onClick={() => {
-          getDormManager(dorm.id)
-          Router.push('/todoTemplate')
-          }}>{dorm.number}</button>
-        </li>
-        <li>
-            {dorm.residents.length}
-        </li>
-        <li>
-            {dorm.village.name}
-        </li>
+      <li>
+        <button
+          onClick={() => {
+            getDormManager(dorm.id);
+            Router.push("/todoTemplate");
+          }}
+        >
+          {dorm.number}
+        </button>
+      </li>
+      <li>{dorm.residents.length}</li>
+      <li>{dorm.village.name}</li>
     </ul>
   );
 };

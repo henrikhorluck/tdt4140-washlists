@@ -1,9 +1,12 @@
-
-import { AppProps } from 'next/app'
-import AppState from '../context/AppState'
+import { AppProps } from "next/app";
+import AppState from "../context/AppState";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (<AppState><Component {...pageProps} /> </AppState>)
+  return (
+    <AppState>
+      <Component {...pageProps} />{" "}
+    </AppState>
+  );
 }
 
-export default MyApp
+export default MyApp;

@@ -1,10 +1,10 @@
-import React from 'react'
-import Link from 'next/link'
-import style from "./nav.module.css"
-import Router from 'next/router'
+import React from "react";
+import Link from "next/link";
+import style from "./nav.module.css";
+import Router from "next/router";
 
 const Nav = () => (
-  <nav >
+  <nav>
     <ul className={style.test}>
       <li>
         <h1 className={style.home}>Sif Vaskelisteordning</h1>
@@ -20,12 +20,12 @@ const Nav = () => (
         </li>
       ))} */}
       <li>
-      <button
+        <button
           className={style.button}
           type="button"
           onClick={() => {
             window.location.href = "http://localhost:3000";
-        }}
+          }}
         >
           <p>Logg ut</p>
         </button>
@@ -34,4 +34,4 @@ const Nav = () => (
   </nav>
 );
 
-export default Nav
+export default Nav;

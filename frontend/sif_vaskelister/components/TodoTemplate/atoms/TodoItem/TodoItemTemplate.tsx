@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Todo } from "./types";
 
-import styles from './index.module.css';
+import styles from "./index.module.css";
 
 interface Props {
   todo: Todo;
@@ -9,20 +9,16 @@ interface Props {
   // completeTodo: (n: number) => void;
   // removeTodo: (n: number) => void;
 }
- const TodoItemTemplate: FC<Props> = ({
+const TodoItemTemplate: FC<Props> = ({
   todo,
-  id,
+  id
   // completeTodo,
   // removeTodo
 }) => {
   return (
-    <div
-      className={styles.todo}
-    >
+    <div className={styles.todo}>
       {todo.desc}
-      <div>
-        {/* <button onClick={() => removeTodo(id)}> Slett</button> */}
-      </div>
+      <div>{/* <button onClick={() => removeTodo(id)}> Slett</button> */}</div>
     </div>
   );
 };
