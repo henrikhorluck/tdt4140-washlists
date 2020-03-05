@@ -1,14 +1,7 @@
 from rest_framework import serializers
 
 from washlist.models.Templates import TemplateListItem, TemplateWashList
-from washlist.models.WashLists import ListItem, WashList
-
-
-class WashListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = WashList
-        fields = ("id", "title", "dormroom", "items")
-        depth = 2
+from washlist.models.WashLists import ListItem
 
 
 class ListItemSerializer(serializers.ModelSerializer):

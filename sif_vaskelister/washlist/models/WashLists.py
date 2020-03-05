@@ -5,19 +5,9 @@ from Dormroom.models import Dormroom
 from washlist.models.Templates import TemplateListItem
 
 
-class WashList(models.Model):
-    title = models.CharField(max_length=250, default="")
-    dormroom = models.OneToOneField(
-        Dormroom, on_delete=models.CASCADE, blank=True, null=True
-    )
-
-    def __str__(self):
-        return self.title
-
-
 class ListItem(models.Model):
-    washlist = models.ForeignKey(
-        WashList, on_delete=models.CASCADE, related_name="items"
+    dormroom = models.ForeignKey(
+        Dormroom, on_delete=models.CASCADE, related_name="items"
     )
 
     desc = models.CharField(

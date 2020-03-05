@@ -1,15 +1,9 @@
 from rest_framework import routers
 
-from .views import (
-    ListItemViewSet,
-    TemplateListItemViewSet,
-    TemplateWashListViewSet,
-    WashListViewSet,
-)
+from .views import ListItemViewSet, TemplateListItemViewSet, TemplateWashListViewSet
 
 router = routers.SimpleRouter()
 
-router.register("washlist", WashListViewSet)
 router.register("washlistitem", ListItemViewSet)
 router.register("template_washlist", TemplateWashListViewSet)
 router.register("template_washlistitem", TemplateListItemViewSet)
