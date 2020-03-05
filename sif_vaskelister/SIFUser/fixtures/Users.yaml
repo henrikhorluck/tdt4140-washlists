@@ -1,7 +1,7 @@
-- model: auth.user
+- model: SIFUser.user
   pk: 6
   fields:
-    password: pbkdf2_sha256$180000$AW4jrcVWN4dJ$Qfn0LuzKG8XG4MkYX5ornWHNgbw84NtJHncfgvZcQ6I=
+    password: pbkdf2_sha256$180000$AW4jrcVWN4dJ$Qfn0LuzKG8XG4MkYX5ornWHNgbw84NtJHncfgvZcQ6I= # jeg elsker norge
     last_login: null
     is_superuser: false
     username: KariNordmann
@@ -13,10 +13,10 @@
     date_joined: 2020-02-14 10:49:34+00:00
     groups: []
     user_permissions: []
-- model: auth.user
+- model: SIFUser.user
   pk: 7
   fields:
-    password: pbkdf2_sha256$180000$dyvinyWZDvUC$eiD+/CAHBaSe06RHzYN8KMpvutEm39xW2StNJY+kpT4=
+    password: pbkdf2_sha256$180000$dyvinyWZDvUC$eiD+/CAHBaSe06RHzYN8KMpvutEm39xW2StNJY+kpT4= # jeg hater norge
     last_login: null
     is_superuser: false
     username: OlaNordmann
@@ -28,10 +28,10 @@
     date_joined: 2020-02-14 10:49:49+00:00
     groups: []
     user_permissions: []
-- model: auth.user
+- model: SIFUser.user
   pk: 8
   fields:
-    password: pbkdf2_sha256$180000$Qf1VXJc36lOc$/1wBUNS0ukKNWmYTuG4VSdaTfha34y3yDcg+NYlu82c=
+    password: pbkdf2_sha256$180000$Qf1VXJc36lOc$/1wBUNS0ukKNWmYTuG4VSdaTfha34y3yDcg+NYlu82c= # hunter2hunter2
     last_login: null
     is_superuser: false
     username: MohammedAli

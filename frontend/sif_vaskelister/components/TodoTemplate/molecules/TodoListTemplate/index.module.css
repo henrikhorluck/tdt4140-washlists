@@ -1,0 +1,23 @@
+.page {
+  text-align: center;
+}
+
+.list {
+  padding: 0px;
+}
+
+.todo_list {
+  background: #e8e8e8;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 400px;
+}
+
+.button {
+  height: 10px;
+  border: none;
+  background-color: rgb(141, 143, 51);
+  text-align: center;
+  text-decoration: underline;
+  margin-left: 80%;
+}

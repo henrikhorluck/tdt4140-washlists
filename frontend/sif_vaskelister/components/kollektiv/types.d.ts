@@ -1,4 +1,4 @@
 export interface Kollektiv {
-    navn: string;
-    rom: number;
+  navn: string;
+  rom: number;
 }
