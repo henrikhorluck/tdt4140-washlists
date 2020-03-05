@@ -12,12 +12,12 @@ export interface Query {
 export const toQueryString = (queryObject: Query): string => {
   const keys = Object.keys(queryObject);
   if (!keys.length) {
-    return '';
+    return "";
   }
   const queries = keys
-    .filter((key) => queryObject[key] !== undefined)
+    .filter(key => queryObject[key] !== undefined)
     .map((key: string) => `${key}=${queryObject[key]}`);
-  return `?${queries.join('&')}`;
+  return `?${queries.join("&")}`;
 };
 
 /**
@@ -26,7 +26,7 @@ export const toQueryString = (queryObject: Query): string => {
  * @return {object} e.g. {foo: 'bar', hello: 'world'}
  */
 export const toQueryObject = (queryString: string): Query => {
-  if (queryString.startsWith('?')) {
+  if (queryString.startsWith("?")) {
     queryString = queryString.substring(1);
   }
   /*let queryObject: IQueryObject = {}
@@ -35,9 +35,9 @@ export const toQueryObject = (queryString: string): Query => {
     queryObject[pair[0]] = pair[1];
   }*/
   const queryObject = queryString
-    .split('&')
+    .split("&")
     .map((query: string) => {
-      const pair = query.split('=');
+      const pair = query.split("=");
       return { [pair[0]]: pair[1] };
     })
     .reduce((accumulator, query) => {

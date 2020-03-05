@@ -14,7 +14,7 @@ interface Props {
   context: any
   }
 
-  const DromList: FC<Props> = ({
+  const DormList: FC<Props> = ({
     context
 }) => {
   useEffect(()=>{
@@ -41,4 +41,4 @@ interface Props {
   );
 };
 
-export default DromList;
+export default DormList;

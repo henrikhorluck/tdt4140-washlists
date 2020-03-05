@@ -44,7 +44,7 @@ class ListItem(models.Model):
     class Meta:
         constraints = [
             models.CheckConstraint(
-                check=Q(template_id__isnull=True) | Q(desc__isnull=True),
-                name="Must have description",
+                check=Q(template_id__isnull=False) | Q(desc__isnull=False),
+                name="Must have description from either template or self",
             )
         ]

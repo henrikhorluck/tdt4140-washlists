@@ -6,19 +6,27 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('washlist', '0003_auto_20200227_2222'),
-    ]
+    dependencies = [("washlist", "0003_auto_20200227_2222")]
 
     operations = [
         migrations.AlterField(
-            model_name='listitem',
-            name='template',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='based_items', to='washlist.TemplateListItem'),
+            model_name="listitem",
+            name="template",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="based_items",
+                to="washlist.TemplateListItem",
+            ),
         ),
         migrations.AlterField(
-            model_name='listitem',
-            name='washlist',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='washlist.WashList'),
+            model_name="listitem",
+            name="washlist",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="items",
+                to="washlist.WashList",
+            ),
         ),
     ]
