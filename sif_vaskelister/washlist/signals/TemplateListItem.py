@@ -13,5 +13,5 @@ def handle_template_change(sender, instance: TemplateListItem, created, **kwargs
         villages = StudentVillage.objects.filter(templateWashList=instance.washlist)
 
         for v in villages:
-            for r in v.dormrooms:
+            for r in v.dormrooms.all():
                 ListItem.objects.create(template=instance, dormroom=r)
