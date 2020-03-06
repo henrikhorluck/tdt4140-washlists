@@ -1,18 +1,10 @@
 import styles from "./login.module.css";
-import React, { FC, useState, useContext, useEffect } from "react";
-import { login } from "../../../components/api/auth";
+import React, { FC, useState } from "react";
+import { login } from "../../api/auth";
 import Router from "next/router";
 
 interface Props {
   context: any;
-}
-
-interface User {
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  dormroom: number[];
 }
 
 const LoginSection: FC<Props> = ({ context }) => {
@@ -23,9 +15,9 @@ const LoginSection: FC<Props> = ({ context }) => {
     const user = await login(username, password);
     context.storeUser(user);
     if (user.user?.dormroom != null) {
-      Router.push("/vaskeliste");
+      await Router.push("/vaskeliste");
     } else {
-      Router.push("/manager");
+      await Router.push("/manager");
     }
   };
 
