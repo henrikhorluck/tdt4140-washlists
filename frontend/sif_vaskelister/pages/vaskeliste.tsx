@@ -7,7 +7,7 @@ const Vaskeliste = () => {
   return (
     <Main>
       <AppContext.Consumer>
-        {(context: any) => <TodoList context={context}></TodoList>}
+        {(context: any) => <TodoList {...context} />}
       </AppContext.Consumer>
     </Main>
   );

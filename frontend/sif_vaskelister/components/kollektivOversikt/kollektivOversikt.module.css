@@ -1,0 +1,24 @@
+.ul {
+    list-style: none;
+}
+
+.li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.h2 {
+    text-decoration: underline;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-around;
+}

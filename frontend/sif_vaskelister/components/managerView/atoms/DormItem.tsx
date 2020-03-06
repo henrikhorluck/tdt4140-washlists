@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Router from "next/router";
 
 import styles from "./DormItem.module.css";
+import {User} from "../../api/auth";
 
 interface Props {
   dorm: {
@@ -15,60 +16,7 @@ interface Props {
         title: string;
       };
     };
-    residents: [
-      {
-        id: number;
-        password: string;
-        last_login: string;
-        is_superuser: boolean;
-        username: string;
-        first_name: string;
-        last_name: string;
-        email: string;
-        is_staff: boolean;
-        is_active: boolean;
-        date_joined: string;
-        dormroom: {
-          id: number;
-          number: number;
-          village: number;
-        };
-        groups: [
-          {
-            id: number;
-            name: string;
-            permissions: any;
-          }
-        ];
-        user_permissions: any;
-      },
-      {
-        id: number;
-        password: string;
-        last_login: any;
-        is_superuser: boolean;
-        username: string;
-        first_name: string;
-        last_name: string;
-        email: string;
-        is_staff: boolean;
-        is_active: boolean;
-        date_joined: string;
-        dormroom: {
-          id: number;
-          number: number;
-          village: number;
-        };
-        groups: [
-          {
-            id: number;
-            name: string;
-            permissions: any;
-          }
-        ];
-        user_permissions: any;
-      }
-    ];
+    residents: User[];
     washlist: {
       id: number;
       title: string;

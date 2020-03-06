@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
-import ClientOAuth2, { Token } from "client-oauth2";
 import AppContext from "./appContext";
-import { get, patch, post } from "../components/api/.";
+import { get, patch, post } from "../components/api";
+import { AuthUser, User } from "../components/api/auth";
 
 interface Props {
   children: React.ReactNode;
@@ -25,71 +25,27 @@ interface Context {
   storeUser: any;
 }
 
-export class AuthUser extends Token {
-  user?: User;
-}
-
-interface User {
-  id: number;
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  dormroom: number[];
-}
-
 interface Dorms {
-  data: [
-    {
+  id: number;
+  number: number;
+  village: {
+    id: number;
+    name: string;
+    templateWashList: {
+      id: number;
+      title: string;
+    };
+  };
+  residents: number[];
+  washlist: {
+    id: number;
+    title: string;
+    dormroom: {
       id: number;
       number: number;
-      village: {
-        id: number;
-        name: string;
-        templateWashList: {
-          id: number;
-          title: string;
-        };
-      };
-      residents: [
-        {
-          id: number;
-          password: string;
-          last_login: any;
-          is_superuser: boolean;
-          username: string;
-          first_name: string;
-          last_name: string;
-          email: string;
-          is_staff: boolean;
-          is_active: boolean;
-          date_joined: string;
-          dormroom: {
-            id: number;
-            number: number;
-            village: number;
-          };
-          groups: [
-            {
-              id: number;
-              name: string;
-              permissions: [];
-            }
-          ];
-          user_permissions: [];
-        }
-      ];
-      washlist: {
-        id: number;
-        title: string;
-        dormroom: {
-          id: number;
-          number: number;
-          village: number;
-        };
-      };
-    }
-  ];
+      village: number;
+    };
+  };
 }
 
 interface Dorm {
@@ -103,60 +59,7 @@ interface Dorm {
       title: string;
     };
   };
-  residents: [
-    {
-      id: number;
-      password: string;
-      last_login: string;
-      is_superuser: boolean;
-      username: string;
-      first_name: string;
-      last_name: string;
-      email: string;
-      is_staff: boolean;
-      is_active: boolean;
-      date_joined: string;
-      dormroom: {
-        id: number;
-        number: number;
-        village: number;
-      };
-      groups: [
-        {
-          id: number;
-          name: string;
-          permissions: any;
-        }
-      ];
-      user_permissions: any;
-    },
-    {
-      id: number;
-      password: string;
-      last_login: any;
-      is_superuser: boolean;
-      username: string;
-      first_name: string;
-      last_name: string;
-      email: string;
-      is_staff: boolean;
-      is_active: boolean;
-      date_joined: string;
-      dormroom: {
-        id: number;
-        number: number;
-        village: number;
-      };
-      groups: [
-        {
-          id: number;
-          name: string;
-          permissions: any;
-        }
-      ];
-      user_permissions: any;
-    }
-  ];
+  residents: User[];
   washlist: {
     id: number;
     title: string;
