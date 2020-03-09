@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import Head from "next/head";
-import Nav from "./nav/nav";
+import Nav from "../../atoms/nav/nav";
 import styles from "./main.module.css";
 
 interface Props {
