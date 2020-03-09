@@ -7,14 +7,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('StudentVillage', '0006_auto_20200229_1420'),
-        ('Dormroom', '0004_auto_20200229_1420'),
+        ("StudentVillage", "0006_auto_20200229_1420"),
+        ("Dormroom", "0004_auto_20200229_1420"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='dormroom',
-            name='village',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='dormrooms', to='StudentVillage.StudentVillage'),
-        ),
+            model_name="dormroom",
+            name="village",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="dormrooms",
+                to="StudentVillage.StudentVillage",
+            ),
+        )
     ]
