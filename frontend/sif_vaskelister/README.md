@@ -1,3 +1,13 @@
+## Setup
+To run the frontend you wold have to make a file called *next.config.js* containing this code: 
+
+<pre><code>module.exports = {
+    env: {
+      CLIENT_ID: your_client_id,
+      CLIENT_SECRET: your_client_secret
+    },
+  }</code></pre>
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -19,7 +29,7 @@ You will also see any lint errors in the console.
 
 ## Sturcture
 
-Each component should be in its own folder with its own css file.
+Each page/section should have its own folder with the Atoms, Molecules and Organisms structure below. Each component in the Atoms, Molecules and Organisms folders should hve its own folder with the .tsx file and a .css file.
 
 ### Atoms:
 

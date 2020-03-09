@@ -33,9 +33,8 @@ export interface User {
 }
 
 const vaskelisteAuth = new ClientOAuth2({
-  clientId: "SLDhkx2m08A3c357d4WihIWGzcUQ4duc0TeWhUGL",
-  clientSecret:
-    "XA1f55cdS3UVmX5bk5Rjb9kqMV4v79a2gATGcvehoXR9BAMkjlda8KA0pTiBtBa2k5LAuxGNTJmQVrp8GaCs7P2IQ146f5KIzFmNOOcNz6sgqIeEYllKyDU2RbcoeFwX",
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
   accessTokenUri: "http://localhost:8000/o/token/",
   scopes: ["read", "write"]
 });
@@ -45,7 +44,7 @@ export const login = async (username: string, password: string) => {
     username,
     password
   );
-  token.user = await get<User>("/api/users/1/", {}, { token: token });
+  token.user = await get<User>("/api/profile/", {}, { token: token });
   // Returns object with both user-data and accessTokens
   return token;
 };

@@ -1,0 +1,6 @@
+module.exports = {
+    env: {
+      CLIENT_ID: '5vxBY69qWoghGHfV3MVHw5JaElgAhJvTHR2iP7VF',
+      CLIENT_SECRET: 'vVF9zuq4vhLBPgLfNKD1nMQEVGJkKnIRZMUz89Mi9w2VZ3M4GqOdg2lus1hpTwDJL7J1XpbMd7TbNCKgxxLx4BwTY8ZkG5UHvB3IWu4X7hWQTsM1kvkOvwJRnSG0O1HG'
+    },
+  }

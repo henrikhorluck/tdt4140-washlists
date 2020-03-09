@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import Router from "next/router";
 
 import styles from "./DormItem.module.css";
-import {User} from "../../api/auth";
+import {User} from "../../../api/auth";
 
 interface Props {
   dorm: {
