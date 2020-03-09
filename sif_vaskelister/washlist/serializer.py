@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from StudentVillage.serializer import StudentVillageSerializer
 from washlist.models.Templates import TemplateListItem, TemplateWashList
 from washlist.models.WashLists import ListItem
 
@@ -17,6 +18,9 @@ class TemplateListItemSerializer(serializers.ModelSerializer):
 
 
 class TemplateWashListSerializer(serializers.ModelSerializer):
+    villages = StudentVillageSerializer(many=True)
+    template_items = TemplateListItemSerializer(many=True)
+
     class Meta:
         model = TemplateWashList
-        fields = "__all__"
+        fields = ("id", "title", "villages", "template_items")
