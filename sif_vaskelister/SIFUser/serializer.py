@@ -17,6 +17,8 @@ class UserSerializer(serializers.ModelSerializer):
             "dormroom",
             "groups",
             "manager_villages",
+            "is_manager",
+            "is_student",
         )
 
 
