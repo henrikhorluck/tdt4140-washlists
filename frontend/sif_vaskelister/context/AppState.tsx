@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import AppContext from "./appContext";
-import { get, patch, post } from "../components/api";
-import { AuthUser, User } from "../components/api/auth";
+import { get, patch, post } from "../api";
+import { AuthUser, User } from "../api/auth";
 
 interface Props {
   children: React.ReactNode;
