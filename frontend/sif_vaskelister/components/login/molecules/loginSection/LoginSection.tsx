@@ -1,6 +1,6 @@
 import styles from "./login.module.css";
 import React, { FC, useState } from "react";
-import { login } from "../../../api/auth";
+import { login } from "../../../../api/auth";
 import Router from "next/router";
 
 interface Props {

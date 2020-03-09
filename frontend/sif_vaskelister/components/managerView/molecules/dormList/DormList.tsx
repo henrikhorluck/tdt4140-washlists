@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import DormItem from "../atoms/DormItem";
+import DormItem from "../../atoms/dormItem/DormItem";
 
 import styles from "./DormList.module.css";
 

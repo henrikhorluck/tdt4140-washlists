@@ -1,7 +1,7 @@
 import React from "react";
 import Main from "../components/template/molecules/main/Main";
 import AppContext from "../context/appContext";
-import LoginSection from "../components/login/molecules/LoginSection";
+import LoginSection from "../components/login/molecules/loginSection/LoginSection";
 
 const Index = () => {
   return (

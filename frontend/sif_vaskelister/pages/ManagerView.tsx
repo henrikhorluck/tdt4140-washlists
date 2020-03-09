@@ -1,6 +1,6 @@
 import Main from "../components/template/molecules/main/Main";
 import React from "react";
-import DormList from "../components/managerView/molecules/DormList";
+import DormList from "../components/managerView/molecules/dormList/DormList";
 import AppContext from "../context/appContext";
 
 const ManagerView = () => {
