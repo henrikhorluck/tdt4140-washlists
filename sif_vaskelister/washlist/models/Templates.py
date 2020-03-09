@@ -13,7 +13,9 @@ class TemplateWashList(models.Model):
 
 
 class TemplateListItem(models.Model):
-    washlist = models.ForeignKey(TemplateWashList, on_delete=models.CASCADE)
+    washlist = models.ForeignKey(
+        TemplateWashList, on_delete=models.CASCADE, related_name="template_items"
+    )
     description = models.CharField(max_length=150, help_text="Hva skal vaskes?")
 
     def __str__(self):

@@ -2,20 +2,12 @@ from oauth2_provider.contrib.rest_framework import permissions
 from rest_framework import viewsets
 
 from washlist.models.Templates import TemplateListItem, TemplateWashList
-from washlist.models.WashLists import ListItem, WashList
+from washlist.models.WashLists import ListItem
 from washlist.serializer import (
     ListItemSerializer,
     TemplateListItemSerializer,
     TemplateWashListSerializer,
-    WashListSerializer,
 )
-
-
-class WashListViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticatedOrTokenHasScope]
-    queryset = WashList.objects.all()
-    serializer_class = WashListSerializer
-    required_scopes = ["read", "write"]
 
 
 class ListItemViewSet(viewsets.ModelViewSet):

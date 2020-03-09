@@ -7,7 +7,7 @@ from StudentVillage.models import StudentVillage
 class Dormroom(models.Model):
     number = models.SmallIntegerField(help_text=_("Kollektivnummer i studentby"))
     village = models.ForeignKey(
-        StudentVillage, on_delete=models.CASCADE, related_name="Dormrooms"
+        StudentVillage, on_delete=models.CASCADE, related_name="dormrooms"
     )
 
     def __str__(self):

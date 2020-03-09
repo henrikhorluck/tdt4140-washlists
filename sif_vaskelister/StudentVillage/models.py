@@ -1,4 +1,6 @@
+from django.contrib.auth.models import Group
 from django.db import models
+from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from washlist.models.Templates import TemplateWashList
@@ -12,6 +14,14 @@ class StudentVillage(models.Model):
         null=True,
         blank=True,
         related_name="villages",
+    )
+    managers = models.ManyToManyField(
+        "SIFUser.User",  # This is a string to avoid circular imports
+        related_name="manager_villages",
+        # symmetrical=True, # Gives integrityerror in admin-panel
+        limit_choices_to=Q(groups__name="Manager"),
+        help_text="Managerene for studentbyen",
+        blank=True,
     )
 
     def __str__(self):

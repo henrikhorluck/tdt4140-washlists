@@ -16,10 +16,15 @@ class UserSerializer(serializers.ModelSerializer):
             "last_name",
             "dormroom",
             "groups",
+            "manager_villages",
+            "is_manager",
+            "is_student",
         )
 
 
 class GroupSerializer(serializers.ModelSerializer):
+    user_set = UserSerializer(many=True)
+
     class Meta:
         model = Group
-        fields = ("id", "name")
+        fields = ("id", "name", "user_set", "permissions")

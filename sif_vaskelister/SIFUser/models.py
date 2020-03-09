@@ -15,6 +15,14 @@ class User(AbstractUser):
         related_name="residents",
     )
 
+    @property
+    def is_manager(self):
+        return self.groups.filter(name="Manager").exists() or self.is_superuser
+
+    @property
+    def is_student(self):
+        return self.groups.filter(name="Student").exists() or self.is_superuser
+
     class Meta:
         verbose_name = _("Bruker")
         verbose_name_plural = _("Brukere")
