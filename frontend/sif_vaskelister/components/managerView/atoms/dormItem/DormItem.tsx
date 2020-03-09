@@ -37,7 +37,7 @@ const DromItem: FC<Props> = ({ dorm, getDormManager }) => {
         <button
           onClick={() => {
             getDormManager(dorm.id);
-            Router.push("/WashlistTemplate");
+            Router.push("/washlist-template");
           }}
         >
           {dorm.number}

@@ -17,7 +17,7 @@ const TemplateList: FC<Props> = ({ context }) => {
         className={styles.button}
         type="button"
         onClick={() => {
-          Router.push("/manager");
+          Router.push("/manager-view");
         }}
       >
         <p>Tilbake</p>
