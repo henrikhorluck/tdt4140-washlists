@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from "react";
 import Router from "next/router";
 
-import TodoAddTemplate from "../../atoms/TodoAdd/TodoAddTemplate";
-import TodoItemTemplate from "../../atoms/TodoItem/TodoItemTemplate";
+import TemplateAdd from "../../atoms/templateAdd/TemplateAdd";
+import TemplateItem from "../../atoms/templateItem/TemplateItem";
 
 import styles from "./index.module.css";
 
@@ -10,7 +10,7 @@ interface Props {
   context: any;
 }
 
-const TodoListTemplate: FC<Props> = ({ context }) => {
+const TemplateList: FC<Props> = ({ context }) => {
   return (
     <div className={styles.page}>
       <button
@@ -30,7 +30,7 @@ const TodoListTemplate: FC<Props> = ({ context }) => {
         <div className={styles.todo_list}>
           {context.todos && context.todos.items
             ? context.todos.items.map((todo: any, index: number) => (
-                <TodoItemTemplate
+                <TemplateItem
                   key={index}
                   id={todo.id}
                   todo={todo}
@@ -39,11 +39,11 @@ const TodoListTemplate: FC<Props> = ({ context }) => {
                 />
               ))
             : null}
-          <TodoAddTemplate addTodo={context.addTodo} />
+          <TemplateAdd addTodo={context.addTodo} />
         </div>
       </div>
     </div>
   );
 };
 
-export default TodoListTemplate;
+export default TemplateList;

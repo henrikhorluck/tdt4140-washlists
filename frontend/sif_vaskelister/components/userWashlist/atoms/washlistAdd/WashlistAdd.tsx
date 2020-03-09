@@ -4,7 +4,7 @@ interface Props {
   addTodo: (text: string) => void;
 }
 
-export const TodoAdd: FC<Props> = ({ addTodo }) => {
+export const WashlistAdd: FC<Props> = ({ addTodo }) => {
   const [value, setValue] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,4 +26,4 @@ export const TodoAdd: FC<Props> = ({ addTodo }) => {
   );
 };
 
-export default TodoAdd;
+export default WashlistAdd;

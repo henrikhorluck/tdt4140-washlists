@@ -9,7 +9,7 @@ interface Props {
   // completeTodo: (n: number) => void;
   // removeTodo: (n: number) => void;
 }
-const TodoItemTemplate: FC<Props> = ({
+const TemplateItem: FC<Props> = ({
   todo,
   id
   // completeTodo,
@@ -23,4 +23,4 @@ const TodoItemTemplate: FC<Props> = ({
   );
 };
 
-export default TodoItemTemplate;
+export default TemplateItem;

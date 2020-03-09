@@ -15,9 +15,9 @@ const LoginSection: FC<Props> = ({ context }) => {
     const user = await login(username, password);
     context.storeUser(user);
     if (user.user?.dormroom != null) {
-      await Router.push("/vaskeliste");
+      await Router.push("/UserWashlist");
     } else {
-      await Router.push("/manager");
+      await Router.push("/ManagerView");
     }
   };
 

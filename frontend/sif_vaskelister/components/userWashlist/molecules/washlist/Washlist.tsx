@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 
-import TodoAdd from "../../atoms/TodoAdd/TodoAdd";
-import TodoItem from "../../atoms/TodoItem/TodoItem";
+import WashlistAdd from "../../atoms/washlistAdd/WashlistAdd";
+import TodoItem from "../../atoms/washlistItem/WashlistItem";
 
 import styles from "./index.module.css";
 
@@ -9,7 +9,7 @@ interface Props {
   context: any;
 }
 
-const TodoList: FC<Props> = ({ context }) => {
+const Washlist: FC<Props> = ({ context }) => {
   useEffect(() => {
     context.getTodoList();
   }, []);
@@ -35,4 +35,4 @@ const TodoList: FC<Props> = ({ context }) => {
   );
 };
 
-export default TodoList;
+export default Washlist;

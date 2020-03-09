@@ -9,7 +9,7 @@ interface Props {
   completeTodo: (n: number) => void;
   // removeTodo: (n: number) => void;
 }
-const TodoItem: FC<Props> = ({
+const WashlistItem: FC<Props> = ({
   todo,
   id,
   completeTodo
@@ -35,4 +35,4 @@ const TodoItem: FC<Props> = ({
   );
 };
 
-export default TodoItem;
+export default WashlistItem;

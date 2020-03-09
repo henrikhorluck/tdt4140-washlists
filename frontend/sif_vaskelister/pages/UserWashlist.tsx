@@ -1,6 +1,6 @@
 import React from "react";
-import TodoList from "../components/TodoList/molecules/TodoList/TodoList";
-import Main from "../components/template/Main";
+import Washlist from "../components/userWashlist/molecules/washlist/Washlist";
+import Main from "../components/template/molecules/main/Main";
 import AppContext from "../context/appContext";
 
 const Vaskeliste = () => {
@@ -8,7 +8,7 @@ const Vaskeliste = () => {
     <Main>
       <AppContext.Consumer>
         {(context: any) => (
-          <TodoList context={context}></TodoList>
+          <Washlist context={context}></Washlist>
         )}
       </AppContext.Consumer>
     </Main>

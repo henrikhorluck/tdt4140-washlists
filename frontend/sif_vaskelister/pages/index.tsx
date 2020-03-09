@@ -1,9 +1,9 @@
 import React from "react";
-import Main from "../components/template/Main";
+import Main from "../components/template/molecules/main/Main";
 import AppContext from "../context/appContext";
 import LoginSection from "../components/login/molecules/LoginSection";
 
-const Home = () => {
+const Index = () => {
   return (
     <Main>
       <AppContext.Consumer>
@@ -19,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Index;

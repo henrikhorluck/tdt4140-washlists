@@ -1,9 +1,9 @@
-import Main from "../components/template/Main";
+import Main from "../components/template/molecules/main/Main";
 import React from "react";
 import DormList from "../components/managerView/molecules/DormList";
 import AppContext from "../context/appContext";
 
-const Manager = () => {
+const ManagerView = () => {
   return (
     <Main>
       <AppContext.Consumer>
@@ -13,4 +13,4 @@ const Manager = () => {
   );
 };
 
-export default Manager;
+export default ManagerView;

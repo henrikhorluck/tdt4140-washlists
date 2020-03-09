@@ -4,7 +4,7 @@ interface Props {
   addTodo: (text: string) => void;
 }
 
-export const TodoAddTemplate: FC<Props> = ({ addTodo }) => {
+export const TemplateAdd: FC<Props> = ({ addTodo }) => {
   const [value, setValue] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,4 +26,4 @@ export const TodoAddTemplate: FC<Props> = ({ addTodo }) => {
   );
 };
 
-export default TodoAddTemplate;
+export default TemplateAdd;
