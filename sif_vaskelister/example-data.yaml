@@ -1,0 +1,1381 @@
+- model: contenttypes.contenttype
+  pk: 1
+  fields:
+    app_label: admin
+    model: logentry
+- model: contenttypes.contenttype
+  pk: 2
+  fields:
+    app_label: auth
+    model: permission
+- model: contenttypes.contenttype
+  pk: 3
+  fields:
+    app_label: auth
+    model: group
+- model: contenttypes.contenttype
+  pk: 4
+  fields:
+    app_label: contenttypes
+    model: contenttype
+- model: contenttypes.contenttype
+  pk: 5
+  fields:
+    app_label: sessions
+    model: session
+- model: contenttypes.contenttype
+  pk: 6
+  fields:
+    app_label: oauth2_provider
+    model: application
+- model: contenttypes.contenttype
+  pk: 7
+  fields:
+    app_label: oauth2_provider
+    model: accesstoken
+- model: contenttypes.contenttype
+  pk: 8
+  fields:
+    app_label: oauth2_provider
+    model: grant
+- model: contenttypes.contenttype
+  pk: 9
+  fields:
+    app_label: oauth2_provider
+    model: refreshtoken
+- model: contenttypes.contenttype
+  pk: 10
+  fields:
+    app_label: SIFUser
+    model: user
+- model: contenttypes.contenttype
+  pk: 11
+  fields:
+    app_label: Dormroom
+    model: dormroom
+- model: contenttypes.contenttype
+  pk: 12
+  fields:
+    app_label: StudentVillage
+    model: studentvillage
+- model: contenttypes.contenttype
+  pk: 13
+  fields:
+    app_label: washlist
+    model: washlist
+- model: contenttypes.contenttype
+  pk: 14
+  fields:
+    app_label: washlist
+    model: listitem
+- model: contenttypes.contenttype
+  pk: 15
+  fields:
+    app_label: washlist
+    model: templatewashlist
+- model: contenttypes.contenttype
+  pk: 16
+  fields:
+    app_label: washlist
+    model: templatelistitem
+- model: sessions.session
+  pk: ny4l07x9uh9tyb7z69gfpa14iyq8vm0l
+  fields:
+    session_data: NzAxYWYwMmEwNmQ1YWNhOTBhNzJkNmFiYzg4Zjk4NWQ5YjBjYjkyZTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiODU0NjI1NWFmODg4NzcyZDEwZGMwYzQ1N2JmMmNiOTJiNmEwYjkzYSJ9
+    expire_date: 2020-03-23 15:22:00.133346+00:00
+- model: Dormroom.dormroom
+  pk: 1
+  fields:
+    number: 1
+    village: 1
+- model: Dormroom.dormroom
+  pk: 2
+  fields:
+    number: 1
+    village: 2
+- model: Dormroom.dormroom
+  pk: 3
+  fields:
+    number: 2
+    village: 2
+- model: Dormroom.dormroom
+  pk: 4
+  fields:
+    number: 2
+    village: 1
+- model: Dormroom.dormroom
+  pk: 6
+  fields:
+    number: 3
+    village: 2
+- model: washlist.templatewashlist
+  pk: 1
+  fields:
+    title: Moholt-vaskeliste-mal
+- model: washlist.templatewashlist
+  pk: 2
+  fields:
+    title: Berg-vaskeliste-mal
+- model: washlist.templatelistitem
+  pk: 1
+  fields:
+    washlist: 1
+    description: "Vask kj\xF8leskapet"
+- model: washlist.templatelistitem
+  pk: 2
+  fields:
+    washlist: 1
+    description: Vask gangen
+- model: washlist.templatelistitem
+  pk: 3
+  fields:
+    washlist: 1
+    description: "Vask kj\xF8kkenet"
+- model: washlist.templatelistitem
+  pk: 4
+  fields:
+    washlist: 2
+    description: Vask stua
+- model: washlist.templatelistitem
+  pk: 5
+  fields:
+    washlist: 2
+    description: Vask badet
+- model: washlist.templatelistitem
+  pk: 6
+  fields:
+    washlist: 2
+    description: Vask skohylla
+- model: washlist.listitem
+  pk: 2
+  fields:
+    dormroom: 1
+    desc: null
+    template: 1
+    completed: true
+- model: washlist.listitem
+  pk: 3
+  fields:
+    dormroom: 4
+    desc: null
+    template: 1
+    completed: false
+- model: washlist.listitem
+  pk: 4
+  fields:
+    dormroom: 1
+    desc: null
+    template: 2
+    completed: false
+- model: washlist.listitem
+  pk: 5
+  fields:
+    dormroom: 4
+    desc: null
+    template: 2
+    completed: false
+- model: washlist.listitem
+  pk: 6
+  fields:
+    dormroom: 1
+    desc: null
+    template: 3
+    completed: false
+- model: washlist.listitem
+  pk: 7
+  fields:
+    dormroom: 4
+    desc: null
+    template: 3
+    completed: false
+- model: washlist.listitem
+  pk: 8
+  fields:
+    dormroom: 2
+    desc: null
+    template: 4
+    completed: false
+- model: washlist.listitem
+  pk: 9
+  fields:
+    dormroom: 3
+    desc: null
+    template: 4
+    completed: false
+- model: washlist.listitem
+  pk: 10
+  fields:
+    dormroom: 6
+    desc: null
+    template: 4
+    completed: true
+- model: washlist.listitem
+  pk: 11
+  fields:
+    dormroom: 2
+    desc: null
+    template: 5
+    completed: false
+- model: washlist.listitem
+  pk: 12
+  fields:
+    dormroom: 3
+    desc: null
+    template: 5
+    completed: false
+- model: washlist.listitem
+  pk: 13
+  fields:
+    dormroom: 6
+    desc: null
+    template: 5
+    completed: true
+- model: washlist.listitem
+  pk: 14
+  fields:
+    dormroom: 2
+    desc: null
+    template: 6
+    completed: false
+- model: washlist.listitem
+  pk: 15
+  fields:
+    dormroom: 3
+    desc: null
+    template: 6
+    completed: false
+- model: washlist.listitem
+  pk: 16
+  fields:
+    dormroom: 6
+    desc: null
+    template: 6
+    completed: false
+- model: auth.permission
+  pk: 1
+  fields:
+    name: Can add log entry
+    content_type: 1
+    codename: add_logentry
+- model: auth.permission
+  pk: 2
+  fields:
+    name: Can change log entry
+    content_type: 1
+    codename: change_logentry
+- model: auth.permission
+  pk: 3
+  fields:
+    name: Can delete log entry
+    content_type: 1
+    codename: delete_logentry
+- model: auth.permission
+  pk: 4
+  fields:
+    name: Can view log entry
+    content_type: 1
+    codename: view_logentry
+- model: auth.permission
+  pk: 5
+  fields:
+    name: Can add permission
+    content_type: 2
+    codename: add_permission
+- model: auth.permission
+  pk: 6
+  fields:
+    name: Can change permission
+    content_type: 2
+    codename: change_permission
+- model: auth.permission
+  pk: 7
+  fields:
+    name: Can delete permission
+    content_type: 2
+    codename: delete_permission
+- model: auth.permission
+  pk: 8
+  fields:
+    name: Can view permission
+    content_type: 2
+    codename: view_permission
+- model: auth.permission
+  pk: 9
+  fields:
+    name: Can add group
+    content_type: 3
+    codename: add_group
+- model: auth.permission
+  pk: 10
+  fields:
+    name: Can change group
+    content_type: 3
+    codename: change_group
+- model: auth.permission
+  pk: 11
+  fields:
+    name: Can delete group
+    content_type: 3
+    codename: delete_group
+- model: auth.permission
+  pk: 12
+  fields:
+    name: Can view group
+    content_type: 3
+    codename: view_group
+- model: auth.permission
+  pk: 13
+  fields:
+    name: Can add content type
+    content_type: 4
+    codename: add_contenttype
+- model: auth.permission
+  pk: 14
+  fields:
+    name: Can change content type
+    content_type: 4
+    codename: change_contenttype
+- model: auth.permission
+  pk: 15
+  fields:
+    name: Can delete content type
+    content_type: 4
+    codename: delete_contenttype
+- model: auth.permission
+  pk: 16
+  fields:
+    name: Can view content type
+    content_type: 4
+    codename: view_contenttype
+- model: auth.permission
+  pk: 17
+  fields:
+    name: Can add session
+    content_type: 5
+    codename: add_session
+- model: auth.permission
+  pk: 18
+  fields:
+    name: Can change session
+    content_type: 5
+    codename: change_session
+- model: auth.permission
+  pk: 19
+  fields:
+    name: Can delete session
+    content_type: 5
+    codename: delete_session
+- model: auth.permission
+  pk: 20
+  fields:
+    name: Can view session
+    content_type: 5
+    codename: view_session
+- model: auth.permission
+  pk: 21
+  fields:
+    name: Can add application
+    content_type: 6
+    codename: add_application
+- model: auth.permission
+  pk: 22
+  fields:
+    name: Can change application
+    content_type: 6
+    codename: change_application
+- model: auth.permission
+  pk: 23
+  fields:
+    name: Can delete application
+    content_type: 6
+    codename: delete_application
+- model: auth.permission
+  pk: 24
+  fields:
+    name: Can view application
+    content_type: 6
+    codename: view_application
+- model: auth.permission
+  pk: 25
+  fields:
+    name: Can add access token
+    content_type: 7
+    codename: add_accesstoken
+- model: auth.permission
+  pk: 26
+  fields:
+    name: Can change access token
+    content_type: 7
+    codename: change_accesstoken
+- model: auth.permission
+  pk: 27
+  fields:
+    name: Can delete access token
+    content_type: 7
+    codename: delete_accesstoken
+- model: auth.permission
+  pk: 28
+  fields:
+    name: Can view access token
+    content_type: 7
+    codename: view_accesstoken
+- model: auth.permission
+  pk: 29
+  fields:
+    name: Can add grant
+    content_type: 8
+    codename: add_grant
+- model: auth.permission
+  pk: 30
+  fields:
+    name: Can change grant
+    content_type: 8
+    codename: change_grant
+- model: auth.permission
+  pk: 31
+  fields:
+    name: Can delete grant
+    content_type: 8
+    codename: delete_grant
+- model: auth.permission
+  pk: 32
+  fields:
+    name: Can view grant
+    content_type: 8
+    codename: view_grant
+- model: auth.permission
+  pk: 33
+  fields:
+    name: Can add refresh token
+    content_type: 9
+    codename: add_refreshtoken
+- model: auth.permission
+  pk: 34
+  fields:
+    name: Can change refresh token
+    content_type: 9
+    codename: change_refreshtoken
+- model: auth.permission
+  pk: 35
+  fields:
+    name: Can delete refresh token
+    content_type: 9
+    codename: delete_refreshtoken
+- model: auth.permission
+  pk: 36
+  fields:
+    name: Can view refresh token
+    content_type: 9
+    codename: view_refreshtoken
+- model: auth.permission
+  pk: 37
+  fields:
+    name: Can add Bruker
+    content_type: 10
+    codename: add_user
+- model: auth.permission
+  pk: 38
+  fields:
+    name: Can change Bruker
+    content_type: 10
+    codename: change_user
+- model: auth.permission
+  pk: 39
+  fields:
+    name: Can delete Bruker
+    content_type: 10
+    codename: delete_user
+- model: auth.permission
+  pk: 40
+  fields:
+    name: Can view Bruker
+    content_type: 10
+    codename: view_user
+- model: auth.permission
+  pk: 41
+  fields:
+    name: Can add Kollektiv
+    content_type: 11
+    codename: add_dormroom
+- model: auth.permission
+  pk: 42
+  fields:
+    name: Can change Kollektiv
+    content_type: 11
+    codename: change_dormroom
+- model: auth.permission
+  pk: 43
+  fields:
+    name: Can delete Kollektiv
+    content_type: 11
+    codename: delete_dormroom
+- model: auth.permission
+  pk: 44
+  fields:
+    name: Can view Kollektiv
+    content_type: 11
+    codename: view_dormroom
+- model: auth.permission
+  pk: 45
+  fields:
+    name: Can add Studentby
+    content_type: 12
+    codename: add_studentvillage
+- model: auth.permission
+  pk: 46
+  fields:
+    name: Can change Studentby
+    content_type: 12
+    codename: change_studentvillage
+- model: auth.permission
+  pk: 47
+  fields:
+    name: Can delete Studentby
+    content_type: 12
+    codename: delete_studentvillage
+- model: auth.permission
+  pk: 48
+  fields:
+    name: Can view Studentby
+    content_type: 12
+    codename: view_studentvillage
+- model: auth.permission
+  pk: 49
+  fields:
+    name: Can add wash list
+    content_type: 13
+    codename: add_washlist
+- model: auth.permission
+  pk: 50
+  fields:
+    name: Can change wash list
+    content_type: 13
+    codename: change_washlist
+- model: auth.permission
+  pk: 51
+  fields:
+    name: Can delete wash list
+    content_type: 13
+    codename: delete_washlist
+- model: auth.permission
+  pk: 52
+  fields:
+    name: Can view wash list
+    content_type: 13
+    codename: view_washlist
+- model: auth.permission
+  pk: 53
+  fields:
+    name: Can add list item
+    content_type: 14
+    codename: add_listitem
+- model: auth.permission
+  pk: 54
+  fields:
+    name: Can change list item
+    content_type: 14
+    codename: change_listitem
+- model: auth.permission
+  pk: 55
+  fields:
+    name: Can delete list item
+    content_type: 14
+    codename: delete_listitem
+- model: auth.permission
+  pk: 56
+  fields:
+    name: Can view list item
+    content_type: 14
+    codename: view_listitem
+- model: auth.permission
+  pk: 57
+  fields:
+    name: Can add Mal for vaskeliste
+    content_type: 15
+    codename: add_templatewashlist
+- model: auth.permission
+  pk: 58
+  fields:
+    name: Can change Mal for vaskeliste
+    content_type: 15
+    codename: change_templatewashlist
+- model: auth.permission
+  pk: 59
+  fields:
+    name: Can delete Mal for vaskeliste
+    content_type: 15
+    codename: delete_templatewashlist
+- model: auth.permission
+  pk: 60
+  fields:
+    name: Can view Mal for vaskeliste
+    content_type: 15
+    codename: view_templatewashlist
+- model: auth.permission
+  pk: 61
+  fields:
+    name: Can add template list item
+    content_type: 16
+    codename: add_templatelistitem
+- model: auth.permission
+  pk: 62
+  fields:
+    name: Can change template list item
+    content_type: 16
+    codename: change_templatelistitem
+- model: auth.permission
+  pk: 63
+  fields:
+    name: Can delete template list item
+    content_type: 16
+    codename: delete_templatelistitem
+- model: auth.permission
+  pk: 64
+  fields:
+    name: Can view template list item
+    content_type: 16
+    codename: view_templatelistitem
+- model: auth.group
+  pk: 1
+  fields:
+    name: Manager
+    permissions: []
+- model: auth.group
+  pk: 2
+  fields:
+    name: Administrator
+    permissions:
+    - 41
+    - 42
+    - 43
+    - 44
+    - 37
+    - 38
+    - 39
+    - 40
+    - 45
+    - 46
+    - 47
+    - 48
+    - 9
+    - 10
+    - 11
+    - 12
+    - 5
+    - 6
+    - 7
+    - 8
+    - 53
+    - 54
+    - 55
+    - 56
+    - 61
+    - 62
+    - 63
+    - 64
+    - 57
+    - 58
+    - 59
+    - 60
+    - 49
+    - 50
+    - 51
+    - 52
+- model: auth.group
+  pk: 3
+  fields:
+    name: Student
+    permissions:
+    - 53
+    - 54
+    - 56
+- model: SIFUser.user
+  pk: 1
+  fields:
+    password: pbkdf2_sha256$180000$HW8NzTQuYQHv$djWsuOmf365E2W3tOS5qV8ehI/y8UeRpgzTbTc88Jzg=
+    last_login: 2020-03-09 11:12:07+00:00
+    is_superuser: true
+    username: henrik
+    first_name: ''
+    last_name: ''
+    email: h@b.no
+    is_staff: true
+    is_active: true
+    date_joined: 2020-03-06 10:06:53+00:00
+    dormroom: 4
+    groups:
+    - 3
+    user_permissions: []
+- model: SIFUser.user
+  pk: 6
+  fields:
+    password: pbkdf2_sha256$180000$AW4jrcVWN4dJ$Qfn0LuzKG8XG4MkYX5ornWHNgbw84NtJHncfgvZcQ6I=
+    last_login: null
+    is_superuser: false
+    username: KariNordmann
+    first_name: Kari
+    last_name: Nordmann
+    email: kari@norge.no
+    is_staff: false
+    is_active: true
+    date_joined: 2020-02-14 10:49:34+00:00
+    dormroom: null
+    groups:
+    - 1
+    user_permissions: []
+- model: SIFUser.user
+  pk: 7
+  fields:
+    password: pbkdf2_sha256$180000$dyvinyWZDvUC$eiD+/CAHBaSe06RHzYN8KMpvutEm39xW2StNJY+kpT4=
+    last_login: null
+    is_superuser: false
+    username: OlaNordmann
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-02-14 10:49:49+00:00
+    dormroom: 1
+    groups:
+    - 3
+    user_permissions: []
+- model: SIFUser.user
+  pk: 8
+  fields:
+    password: pbkdf2_sha256$180000$Qf1VXJc36lOc$/1wBUNS0ukKNWmYTuG4VSdaTfha34y3yDcg+NYlu82c=
+    last_login: null
+    is_superuser: false
+    username: MohammedAli
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-02-14 10:50:04+00:00
+    dormroom: 1
+    groups:
+    - 3
+    user_permissions: []
+- model: SIFUser.user
+  pk: 9
+  fields:
+    password: pbkdf2_sha256$180000$oyR57MObMUpW$68K1i9W9N3+JTb/cOyJ8L6qRJlYHcYST+tb9sPNBBLA=
+    last_login: null
+    is_superuser: false
+    username: jonathan
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-09 11:58:01+00:00
+    dormroom: 2
+    groups:
+    - 3
+    user_permissions: []
+- model: SIFUser.user
+  pk: 10
+  fields:
+    password: pbkdf2_sha256$180000$v4pxg1o161Rn$stemPWaK31LzIM69AtKKfYCOkEowjDvHXrIYncAsccQ=
+    last_login: 2020-03-09 15:22:00.125658+00:00
+    is_superuser: true
+    username: admin
+    first_name: ''
+    last_name: ''
+    email: admin@ex.com
+    is_staff: true
+    is_active: true
+    date_joined: 2020-03-09 15:21:56.213551+00:00
+    dormroom: null
+    groups: []
+    user_permissions: []
+- model: SIFUser.user
+  pk: 11
+  fields:
+    password: pbkdf2_sha256$180000$Lzvz9LfcHvpy$75j5/pMyU44GjoXxjsypspn9GKccpkf8wZ4GTgsIfVA=
+    last_login: null
+    is_superuser: false
+    username: manager
+    first_name: Mr.Manager
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:41:31+00:00
+    dormroom: null
+    groups:
+    - 1
+    user_permissions: []
+- model: SIFUser.user
+  pk: 12
+  fields:
+    password: pbkdf2_sha256$180000$S7DzN1QOlKVk$OXTSiYI7OUrfC8tOjjJaXDrEx9wUOJOYxhmCQHDFpZs=
+    last_login: null
+    is_superuser: false
+    username: silje
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:51:19+00:00
+    dormroom: 2
+    groups:
+    - 3
+    user_permissions: []
+- model: SIFUser.user
+  pk: 13
+  fields:
+    password: pbkdf2_sha256$180000$iuTeE5kyGE58$uyEjsFqCWf0lJgFyU+aNuitRvujNMt2kvWPgRj6lvMk=
+    last_login: null
+    is_superuser: false
+    username: jens
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:52:05+00:00
+    dormroom: 2
+    groups:
+    - 3
+    user_permissions: []
+- model: SIFUser.user
+  pk: 14
+  fields:
+    password: pbkdf2_sha256$180000$FgXfrHPXNvEB$MSwsCQchbyBBMIjWcdZCeWBIqN0Kic2tCZJRF5QgnJU=
+    last_login: null
+    is_superuser: false
+    username: "j\xF8rgen"
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:53:31+00:00
+    dormroom: 3
+    groups:
+    - 3
+    user_permissions: []
+- model: SIFUser.user
+  pk: 15
+  fields:
+    password: pbkdf2_sha256$180000$GHGGjj9PDLCf$Ds6/EnwqmxHHBB221eil9zYygkSIexdS3cIquNgXiSg=
+    last_login: null
+    is_superuser: false
+    username: egil
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:54:38+00:00
+    dormroom: 6
+    groups:
+    - 3
+    user_permissions: []
+- model: SIFUser.user
+  pk: 16
+  fields:
+    password: pbkdf2_sha256$180000$Vzd6vcubNTqM$4nQpd7QBEgIgx+bGmDlZkNhvutOw2gbqPTfMwHh8EuA=
+    last_login: null
+    is_superuser: false
+    username: bob
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:55:00+00:00
+    dormroom: 6
+    groups:
+    - 3
+    user_permissions: []
+- model: StudentVillage.studentvillage
+  pk: 1
+  fields:
+    name: Moholt
+    templateWashList: null
+    managers:
+    - 6
+- model: StudentVillage.studentvillage
+  pk: 2
+  fields:
+    name: Berg
+    templateWashList: 2
+    managers:
+    - 11
+- model: oauth2_provider.application
+  pk: 1
+  fields:
+    client_id: SLDhkx2m08A3c357d4WihIWGzcUQ4duc0TeWhUGL
+    user: 1
+    redirect_uris: ''
+    client_type: confidential
+    authorization_grant_type: password
+    client_secret: XA1f55cdS3UVmX5bk5Rjb9kqMV4v79a2gATGcvehoXR9BAMkjlda8KA0pTiBtBa2k5LAuxGNTJmQVrp8GaCs7P2IQ146f5KIzFmNOOcNz6sgqIeEYllKyDU2RbcoeFwX
+    name: test
+    skip_authorization: false
+    created: 2020-03-06 10:09:35.185996+00:00
+    updated: 2020-03-06 10:09:35.186065+00:00
+- model: admin.logentry
+  pk: 1
+  fields:
+    action_time: 2020-03-09 15:31:37.124730+00:00
+    user: 10
+    content_type: 3
+    object_id: '3'
+    object_repr: Student
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Name"]}}]'
+- model: admin.logentry
+  pk: 2
+  fields:
+    action_time: 2020-03-10 06:38:44.112646+00:00
+    user: 10
+    content_type: 3
+    object_id: '3'
+    object_repr: Student
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Name"]}}]'
+- model: admin.logentry
+  pk: 3
+  fields:
+    action_time: 2020-03-10 06:39:12.039385+00:00
+    user: 10
+    content_type: 10
+    object_id: '6'
+    object_repr: KariNordmann
+    action_flag: 2
+    change_message: '[]'
+- model: admin.logentry
+  pk: 4
+  fields:
+    action_time: 2020-03-10 06:39:28.743674+00:00
+    user: 10
+    content_type: 10
+    object_id: '8'
+    object_repr: MohammedAli
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups"]}}]'
+- model: admin.logentry
+  pk: 5
+  fields:
+    action_time: 2020-03-10 06:41:31.466078+00:00
+    user: 10
+    content_type: 10
+    object_id: '11'
+    object_repr: manager
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 6
+  fields:
+    action_time: 2020-03-10 06:41:48.297564+00:00
+    user: 10
+    content_type: 10
+    object_id: '11'
+    object_repr: manager
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["First name", "Groups"]}}]'
+- model: admin.logentry
+  pk: 7
+  fields:
+    action_time: 2020-03-10 06:42:27.108907+00:00
+    user: 10
+    content_type: 15
+    object_id: '1'
+    object_repr: Moholt-vaskeliste-mal
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 8
+  fields:
+    action_time: 2020-03-10 06:42:46.373924+00:00
+    user: 10
+    content_type: 15
+    object_id: '2'
+    object_repr: Berg-vaskeliste-mal
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 9
+  fields:
+    action_time: 2020-03-10 06:43:01.285282+00:00
+    user: 10
+    content_type: 12
+    object_id: '1'
+    object_repr: Moholt
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["TemplateWashList"]}}]'
+- model: admin.logentry
+  pk: 10
+  fields:
+    action_time: 2020-03-10 06:43:23.045740+00:00
+    user: 10
+    content_type: 12
+    object_id: '2'
+    object_repr: Berg
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 11
+  fields:
+    action_time: 2020-03-10 06:44:59.248586+00:00
+    user: 10
+    content_type: 11
+    object_id: '2'
+    object_repr: Kollektiv 1, Berg
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 12
+  fields:
+    action_time: 2020-03-10 06:45:07.487206+00:00
+    user: 10
+    content_type: 11
+    object_id: '3'
+    object_repr: Kollektiv 2, Berg
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 13
+  fields:
+    action_time: 2020-03-10 06:45:25.765439+00:00
+    user: 10
+    content_type: 11
+    object_id: '4'
+    object_repr: Kollektiv 2, Moholt
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 14
+  fields:
+    action_time: 2020-03-10 06:45:30.494458+00:00
+    user: 10
+    content_type: 11
+    object_id: '5'
+    object_repr: Kollektiv 3, Moholt
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 15
+  fields:
+    action_time: 2020-03-10 06:45:50.893634+00:00
+    user: 10
+    content_type: 10
+    object_id: '8'
+    object_repr: MohammedAli
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Dormroom"]}}]'
+- model: admin.logentry
+  pk: 16
+  fields:
+    action_time: 2020-03-10 06:46:01.827940+00:00
+    user: 10
+    content_type: 10
+    object_id: '7'
+    object_repr: OlaNordmann
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups"]}}]'
+- model: admin.logentry
+  pk: 17
+  fields:
+    action_time: 2020-03-10 06:49:11.061687+00:00
+    user: 10
+    content_type: 10
+    object_id: '1'
+    object_repr: henrik
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
+- model: admin.logentry
+  pk: 18
+  fields:
+    action_time: 2020-03-10 06:51:06.288221+00:00
+    user: 10
+    content_type: 10
+    object_id: '9'
+    object_repr: jonathan
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
+- model: admin.logentry
+  pk: 19
+  fields:
+    action_time: 2020-03-10 06:51:19.454277+00:00
+    user: 10
+    content_type: 10
+    object_id: '12'
+    object_repr: silje
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 20
+  fields:
+    action_time: 2020-03-10 06:52:05.653038+00:00
+    user: 10
+    content_type: 10
+    object_id: '13'
+    object_repr: jens
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 21
+  fields:
+    action_time: 2020-03-10 06:52:17.216599+00:00
+    user: 10
+    content_type: 10
+    object_id: '13'
+    object_repr: jens
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
+- model: admin.logentry
+  pk: 22
+  fields:
+    action_time: 2020-03-10 06:53:02.848269+00:00
+    user: 10
+    content_type: 11
+    object_id: '5'
+    object_repr: Kollektiv 3, Moholt
+    action_flag: 3
+    change_message: ''
+- model: admin.logentry
+  pk: 23
+  fields:
+    action_time: 2020-03-10 06:53:12.157975+00:00
+    user: 10
+    content_type: 11
+    object_id: '6'
+    object_repr: Kollektiv 3, Berg
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 24
+  fields:
+    action_time: 2020-03-10 06:53:31.577657+00:00
+    user: 10
+    content_type: 10
+    object_id: '14'
+    object_repr: "j\xF8rgen"
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 25
+  fields:
+    action_time: 2020-03-10 06:53:48.314427+00:00
+    user: 10
+    content_type: 10
+    object_id: '14'
+    object_repr: "j\xF8rgen"
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
+- model: admin.logentry
+  pk: 26
+  fields:
+    action_time: 2020-03-10 06:54:38.673303+00:00
+    user: 10
+    content_type: 10
+    object_id: '15'
+    object_repr: egil
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 27
+  fields:
+    action_time: 2020-03-10 06:54:48.873311+00:00
+    user: 10
+    content_type: 10
+    object_id: '15'
+    object_repr: egil
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
+- model: admin.logentry
+  pk: 28
+  fields:
+    action_time: 2020-03-10 06:55:00.935204+00:00
+    user: 10
+    content_type: 10
+    object_id: '16'
+    object_repr: bob
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 29
+  fields:
+    action_time: 2020-03-10 06:55:31.549565+00:00
+    user: 10
+    content_type: 10
+    object_id: '16'
+    object_repr: bob
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
+- model: admin.logentry
+  pk: 30
+  fields:
+    action_time: 2020-03-10 06:55:58.844405+00:00
+    user: 10
+    content_type: 16
+    object_id: '1'
+    object_repr: "Vask kj\xF8leskapet"
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 31
+  fields:
+    action_time: 2020-03-10 06:56:09.067401+00:00
+    user: 10
+    content_type: 16
+    object_id: '2'
+    object_repr: Vask gangen
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 32
+  fields:
+    action_time: 2020-03-10 06:56:28.454300+00:00
+    user: 10
+    content_type: 16
+    object_id: '3'
+    object_repr: "Vask kj\xF8kkenet"
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 33
+  fields:
+    action_time: 2020-03-10 06:57:25.062606+00:00
+    user: 10
+    content_type: 16
+    object_id: '4'
+    object_repr: Vask stua
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 34
+  fields:
+    action_time: 2020-03-10 06:57:45.422129+00:00
+    user: 10
+    content_type: 16
+    object_id: '5'
+    object_repr: Vask badet
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 35
+  fields:
+    action_time: 2020-03-10 06:58:04.209387+00:00
+    user: 10
+    content_type: 16
+    object_id: '6'
+    object_repr: Vask skohylla
+    action_flag: 1
+    change_message: '[{"added": {}}]'
+- model: admin.logentry
+  pk: 36
+  fields:
+    action_time: 2020-03-10 07:00:00.832695+00:00
+    user: 10
+    content_type: 14
+    object_id: '1'
+    object_repr: Test
+    action_flag: 3
+    change_message: ''
+- model: admin.logentry
+  pk: 37
+  fields:
+    action_time: 2020-03-10 07:01:46.120253+00:00
+    user: 10
+    content_type: 14
+    object_id: '10'
+    object_repr: Vask stua
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Completed"]}}]'
+- model: admin.logentry
+  pk: 38
+  fields:
+    action_time: 2020-03-10 07:01:57.658242+00:00
+    user: 10
+    content_type: 14
+    object_id: '13'
+    object_repr: Vask badet
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Completed"]}}]'
+- model: admin.logentry
+  pk: 39
+  fields:
+    action_time: 2020-03-10 07:02:03.310584+00:00
+    user: 10
+    content_type: 14
+    object_id: '2'
+    object_repr: "Vask kj\xF8leskapet"
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Completed"]}}]'
+- model: admin.logentry
+  pk: 40
+  fields:
+    action_time: 2020-03-10 13:00:46.173406+00:00
+    user: 10
+    content_type: 14
+    object_id: '1'
+    object_repr: Test
+    action_flag: 3
+    change_message: ''
+- model: admin.logentry
+  pk: 41
+  fields:
+    action_time: 2020-03-10 13:08:34.303703+00:00
+    user: 10
+    content_type: 3
+    object_id: '3'
+    object_repr: Student
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Name"]}}]'
+- model: admin.logentry
+  pk: 42
+  fields:
+    action_time: 2020-03-10 13:08:47.283728+00:00
+    user: 10
+    content_type: 10
+    object_id: '7'
+    object_repr: OlaNordmann
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups"]}}]'
+- model: admin.logentry
+  pk: 43
+  fields:
+    action_time: 2020-03-10 13:09:01.680840+00:00
+    user: 10
+    content_type: 10
+    object_id: '8'
+    object_repr: MohammedAli
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
+- model: admin.logentry
+  pk: 44
+  fields:
+    action_time: 2020-03-10 13:09:44.735742+00:00
+    user: 10
+    content_type: 10
+    object_id: '1'
+    object_repr: henrik
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
+- model: admin.logentry
+  pk: 45
+  fields:
+    action_time: 2020-03-10 13:09:59.702597+00:00
+    user: 10
+    content_type: 10
+    object_id: '9'
+    object_repr: jonathan
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
+- model: admin.logentry
+  pk: 46
+  fields:
+    action_time: 2020-03-10 13:10:15.540881+00:00
+    user: 10
+    content_type: 10
+    object_id: '12'
+    object_repr: silje
+    action_flag: 2
+    change_message: '[{"changed": {"fields": ["Groups", "Dormroom"]}}]'
