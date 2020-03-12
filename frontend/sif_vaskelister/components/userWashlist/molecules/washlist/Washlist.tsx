@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 
 import WashlistAdd from "../../atoms/washlistAdd/WashlistAdd";
-import TodoItem from "../../atoms/washlistItem/WashlistItem";
+import WashlistItem from "../../atoms/washlistItem/WashlistItem";
 
 import styles from "./index.module.css";
 
@@ -18,9 +18,9 @@ const Washlist: FC<Props> = ({ context }) => {
     <div className={styles.list}>
       <h1>VASKELISTE</h1>
       <div className={styles.todo_list}>
-        {context.todos && context.todos.id
+        {context.todos && context.todos.items
           ? context.todos.items.map((todo: any, index: number) => (
-              <TodoItem
+              <WashlistItem
                 key={index}
                 id={todo.id}
                 todo={todo}

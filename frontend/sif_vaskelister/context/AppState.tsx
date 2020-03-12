@@ -51,56 +51,98 @@ interface Dorms {
 interface Dorm {
   id: number;
   number: number;
+  residents: [
+    {
+      id: number;
+      username: string;
+      email: string;
+      first_name: string;
+      last_name: string;
+      dormroom: number;
+      groups: [
+        number
+      ];
+      manager_villages: [],
+      is_manager: boolean;
+      is_student: boolean;
+    }
+  ],
   village: {
     id: number;
+    managers: [
+      {
+        id: number;
+        username: string;
+        email: string;
+        first_name: string;
+        last_name: string;
+        dormroom: number;
+        groups: [
+          number
+        ];
+        manager_villages: [
+          number
+        ];
+        is_manager: boolean;
+        is_student: boolean;
+      }
+    ],
     name: string;
-    templateWashList: {
-      id: number;
-      title: string;
-    };
-  };
-  residents: User[];
-  washlist: {
-    id: number;
-    title: string;
-    dormroom: {
-      id: number;
-      number: number;
-      village: number;
-    };
-  };
-}
-
-interface TodoList {
-  id: number;
-  title: string;
-  dormroom: {
-    id: number;
-    number: number;
-    village: {
-      id: number;
-      name: string;
-      templateWashList: number;
-    };
-  };
+    templateWashList: []
+  },
   items: [
     {
       id: number;
-      desc: null;
+      description: string;
       completed: boolean;
-      washlist: {
-        id: number;
-        title: string;
-        dormroom: number;
-      };
-      template: {
-        id: number;
-        description: string;
-        washlist: number;
-      };
+      dormroom_id: number;
+      template: []
     }
-  ];
+  ]
 }
+
+interface TodoList {
+  items: [
+    {
+      id: number;
+      description: string;
+      completed: boolean;
+      dormroom_id: number;
+      template: []
+    }
+  ]
+}
+
+// interface TodoList {
+//   id: number;
+//   title: string;
+//   dormroom: {
+//     id: number;
+//     number: number;
+//     village: {
+//       id: number;
+//       name: string;
+//       templateWashList: number;
+//     };
+//   };
+//   items: [
+//     {
+//       id: number;
+//       desc: null;
+//       completed: boolean;
+//       washlist: {
+//         id: number;
+//         title: string;
+//         dormroom: number;
+//       };
+//       template: {
+//         id: number;
+//         description: string;
+//         washlist: number;
+//       };
+//     }
+//   ];
+// }
 
 const AppState: FC<Props> = ({ children }) => {
   // DATA:
@@ -110,7 +152,7 @@ const AppState: FC<Props> = ({ children }) => {
   const [user, setUser] = useState<AuthUser>();
 
   const [dorms, setDorms] = useState<Dorms>();
-  const [dorm, setDorm] = useState();
+  const [dorm, setDorm] = useState<Dorm>();
 
   // METHODS:
 
@@ -147,23 +189,21 @@ const AppState: FC<Props> = ({ children }) => {
       { token: user }
     );
     setDorm(dorm);
-    const todoList = await get<TodoList>(
-      "/api/washlist/" + dorm.id,
-      {},
-      { token: user }
-    );
+    const todoList = {
+      items: dorm.items
+    }
     setTodos(todoList);
   };
 
   const addTodo = async (text: string) => {
     const washlist = {
       desc: text,
-      washlist: todos?.id
+      // washlist: todos?.id
     };
     console.log(washlist);
     await post("/api/washlistitem/", { ...washlist }, {}, { token: user });
     const newTodoList = await get<TodoList>(
-      "/api/washlist/" + dorm.id,
+      "/api/washlist/" + dorm?.id,
       {},
       { token: user }
     );
@@ -180,7 +220,7 @@ const AppState: FC<Props> = ({ children }) => {
       options: { token: user }
     });
     const newTodoList = await get<TodoList>(
-      "/api/washlist/" + dorm.id,
+      "/api/washlist/" + dorm?.id,
       {},
       { token: user }
     );
