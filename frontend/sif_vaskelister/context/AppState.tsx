@@ -158,7 +158,6 @@ const AppState: FC<Props> = ({ children }) => {
 
   const getDorms = async () => {
     const dorms = await get<Dorms>("/api/dormroom/", {}, { token: user });
-    console.log(dorms);
     setDorms(dorms);
   };
 

@@ -5,12 +5,12 @@
   flex-direction: row;
   background-color: rgb(141, 143, 51);
   padding: 2em;
-  margin: 0em 5em;
+  margin: 0em 2em;
   border-radius: 1em;
   justify-content: space-around;
   list-style: none;
 }
 
 .home {
-  font-size: 40px;
+  font-size: 1.5em;
 }
