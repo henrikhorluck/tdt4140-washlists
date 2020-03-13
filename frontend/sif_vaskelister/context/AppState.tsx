@@ -66,7 +66,7 @@ interface Dorm {
       is_manager: boolean;
       is_student: boolean;
     }
-  ],
+  ];
   village: {
     id: number;
     managers: [
@@ -86,19 +86,19 @@ interface Dorm {
         is_manager: boolean;
         is_student: boolean;
       }
-    ],
+    ];
     name: string;
-    templateWashList: []
-  },
+    templateWashList: [];
+  };
   items: [
     {
       id: number;
       description: string;
       completed: boolean;
       dormroom_id: number;
-      template: []
+      template: [];
     }
-  ]
+  ];
 }
 
 interface TodoList {
@@ -108,9 +108,9 @@ interface TodoList {
       description: string;
       completed: boolean;
       dormroom_id: number;
-      template: []
+      template: [];
     }
-  ]
+  ];
 }
 
 // interface TodoList {
