@@ -62,7 +62,7 @@ interface Dorm {
       groups: [
         number
       ];
-      manager_villages: [],
+      manager_villages: [];
       is_manager: boolean;
       is_student: boolean;
     }
