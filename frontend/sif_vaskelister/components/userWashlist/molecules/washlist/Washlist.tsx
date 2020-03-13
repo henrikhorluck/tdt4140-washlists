@@ -19,8 +19,8 @@ const Washlist: FC<Props> = ({ context }) => {
       <h1>VASKELISTE</h1>
       <div className={styles.todo_list}>
         <p className={styles.desc}>Påkrevde:</p>
-        {context.todos && context.todos.items
-          ? context.todos.items.map((todo: any, index: number) => {
+        {context.todos && context.todos
+          ? context.todos.map((todo: any, index: number) => {
             if(todo.template){
               return (<WashlistItem
                 key={index}
@@ -33,8 +33,8 @@ const Washlist: FC<Props> = ({ context }) => {
           })
           : null}
           <p className={styles.desc}>Egendefinerte:</p>
-        {context.todos && context.todos.items
-          ? context.todos.items.map((todo: any, index: number) => {
+        {context.todos && context.todos
+          ? context.todos.map((todo: any, index: number) => {
             if(!todo.template){
               return (<WashlistItem
                 key={index}
