@@ -1,6 +1,6 @@
 export interface Todo {
   id: number;
-  desc: null;
+  description: null;
   completed: boolean;
   washlist: {
     id: number;

@@ -13,16 +13,19 @@ const LoginSection: FC<Props> = ({ context }) => {
 
   const handleLogin = async (username: string, password: string) => {
     const user = await login(username, password);
+    console.log(user)
     context.storeUser(user);
-    if (user.user?.dormroom != null) {
-      await Router.push("/user-washlist");
-    } else {
-      await Router.push("/manager-view");
+    const errorMessage = document.getElementById('errorMessage')
+    if(!user.user?.id && errorMessage){
+      errorMessage.style.display = 'block';
+    }else{
+      (user.user?.dormroom != null) ? await Router.push("/user-washlist") : await Router.push("/manager-view");
     }
   };
 
   return (
     <>
+    <p className={styles.error} id='errorMessage' >Brukernavn og/eller Passord er feil</p>
       <label>
         <p className={styles.label}>Brukernavn</p>
         <input

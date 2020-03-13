@@ -43,8 +43,15 @@ export const login = async (username: string, password: string) => {
   const token: AuthUser = await vaskelisteAuth.owner.getToken(
     username,
     password
-  );
-  token.user = await get<User>("/api/profile/", {}, { token: token });
+  ).catch(err => {
+    console.log('User was not logged in with error', err)
+    return err
+  })
+  token.user = await get<User>("/api/profile/", {}, { token: token })
+  .catch(err => {
+    console.log('User could not be fetched with error', err)
+    return err
+  })
   // Returns object with both user-data and accessTokens
   return token;
 };

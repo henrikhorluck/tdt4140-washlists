@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 
 import WashlistAdd from "../../atoms/washlistAdd/WashlistAdd";
-import TodoItem from "../../atoms/washlistItem/WashlistItem";
+import WashlistItem from "../../atoms/washlistItem/WashlistItem";
 
 import styles from "./index.module.css";
 
@@ -18,16 +18,33 @@ const Washlist: FC<Props> = ({ context }) => {
     <div className={styles.list}>
       <h1>VASKELISTE</h1>
       <div className={styles.todo_list}>
-        {context.todos && context.todos.id
-          ? context.todos.items.map((todo: any, index: number) => (
-              <TodoItem
+        <p className={styles.desc}>Påkrevde:</p>
+        {context.todos && context.todos
+          ? context.todos.map((todo: any, index: number) => {
+            if(todo.template){
+              return (<WashlistItem
                 key={index}
                 id={todo.id}
                 todo={todo}
                 completeTodo={context.completeTodo}
                 // removeTodo={context.removeTodo}
-              />
-            ))
+              />)
+            }
+          })
+          : null}
+          <p className={styles.desc}>Egendefinerte:</p>
+        {context.todos && context.todos
+          ? context.todos.map((todo: any, index: number) => {
+            if(!todo.template){
+              return (<WashlistItem
+                key={index}
+                id={todo.id}
+                todo={todo}
+                completeTodo={context.completeTodo}
+                // removeTodo={context.removeTodo}
+              />)
+            }
+          })
           : null}
         {/* <TodoAdd addTodo={context.addTodo} /> */}
       </div>

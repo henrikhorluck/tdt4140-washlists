@@ -7,116 +7,45 @@ interface Props {
   children: React.ReactNode;
 }
 
-interface Todo {
-  completed: boolean;
-  text: string;
-}
-
-interface Todos {
-  todos: Array<Todo>;
-}
-
-interface Context {
-  todos: any;
-  dormList: any;
-  addTodo: any;
-  completeTodo: any;
-  removeTodo: any;
-  storeUser: any;
-}
-
-interface Dorms {
+interface TodoItem {
   id: number;
-  number: number;
-  village: {
-    id: number;
-    name: string;
-    templateWashList: {
-      id: number;
-      title: string;
-    };
-  };
-  residents: number[];
-  washlist: {
-    id: number;
-    title: string;
-    dormroom: {
-      id: number;
-      number: number;
-      village: number;
-    };
-  };
+  description: string;
+  completed: boolean;
+  dormroom_id: number;
+  template: number;
 }
 
 interface Dorm {
   id: number;
   number: number;
+  residents: User[];
   village: {
     id: number;
+    managers: User[];
     name: string;
-    templateWashList: {
-      id: number;
-      title: string;
-    };
+    templateWashList: number;
   };
-  residents: User[];
-  washlist: {
-    id: number;
-    title: string;
-    dormroom: {
-      id: number;
-      number: number;
-      village: number;
-    };
-  };
+  items: TodoItem[];
+}
+interface TodoList {
+  items: TodoItem[];
 }
 
-interface TodoList {
-  id: number;
-  title: string;
-  dormroom: {
-    id: number;
-    number: number;
-    village: {
-      id: number;
-      name: string;
-      templateWashList: number;
-    };
-  };
-  items: [
-    {
-      id: number;
-      desc: null;
-      completed: boolean;
-      washlist: {
-        id: number;
-        title: string;
-        dormroom: number;
-      };
-      template: {
-        id: number;
-        description: string;
-        washlist: number;
-      };
-    }
-  ];
-}
 
 const AppState: FC<Props> = ({ children }) => {
   // DATA:
 
-  const [todos, setTodos] = useState<TodoList>();
+  const [todos, setTodos] = useState<TodoItem[]>();
 
   const [user, setUser] = useState<AuthUser>();
 
-  const [dorms, setDorms] = useState<Dorms>();
-  const [dorm, setDorm] = useState();
+  const [dorms, setDorms] = useState<Dorm[]>();
+  const [dorm, setDorm] = useState<Dorm>();
 
   // METHODS:
 
   const getDorms = async () => {
-    const dorms = await get<Dorms>("/api/dormroom/", {}, { token: user });
-    console.log(dorms);
+    const dorms = await get<Dorm[]>("/api/dormroom/", {}, { token: user });
     setDorms(dorms);
   };
 
@@ -129,16 +58,16 @@ const AppState: FC<Props> = ({ children }) => {
     setDorm(dorm);
   };
 
-  const getDormManager = async (id: number) => {
-    const dorm = await get<Dorm>("/api/dormroom/" + id, {}, { token: user });
-    setDorm(dorm);
-    const todoList = await get<TodoList>(
-      "/api/washlist/" + dorm.id,
-      {},
-      { token: user }
-    );
-    setTodos(todoList);
-  };
+  // const getDormManager = async (id: number) => {
+  //   const dorm = await get<Dorm>("/api/dormroom/" + id, {}, { token: user });
+  //   setDorm(dorm);
+  //   const todoList = await get<TodoList>(
+  //     "/api/washlist/" + dorm.id,
+  //     {},
+  //     { token: user }
+  //   );
+  //   setTodos(todoList);
+  // };
 
   const getTodoList = async () => {
     const dorm = await get<Dorm>(
@@ -147,31 +76,27 @@ const AppState: FC<Props> = ({ children }) => {
       { token: user }
     );
     setDorm(dorm);
-    const todoList = await get<TodoList>(
-      "/api/washlist/" + dorm.id,
-      {},
-      { token: user }
-    );
-    setTodos(todoList);
+    const { items } = dorm;
+    setTodos(items);
   };
 
-  const addTodo = async (text: string) => {
-    const washlist = {
-      desc: text,
-      washlist: todos?.id
-    };
-    console.log(washlist);
-    await post("/api/washlistitem/", { ...washlist }, {}, { token: user });
-    const newTodoList = await get<TodoList>(
-      "/api/washlist/" + dorm.id,
-      {},
-      { token: user }
-    );
-    setTodos(newTodoList);
-  };
+  // const addTodo = async (text: string) => {
+  //   const washlist = {
+  //     desc: text,
+  //     // washlist: todos?.id
+  //   };
+  //   console.log(washlist);
+  //   await post("/api/washlistitem/", { ...washlist }, {}, { token: user });
+  //   const newTodoList = await get<TodoList>(
+  //     "/api/washlist/" + dorm?.id,
+  //     {},
+  //     { token: user }
+  //   );
+  //   setTodos(newTodoList);
+  // };
 
   const completeTodo = async (id: number) => {
-    const completedTodo = todos?.items.find((item: any) => item.id == id);
+    const completedTodo = todos?.find((item: any) => item.id == id);
     const completed = completedTodo ? (completedTodo.completed = true) : null;
     await patch({
       query: "/api/washlistitem/" + id + "/",
@@ -179,12 +104,14 @@ const AppState: FC<Props> = ({ children }) => {
       parameters: {},
       options: { token: user }
     });
-    const newTodoList = await get<TodoList>(
-      "/api/washlist/" + dorm.id,
+    const dorm = await get<Dorm>(
+      "/api/dormroom/" + user?.user?.dormroom,
       {},
       { token: user }
     );
-    setTodos(newTodoList);
+    setDorm(dorm);
+    const { items } = dorm;
+    setTodos(items);
   };
 
   // const removeTodo = (index: number) => {
@@ -200,7 +127,7 @@ const AppState: FC<Props> = ({ children }) => {
   const state: any = {
     todos: todos,
     dorms: dorms,
-    addTodo: addTodo,
+    // addTodo: addTodo,
     completeTodo: completeTodo,
     // removeTodo: removeTodo,
     storeUser: storeUser,
@@ -208,7 +135,7 @@ const AppState: FC<Props> = ({ children }) => {
     getDorms: getDorms,
     getDorm: getDorm,
     getTodoList: getTodoList,
-    getDormManager: getDormManager
+    // getDormManager: getDormManager
   };
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;

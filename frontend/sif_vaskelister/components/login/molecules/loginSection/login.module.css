@@ -6,3 +6,10 @@
   border-radius: 1em;
   margin-top: 1em;
 }
+
+.error{
+  margin: 0;
+  padding: 8px 10px 8px 10px;
+  background-color: lightcoral;
+  display: none;
+}
