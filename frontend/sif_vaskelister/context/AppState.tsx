@@ -218,12 +218,16 @@ const AppState: FC<Props> = ({ children }) => {
       parameters: {},
       options: { token: user }
     });
-    const newTodoList = await get<TodoList>(
-      "/api/washlist/" + dorm?.id,
+    const dorm = await get<Dorm>(
+      "/api/dormroom/" + user?.user?.dormroom,
       {},
       { token: user }
     );
-    setTodos(newTodoList);
+    setDorm(dorm);
+    const todoList = {
+      items: dorm.items
+    }
+    setTodos(todoList);
   };
 
   // const removeTodo = (index: number) => {
