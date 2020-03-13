@@ -7,142 +7,30 @@ interface Props {
   children: React.ReactNode;
 }
 
-interface Todo {
-  completed: boolean;
-  text: string;
-}
-
-interface Todos {
-  todos: Array<Todo>;
-}
-
-interface Context {
-  todos: any;
-  dormList: any;
-  addTodo: any;
-  completeTodo: any;
-  removeTodo: any;
-  storeUser: any;
-}
-
-interface Dorms {
+interface TodoItem {
   id: number;
-  number: number;
-  village: {
-    id: number;
-    name: string;
-    templateWashList: {
-      id: number;
-      title: string;
-    };
-  };
-  residents: number[];
-  washlist: {
-    id: number;
-    title: string;
-    dormroom: {
-      id: number;
-      number: number;
-      village: number;
-    };
-  };
+  description: string;
+  completed: boolean;
+  dormroom_id: number;
+  template: number;
 }
 
 interface Dorm {
   id: number;
   number: number;
-  residents: [
-    {
-      id: number;
-      username: string;
-      email: string;
-      first_name: string;
-      last_name: string;
-      dormroom: number;
-      groups: [
-        number
-      ];
-      manager_villages: [];
-      is_manager: boolean;
-      is_student: boolean;
-    }
-  ];
+  residents: User[];
   village: {
     id: number;
-    managers: [
-      {
-        id: number;
-        username: string;
-        email: string;
-        first_name: string;
-        last_name: string;
-        dormroom: number;
-        groups: [
-          number
-        ];
-        manager_villages: [
-          number
-        ];
-        is_manager: boolean;
-        is_student: boolean;
-      }
-    ];
+    managers: User[];
     name: string;
-    templateWashList: [];
+    templateWashList: number;
   };
-  items: [
-    {
-      id: number;
-      description: string;
-      completed: boolean;
-      dormroom_id: number;
-      template: [];
-    }
-  ];
+  items: TodoItem[];
 }
-
 interface TodoList {
-  items: [
-    {
-      id: number;
-      description: string;
-      completed: boolean;
-      dormroom_id: number;
-      template: [];
-    }
-  ];
+  items: TodoItem[];
 }
 
-// interface TodoList {
-//   id: number;
-//   title: string;
-//   dormroom: {
-//     id: number;
-//     number: number;
-//     village: {
-//       id: number;
-//       name: string;
-//       templateWashList: number;
-//     };
-//   };
-//   items: [
-//     {
-//       id: number;
-//       desc: null;
-//       completed: boolean;
-//       washlist: {
-//         id: number;
-//         title: string;
-//         dormroom: number;
-//       };
-//       template: {
-//         id: number;
-//         description: string;
-//         washlist: number;
-//       };
-//     }
-//   ];
-// }
 
 const AppState: FC<Props> = ({ children }) => {
   // DATA:
@@ -151,13 +39,13 @@ const AppState: FC<Props> = ({ children }) => {
 
   const [user, setUser] = useState<AuthUser>();
 
-  const [dorms, setDorms] = useState<Dorms>();
+  const [dorms, setDorms] = useState<Dorm[]>();
   const [dorm, setDorm] = useState<Dorm>();
 
   // METHODS:
 
   const getDorms = async () => {
-    const dorms = await get<Dorms>("/api/dormroom/", {}, { token: user });
+    const dorms = await get<Dorm[]>("/api/dormroom/", {}, { token: user });
     setDorms(dorms);
   };
 
