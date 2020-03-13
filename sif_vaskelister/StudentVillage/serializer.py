@@ -7,6 +7,7 @@ from .models import StudentVillage
 
 class StudentVillageSerializer(serializers.ModelSerializer):
     managers = UserSerializer(many=True)
+    dormrooms = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = StudentVillage
