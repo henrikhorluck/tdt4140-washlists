@@ -25,51 +25,51 @@ interface Context {
   storeUser: any;
 }
 
-interface Dorms {
-  id: number;
-  number: number;
-  village: {
-    id: number;
-    name: string;
-    templateWashList: {
-      id: number;
-      title: string;
-    };
-  };
-  residents: number[];
-  washlist: {
-    id: number;
-    title: string;
-    dormroom: {
-      id: number;
-      number: number;
-      village: number;
-    };
-  };
-}
+// interface Dorms {
+//   id: number;
+//   number: number;
+//   village: {
+//     id: number;
+//     name: string;
+//     templateWashList: {
+//       id: number;
+//       title: string;
+//     };
+//   };
+//   residents: number[];
+//   washlist: {
+//     id: number;
+//     title: string;
+//     dormroom: {
+//       id: number;
+//       number: number;
+//       village: number;
+//     };
+//   };
+// }
 
-interface Dorm {
-  id: number;
-  number: number;
-  village: {
-    id: number;
-    name: string;
-    templateWashList: {
-      id: number;
-      title: string;
-    };
-  };
-  residents: User[];
-  washlist: {
-    id: number;
-    title: string;
-    dormroom: {
-      id: number;
-      number: number;
-      village: number;
-    };
-  };
-}
+// interface Dorm {
+//   id: number;
+//   number: number;
+//   village: {
+//     id: number;
+//     name: string;
+//     templateWashList: {
+//       id: number;
+//       title: string;
+//     };
+//   };
+//   residents: User[];
+//   washlist: {
+//     id: number;
+//     title: string;
+//     dormroom: {
+//       id: number;
+//       number: number;
+//       village: number;
+//     };
+//   };
+// }
 
 interface TodoList {
   id: number;
@@ -102,6 +102,57 @@ interface TodoList {
   ];
 }
 
+interface SIFUser {
+  id: number;
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  dormroom: number;
+  groups: number[];
+  manager_villages: number[];
+  is_manager: boolean;
+  is_student: boolean;
+}
+
+interface Village {
+  id: number;
+  managers: SIFUser[];
+  dormrooms: number[];
+  name: string;
+  templateWashList: null;
+}
+
+interface Villages {
+  villages: Village[];
+}
+
+interface Item {
+  id: number;
+  description: string;
+  completed: boolean;
+  dormroom_id: number;
+  template: null;
+}
+
+interface Dorm {
+  id: number;
+  number: number;
+  residents: SIFUser[];
+  village: {
+    id: number;
+    managers: SIFUser[];
+    dormrooms: number[];
+    name: string;
+    templateWashList: null;
+  };
+  items: Item[];
+}
+
+interface Dorms {
+  dorms: Dorm[];
+}
+
 const AppState: FC<Props> = ({ children }) => {
   // DATA:
 
@@ -112,11 +163,24 @@ const AppState: FC<Props> = ({ children }) => {
   const [dorms, setDorms] = useState<Dorms>();
   const [dorm, setDorm] = useState();
 
+  const [villages, setVillages] = useState<Villages>();
+  const [village, setVillage] = useState<Village>();
+
   // METHODS:
+
+  const getVillages = async () => {
+    const villages = await get<Villages>("/api/villages/", {}, {token: user});
+    setVillages(villages);
+  };
+
+  const getVillage = async (id: number) => {
+    const village = await get<Village>("/api/villages/" + id, {}, {token: user});
+    setVillage(village);
+  };
 
   const getDorms = async () => {
     const dorms = await get<Dorms>("/api/dormroom/", {}, { token: user });
-    console.log(dorms);
+    //console.log(dorms);
     setDorms(dorms);
   };
 
@@ -208,7 +272,11 @@ const AppState: FC<Props> = ({ children }) => {
     getDorms: getDorms,
     getDorm: getDorm,
     getTodoList: getTodoList,
-    getDormManager: getDormManager
+    getDormManager: getDormManager,
+    villages: villages,
+    getVillages: getVillages,
+    village: village,
+    getVillage: getVillage,
   };
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
