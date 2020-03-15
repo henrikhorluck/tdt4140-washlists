@@ -18,6 +18,14 @@ class ListItemViewSet(viewsets.ModelViewSet):
 
 
 class TemplateWashListViewSet(viewsets.ModelViewSet):
+    """
+    The view for viewing the template washlists. The TemplateWashList is connected to up to several
+    [Dormrooms](/api/dormroom/). You can add TemplateListItems to each of the list by sending a `POST` to
+    [TemplateListItem](/api/template_washlistitem/).
+    When doing so, the backend will add a `ListItem` to each of the conencted Dormrooms, with the same text,
+    as the [TemplateListItem](/api/template_washlistitem/).
+    """
+
     permission_classes = [permissions.IsAuthenticatedOrTokenHasScope]
     queryset = TemplateWashList.objects.all()
     serializer_class = TemplateWashListSerializer
@@ -25,6 +33,12 @@ class TemplateWashListViewSet(viewsets.ModelViewSet):
 
 
 class TemplateListItemViewSet(viewsets.ModelViewSet):
+    """
+    `TemplateListItem` is connected to a [TemplateWashList](/api/template_washlist/). When adding an object to this
+    endpoint, you also add a [ListItem](/api/washlistitem/) to each of the [Dormrooms](/api/dormroom/) that
+    [TemplateWashList](/api/template_washlist/) is connected to.
+    """
+
     permission_classes = [permissions.IsAuthenticatedOrTokenHasScope]
     queryset = TemplateListItem.objects.all()
     serializer_class = TemplateListItemSerializer
