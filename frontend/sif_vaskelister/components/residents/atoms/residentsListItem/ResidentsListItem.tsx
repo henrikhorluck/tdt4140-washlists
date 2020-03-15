@@ -5,7 +5,7 @@ import styles from "./ResidentsListItem.module.css";
 
 interface Props {
   context: any;
-  resident: User 
+  resident: User;
 }
 const ResidentsListItem: FC<Props> = ({ resident, context }) => {
   return (
