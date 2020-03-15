@@ -58,16 +58,10 @@ const AppState: FC<Props> = ({ children }) => {
     setDorm(dorm);
   };
 
-  // const getDormManager = async (id: number) => {
-  //   const dorm = await get<Dorm>("/api/dormroom/" + id, {}, { token: user });
-  //   setDorm(dorm);
-  //   const todoList = await get<TodoList>(
-  //     "/api/washlist/" + dorm.id,
-  //     {},
-  //     { token: user }
-  //   );
-  //   setTodos(todoList);
-  // };
+  const getResidents = async (id: number) => {
+    const dorm = await get<Dorm>("/api/dormroom/" + id, {}, { token: user });
+    setDorm(dorm);
+  };
 
   const getTodoList = async () => {
     const dorm = await get<Dorm>(
@@ -125,17 +119,18 @@ const AppState: FC<Props> = ({ children }) => {
   };
 
   const state: any = {
-    todos: todos,
-    dorms: dorms,
-    // addTodo: addTodo,
-    completeTodo: completeTodo,
-    // removeTodo: removeTodo,
-    storeUser: storeUser,
-    user: user,
-    getDorms: getDorms,
-    getDorm: getDorm,
-    getTodoList: getTodoList,
-    // getDormManager: getDormManager
+    todos,
+    dorms,
+    dorm,
+    // addTodo,
+    completeTodo,
+    // removeTodo,
+    storeUser,
+    user,
+    getDorms,
+    getDorm,
+    getTodoList,
+    getResidents
   };
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
