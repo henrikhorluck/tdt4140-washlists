@@ -3,12 +3,6 @@ import DormItem from "../../atoms/dormItem/DormItem";
 
 import styles from "./DormList.module.css";
 
-interface Dorm {
-  dormID: number;
-  occupants: number;
-  building: string;
-  floor: number;
-}
 
 interface Props {
   context: any;
@@ -31,7 +25,7 @@ const DormList: FC<Props> = ({ context }) => {
             <DormItem
               key={i}
               dorm={dorm}
-              getDormManager={context.getDormManager}
+              context={context}
             />
           ))
         : null}
