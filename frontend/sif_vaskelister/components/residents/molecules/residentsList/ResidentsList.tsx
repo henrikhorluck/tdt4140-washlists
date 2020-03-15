@@ -15,7 +15,7 @@ const ResidentsList: FC<Props> = ({ context }) => {
     <ul className={styles.items}>
       {context.dorm && context.dorm.residents.length > 0
         ? context.dorm.residents.map((resident: any, i: number) => (
-        <ResidentsListItem resident={resident} context={context}/>
+        <ResidentsListItem key={i} resident={resident} context={context}/>
           ))
         : null}
     </ul>
