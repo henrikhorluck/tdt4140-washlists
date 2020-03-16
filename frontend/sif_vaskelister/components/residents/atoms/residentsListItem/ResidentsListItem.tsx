@@ -12,7 +12,7 @@ const ResidentsListItem: FC<Props> = ({ resident, context }) => {
     <div className={styles.listItem} >
       {/* <li>{resident.first_name} {resident.last_name}</li> */}
         <li>{resident.username}</li>
-        <button className={styles.button} onClick={() => console.log('Button Clicket!')}> Fjern fra kollektiv</button>
+        <button className={styles.button} onClick={() => context.removeUser(resident.id, context.dorm.id)}> Fjern fra kollektiv</button>
     </div>
   );
 };

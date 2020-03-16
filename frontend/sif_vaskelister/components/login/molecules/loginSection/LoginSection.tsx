@@ -13,7 +13,6 @@ const LoginSection: FC<Props> = ({ context }) => {
 
   const handleLogin = async (username: string, password: string) => {
     const user = await login(username, password);
-    console.log(user)
     context.storeUser(user);
     const errorMessage = document.getElementById('errorMessage')
     if(!user.user?.id && errorMessage){

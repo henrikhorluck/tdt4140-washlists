@@ -53,8 +53,30 @@ const AppState: FC<Props> = ({ children }) => {
 
   const getAvailableUsers = async () => {
     const users = await get<User[]>("/api/users/", {}, { token: user });
-    const availableUsers = users.filter(user => (user.dormroom === null && user.groups.includes(3)))
+    const availableUsers = users.filter(user => (user.dormroom === null && user.is_student))
     setAvailableUsers(availableUsers);
+  };
+
+  const addUser = async (userId: number, dormId: number) => {
+    await patch({
+      query: "/api/users/" + userId + '/',
+      data: { dormroom: dormId },
+      parameters: {},
+      options: { token: user }
+    });
+    getResidents(dormId);
+    getAvailableUsers();
+  };
+
+  const removeUser = async (userId: number, dormId: number) => {
+    await patch({
+      query: "/api/users/" + userId + '/',
+      data: { dormroom: null },
+      parameters: {},
+      options: { token: user }
+    });
+    getResidents(dormId);
+    getAvailableUsers();
   };
 
   const getDorm = async () => {
@@ -140,7 +162,9 @@ const AppState: FC<Props> = ({ children }) => {
     getTodoList,
     getResidents,
     getAvailableUsers,
-    availableUsers
+    availableUsers,
+    addUser,
+    removeUser
   };
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;

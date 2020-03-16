@@ -10,6 +10,7 @@ interface Props {
 const ResidentsDropdown: FC<Props> = ({ context }) => {
 
   const [text, setText] = useState('Legg til student') 
+  const [userId, setUserId] = useState(null)
 
   const showDropdown = () => {
     const dropdownList = document.getElementById('dropdownList');
@@ -23,10 +24,17 @@ const ResidentsDropdown: FC<Props> = ({ context }) => {
     
   }
 
-  const selectDropdown = (username: string) => {
+  const selectDropdown = (resident: any) => {
     showDropdown()
-    setText(username)
+    setText(resident.username)
+    setUserId(resident.id)
     
+  }
+
+  const addUser = () => {
+    context.addUser(userId ,context.dorm.id)
+    setText('Legg til student')
+    setUserId(null)
   }
 
   return (
@@ -36,11 +44,11 @@ const ResidentsDropdown: FC<Props> = ({ context }) => {
   <button className={styles.dropdownButton} onClick={() => showDropdown() } > <p  id='downArrow' className={styles.downArrow}>▼</p> <p id='rightArrow' className={styles.rightArrow}>▶︎</p> <p className={styles.buttonText}>{text}</p></button>
         <ul id='dropdownList' className={styles.dropdownList}>
           {context.availableUsers ? context.availableUsers.map((resident: any, i: number) => (
-            <li className={styles.dropdownListText} key={i} onClick={() => selectDropdown(resident.username)} >{resident.username}</li>
+            <li className={styles.dropdownListText} key={i} onClick={() => selectDropdown(resident)} >{resident.username}</li>
           )) : null}
         </ul>
         </div>
-        <button className={styles.addButton}>Legg til</button>
+        <button className={styles.addButton} onClick={() => addUser()} >Legg til</button>
       </div>
     </>
   );
