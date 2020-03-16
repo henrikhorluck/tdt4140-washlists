@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect } from "react";
 import ResidentsList from '../../molecules/residentsList/ResidentsList'
 import ResidentsDropdown from '../../atoms/residentsDropdown/ResidentsDropdown'
 
@@ -34,6 +34,34 @@ const test = {
         manager_villages: [],
         is_manager: false,
         is_student: true
+      },
+      {
+        id: 9,
+        username: 'Per',
+        email: '',
+        first_name: '',
+        last_name: '',
+        dormroom: 1,
+        groups: [
+          3
+        ],
+        manager_villages: [],
+        is_manager: false,
+        is_student: true
+      },
+      {
+        id: 10,
+        username: 'Solo',
+        email: '',
+        first_name: '',
+        last_name: '',
+        dormroom: 1,
+        groups: [
+          3
+        ],
+        manager_villages: [],
+        is_manager: false,
+        is_student: true
       }
     ],
   }
@@ -46,11 +74,15 @@ interface Props {
 
 const ResidentsPage: FC<Props> = ({ context }) => {
 
+  useEffect(() => {
+    context.getAvailableUsers()
+  }, [])
+
   return (
     <div className={styles.wrapper}>
       <h1>Beboere i kollektiv {context.dorm ? context.dorm.id : null}</h1>
       <ResidentsList context={context} />
-      <ResidentsDropdown context={test}/>
+      <ResidentsDropdown context={context}/>
     </div>
   );
 };

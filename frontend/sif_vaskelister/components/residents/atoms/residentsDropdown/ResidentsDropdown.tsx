@@ -35,12 +35,12 @@ const ResidentsDropdown: FC<Props> = ({ context }) => {
         <div>
   <button className={styles.dropdownButton} onClick={() => showDropdown() } > <p  id='downArrow' className={styles.downArrow}>▼</p> <p id='rightArrow' className={styles.rightArrow}>▶︎</p> <p className={styles.buttonText}>{text}</p></button>
         <ul id='dropdownList' className={styles.dropdownList}>
-          {context.users.residents.map((resident: any, i: number) => (
+          {context.availableUsers ? context.availableUsers.map((resident: any, i: number) => (
             <li className={styles.dropdownListText} key={i} onClick={() => selectDropdown(resident.username)} >{resident.username}</li>
-          ))}
+          )) : null}
         </ul>
         </div>
-        <button className={styles.addButton}>add</button>
+        <button className={styles.addButton}>Legg til</button>
       </div>
     </>
   );

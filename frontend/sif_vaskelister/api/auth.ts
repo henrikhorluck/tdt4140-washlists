@@ -7,29 +7,15 @@ export class AuthUser extends Token {
 
 export interface User {
   id: number;
-  password: string;
-  last_login: any;
-  is_superuser: boolean;
   username: string;
+  email: string;
   first_name: string;
   last_name: string;
-  email: string;
-  is_staff: boolean;
-  is_active: boolean;
-  date_joined: string;
-  dormroom: {
-    id: number;
-    number: number;
-    village: number;
-  };
-  groups: [
-    {
-      id: number;
-      name: string;
-      permissions: any;
-    }
-  ];
-  user_permissions: string[];
+  dormroom: number;
+  groups: number[];
+  manager_villages: number[];
+  is_manager: boolean;
+  is_student: boolean;
 }
 
 const vaskelisteAuth = new ClientOAuth2({
