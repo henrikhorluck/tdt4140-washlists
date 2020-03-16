@@ -1,39 +1,42 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import ResidentsList from '../../molecules/residentsList/ResidentsList'
+import ResidentsDropdown from '../../atoms/residentsDropdown/ResidentsDropdown'
 
 import styles from "./ResidentsPage.module.css";
 
-const user = {
-  residents: [
-    {
-      id: 7,
-      username: 'OlaNordmann',
-      email: '',
-      first_name: '',
-      last_name: '',
-      dormroom: 1,
-      groups: [
-        3
-      ],
-      manager_villages: [],
-      is_manager: false,
-      is_student: true
-    },
-    {
-      id: 8,
-      username: 'MohammedAli',
-      email: '',
-      first_name: '',
-      last_name: '',
-      dormroom: 1,
-      groups: [
-        3
-      ],
-      manager_villages: [],
-      is_manager: false,
-      is_student: true
-    }
-  ],
+const test = {
+  users: {
+    residents: [
+      {
+        id: 7,
+        username: 'OlaNordmann',
+        email: '',
+        first_name: '',
+        last_name: '',
+        dormroom: 1,
+        groups: [
+          3
+        ],
+        manager_villages: [],
+        is_manager: false,
+        is_student: true
+      },
+      {
+        id: 8,
+        username: 'MohammedAli',
+        email: '',
+        first_name: '',
+        last_name: '',
+        dormroom: 1,
+        groups: [
+          3
+        ],
+        manager_villages: [],
+        is_manager: false,
+        is_student: true
+      }
+    ],
+  }
 }
 
 
@@ -43,29 +46,12 @@ interface Props {
 
 const ResidentsPage: FC<Props> = ({ context }) => {
 
-const showDropdown = () => {
-  const dropdownList = document.getElementById('dropdownList');
-  if(dropdownList){
-    dropdownList.style.display === 'block' ? dropdownList.style.display = 'none' : dropdownList.style.display = 'block';
-  }
-  
-}
-
   return (
-    <>
+    <div className={styles.wrapper}>
+      <h1>Beboere i kollektiv {context.dorm ? context.dorm.id : null}</h1>
       <ResidentsList context={context} />
-      <div className={styles.dropdown}>
-        <div>
-      <button onClick={() => showDropdown() } >Select student to add</button>
-        <ul id='dropdownList' className={styles.dropdownList}>
-          {user.residents.map((resident: any, i: number) => (
-            <li key={i}>{resident.username}</li>
-          ))}
-        </ul>
-        </div>
-        <button>add</button>
-      </div>
-    </>
+      <ResidentsDropdown context={test}/>
+    </div>
   );
 };
 
