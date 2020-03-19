@@ -38,6 +38,7 @@ const AppState: FC<Props> = ({ children }) => {
   const [todos, setTodos] = useState<TodoItem[]>();
 
   const [user, setUser] = useState<AuthUser>();
+  const [availableUsers, setAvailableUsers] = useState<User[]>();
 
   const [dorms, setDorms] = useState<Dorm[]>();
   const [dorm, setDorm] = useState<Dorm>();
@@ -49,17 +50,46 @@ const AppState: FC<Props> = ({ children }) => {
     setDorms(dorms);
   };
 
+  const getResidents = async (id: number) => {
+    const dorm = await get<Dorm>("/api/dormroom/" + id, {}, { token: user });
+    setDorm(dorm);
+  };
+
+
+  const getAvailableUsers = async () => {
+    const users = await get<User[]>("/api/users/", {}, { token: user });
+    const availableUsers = users.filter(user => (user.dormroom === null && user.is_student))
+    setAvailableUsers(availableUsers);
+  };
+
+  const addUser = async (userId: number, dormId: number) => {
+    await patch({
+      query: "/api/users/" + userId + '/',
+      data: { dormroom: dormId },
+      parameters: {},
+      options: { token: user }
+    });
+    getResidents(dormId);
+    getAvailableUsers();
+  };
+
+  const removeUser = async (userId: number, dormId: number) => {
+    await patch({
+      query: "/api/users/" + userId + '/',
+      data: { dormroom: null },
+      parameters: {},
+      options: { token: user }
+    });
+    getResidents(dormId);
+    getAvailableUsers();
+  };
+
   const getDorm = async () => {
     const dorm = await get<Dorm>(
       "/api/dormroom/" + user?.user?.dormroom,
       {},
       { token: user }
     );
-    setDorm(dorm);
-  };
-
-  const getResidents = async (id: number) => {
-    const dorm = await get<Dorm>("/api/dormroom/" + id, {}, { token: user });
     setDorm(dorm);
   };
 
@@ -130,7 +160,11 @@ const AppState: FC<Props> = ({ children }) => {
     getDorms,
     getDorm,
     getTodoList,
-    getResidents
+    getResidents,
+    getAvailableUsers,
+    availableUsers,
+    addUser,
+    removeUser
   };
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
