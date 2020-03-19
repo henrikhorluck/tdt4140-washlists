@@ -9,17 +9,20 @@ const VillageList: FC<Props>  = ({context}) => {
     useEffect(() => {
         context.getVillages();
         context.getDorms();
-        //const villages: number[] = context.user.user.manager_villages;
-        //console.log(context.villages);
     });
 
     return (
-        <>
+        <div>
             {context.villages ? context.villages.map((village: any, i: number) => (
                 context.user.user.manager_villages.includes(village.id) ?
-                <VillageItem key={i} village={village} dorms={context.dorms}/> : null
+                <VillageItem
+                    key={i}
+                    village={village}
+                    dorms={context.dorms}
+                    getDormManager={context.getDormManager}
+                /> : null
             )) : null}
-        </>
+        </div>
     );
 };
 

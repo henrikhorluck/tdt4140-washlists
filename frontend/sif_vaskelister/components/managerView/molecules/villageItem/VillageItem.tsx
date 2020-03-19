@@ -1,5 +1,6 @@
 import React, {FC, useEffect} from "react";
 import Router from "next/router";
+import Link from "next/link";
 
 import styles from "./VillageItem.module.css"
 
@@ -62,9 +63,10 @@ interface Dorm {
 interface Props {
     village: Village;
     dorms: Dorm[];
+    getDormManager: any;
 }
 
-const VillageItem: FC<Props> = ({village, dorms}) => {
+const VillageItem: FC<Props> = ({village, dorms, getDormManager}) => {
     const count = (items: Item[]) => {
       let checked = 0;
       items.forEach(item => item.completed ? checked += 1 : null);
@@ -74,6 +76,14 @@ const VillageItem: FC<Props> = ({village, dorms}) => {
     return (
         <>
           <h1>Studentby {village.name}</h1>
+          <button type="button"
+                  onClick={() => {
+                    // TODO: Send to correct washlist template
+                    Router.push("/washlist-template");
+                  }}
+          >
+            Endre vaskeliste
+          </button>
           <ul className={styles.item}>
             <li>Kollektiv</li>
             <li>Antall beboere</li>
@@ -82,7 +92,7 @@ const VillageItem: FC<Props> = ({village, dorms}) => {
           {dorms ? dorms.map((dorm: Dorm, i: number) => (
               dorm.village.id === village.id ?
               <ul key={i} className={styles.item}>
-                <li>{dorm.number}</li>
+                <li><Link href="/"><a>{dorm.number}</a></Link></li>
                 <li>{dorm.residents.length}</li>
                 <li>{count(dorm.items)}/{dorm.items.length}</li>
               </ul> : null
