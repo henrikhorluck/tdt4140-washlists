@@ -7,6 +7,40 @@ interface Props {
   children: React.ReactNode;
 }
 
+export interface TempItem{
+  id: number;
+  description: string;
+  washlist: number;
+}
+
+interface Manager {
+  id: number;
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  dormroom: number;
+  groups: number[];
+  manager_villages: number[];
+  is_manager: boolean;
+  is_student:  boolean;
+}
+
+interface Village {
+  id: number;
+  managers: Manager[];
+  dormrooms: number[];
+  name: string;
+  templateWashList: number[];
+}
+
+interface WashlistTemplate {
+  id: number;
+  title: string;
+  villages: Village[],
+  template_items: TempItem[];
+}
+
 interface TodoItem {
   id: number;
   description: string;
@@ -19,12 +53,7 @@ interface Dorm {
   id: number;
   number: number;
   residents: User[];
-  village: {
-    id: number;
-    managers: User[];
-    name: string;
-    templateWashList: number;
-  };
+  village: Village;
   items: TodoItem[];
 }
 interface TodoList {
@@ -41,6 +70,7 @@ const AppState: FC<Props> = ({ children }) => {
 
   const [dorms, setDorms] = useState<Dorm[]>();
   const [dorm, setDorm] = useState<Dorm>();
+  const [template, setTemplate] = useState<WashlistTemplate>()
 
   // METHODS:
 
@@ -56,6 +86,16 @@ const AppState: FC<Props> = ({ children }) => {
       { token: user }
     );
     setDorm(dorm);
+  };
+
+  const getTemplate = async (village: number) => {
+    const template = await get<WashlistTemplate>(
+      "/api/template_washlist/" + village,
+      {},
+      { token: user }
+    );
+    console.log(template)
+    setTemplate(template);
   };
 
   // const getDormManager = async (id: number) => {
@@ -114,13 +154,18 @@ const AppState: FC<Props> = ({ children }) => {
     setTodos(items);
   };
 
-  // const removeTodo = (index: number) => {
-  //   const newTodos = [...todos];
-  //   newTodos.splice(index, 1);
-  //   setTodos(newTodos);
-  // };
+  const removeTodo = async (index: number) => {
+    await patch({
+      query: "/api/template_washlistitem/" + index + '/',
+      data: { dormroom: null },
+      parameters: {},
+      options: { token: user }
+    });
+
+  };
 
   const storeUser = (userToStore: AuthUser) => {
+    console.log(userToStore)
     setUser(userToStore);
   };
 
@@ -135,7 +180,9 @@ const AppState: FC<Props> = ({ children }) => {
     getDorms: getDorms,
     getDorm: getDorm,
     getTodoList: getTodoList,
-    // getDormManager: getDormManager
+    // getDormManager: getDormManager,
+    getTemplate,
+    template
   };
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;

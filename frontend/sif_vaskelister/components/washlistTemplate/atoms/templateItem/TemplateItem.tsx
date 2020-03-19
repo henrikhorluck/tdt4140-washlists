@@ -1,24 +1,24 @@
 import React, { FC } from "react";
-import { Todo } from "./types";
+import { TempItem } from "../../../../context/AppState";
 
 import styles from "./index.module.css";
 
 interface Props {
-  todo: Todo;
+  todo: TempItem;
   id: number;
   // completeTodo: (n: number) => void;
-  // removeTodo: (n: number) => void;
+  removeTodo: (n: number) => void;
 }
 const TemplateItem: FC<Props> = ({
   todo,
-  id
+  id,
   // completeTodo,
-  // removeTodo
+  removeTodo
 }) => {
   return (
     <div className={styles.todo}>
-      {todo.desc}
-      <div>{/* <button onClick={() => removeTodo(id)}> Slett</button> */}</div>
+      {todo.description}
+      <div><button onClick={() => removeTodo(id)}> Slett</button></div>
     </div>
   );
 };
