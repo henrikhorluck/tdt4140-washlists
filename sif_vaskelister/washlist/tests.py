@@ -25,6 +25,7 @@ class WashListTemplateTest(TestCase):
         TemplateListItem.objects.create(description=desc, washlist=temp_list).save()
         self.assertEqual(desc, ListItem.objects.get(dormroom=self.room).description)
 
+
 class WeeklyResetOfWashlistsTest(TestCase):
     def setUp(self):
         """Create a washlist item that is completed
@@ -38,7 +39,9 @@ class WeeklyResetOfWashlistsTest(TestCase):
         village.templateWashList = temp_list
         village.save()
 
-        self.item = ListItem.objects.create(pk=1, dormroom=self.room, desc="Vask badet", completed=True)
+        self.item = ListItem.objects.create(
+            pk=1, dormroom=self.room, desc="Vask badet", completed=True
+        )
         self.item.save()
 
     def test_job_resets_items(self):
