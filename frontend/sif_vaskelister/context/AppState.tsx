@@ -50,6 +50,11 @@ const AppState: FC<Props> = ({ children }) => {
     setDorms(dorms);
   };
 
+  const getResidents = async (id: number) => {
+    const dorm = await get<Dorm>("/api/dormroom/" + id, {}, { token: user });
+    setDorm(dorm);
+  };
+
 
   const getAvailableUsers = async () => {
     const users = await get<User[]>("/api/users/", {}, { token: user });
@@ -85,11 +90,6 @@ const AppState: FC<Props> = ({ children }) => {
       {},
       { token: user }
     );
-    setDorm(dorm);
-  };
-
-  const getResidents = async (id: number) => {
-    const dorm = await get<Dorm>("/api/dormroom/" + id, {}, { token: user });
     setDorm(dorm);
   };
 
