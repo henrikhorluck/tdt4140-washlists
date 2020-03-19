@@ -7,7 +7,7 @@ interface Props {
   todo: TempItem;
   id: number;
   // completeTodo: (n: number) => void;
-  removeTodo: (n: number) => void;
+  removeTodo: (n: TempItem) => void;
 }
 const TemplateItem: FC<Props> = ({
   todo,
@@ -18,7 +18,7 @@ const TemplateItem: FC<Props> = ({
   return (
     <div className={styles.todo}>
       {todo.description}
-      <div><button onClick={() => removeTodo(id)}> Slett</button></div>
+      <div><button onClick={() => removeTodo(todo)}> Slett</button></div>
     </div>
   );
 };
