@@ -127,7 +127,7 @@ AUTH_USER_MODEL = "SIFUser.User"
 
 LANGUAGE_CODE = "nb-NO"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Oslo"
 
 USE_I18N = True
 
