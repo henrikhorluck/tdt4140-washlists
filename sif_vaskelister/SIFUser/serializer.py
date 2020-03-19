@@ -19,6 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
             "manager_villages",
             "is_manager",
             "is_student",
+            "is_superuser",
         )
 
 
