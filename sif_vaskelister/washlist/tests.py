@@ -47,7 +47,9 @@ class WeeklyResetOfWashlistsTest(TestCase):
         self.item.save()
 
     def test_job_resets_items(self):
-        """Test that job to reset washlist items when run manually actually rests the databases
-        washlist items"""
+        """
+        Test that job to reset washlist items when run manually actually rests the databases
+        washlist items
+        """
         reset_washlists()
         self.assertEqual(False, ListItem.objects.get(pk=1).completed)
