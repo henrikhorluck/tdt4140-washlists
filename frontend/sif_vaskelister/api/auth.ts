@@ -11,20 +11,12 @@ export interface User {
   email: string;
   first_name: string;
   last_name: string;
-<<<<<<< HEAD
   is_student: boolean;
   is_manager: boolean;
   is_superuser: boolean;
   dormroom: number;
   groups: number[];
   manager_villages: number[];
-=======
-  dormroom: number;
-  groups: number[];
-  manager_villages: number[];
-  is_manager: boolean;
-  is_student: boolean;
->>>>>>> 40aaa4a602480e21e299be6eb88cd42febaa9207
 }
 
 const vaskelisteAuth = new ClientOAuth2({
