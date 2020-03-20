@@ -95,7 +95,6 @@ const AppState: FC<Props> = ({ children }) => {
       {},
       { token: user }
     );
-    console.log(template)
     setVillageId(village);
     setTemplate(template);
   };
@@ -160,7 +159,6 @@ const AppState: FC<Props> = ({ children }) => {
   };
 
   const storeUser = (userToStore: AuthUser) => {
-    console.log(userToStore)
     setUser(userToStore);
   };
 
