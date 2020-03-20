@@ -28,9 +28,11 @@ class WashListTemplateTest(TestCase):
 
 class WeeklyResetOfWashlistsTest(TestCase):
     def setUp(self):
-        """Create a washlist item that is completed
+        """
+        Create a washlist item that is completed
         the method also sets up a village and a room to relate the washlist item to
-        satisfy the db constraints"""
+        satisfy the db constraints
+        """
 
         village = StudentVillage.objects.create(name="Moholt")
         self.room = Dormroom.objects.create(number=1, village=village)
