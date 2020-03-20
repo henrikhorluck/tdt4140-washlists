@@ -16,7 +16,7 @@ scheduler = BackgroundScheduler()
 scheduler.add_job(
     reset_washlists,
     id="washlist_clear",
-    trigger=CronTrigger(day_of_week="thu", hour=13, minute=44, second=30),
+    trigger=CronTrigger(day_of_week="mon", hour=3, minute=0, second=0),
 )
 
 scheduler.start()
