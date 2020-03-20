@@ -31,7 +31,7 @@ const DormList: FC<Props> = ({ context }) => {
             <DormItem
               key={i}
               dorm={dorm}
-              getDormManager={context.getDormManager}
+              getTemplate={context.getTemplate}
             />
           ))
         : null}
