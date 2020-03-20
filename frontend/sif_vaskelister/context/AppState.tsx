@@ -37,7 +37,7 @@ interface Village {
 interface WashlistTemplate {
   id: number;
   title: string;
-  villages: Village[],
+  villages: Village[];
   template_items: TempItem[];
 }
 
