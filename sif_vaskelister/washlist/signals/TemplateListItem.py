@@ -1,4 +1,4 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 
 from StudentVillage.models import StudentVillage
@@ -15,3 +15,8 @@ def handle_template_change(sender, instance: TemplateListItem, created, **kwargs
         for v in villages:
             for r in v.dormrooms.all():
                 ListItem.objects.create(template=instance, dormroom=r)
+
+
+@receiver(signal=pre_delete, sender=TemplateListItem)
+def handle_template_item_deletion(sender, instance: TemplateListItem, **kwargs):
+    ListItem.objects.filter(template=instance).delete()
