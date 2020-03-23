@@ -29,7 +29,6 @@ const WashlistItem: FC<Props> = ({
           {" "}
           Fullført
         </button>
-        {/* <button onClick={() => removeTodo(index)}> Slett</button> */}
       </div>
     </div>
   );

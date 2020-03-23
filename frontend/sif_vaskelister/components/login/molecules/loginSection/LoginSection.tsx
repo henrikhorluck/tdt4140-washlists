@@ -47,9 +47,6 @@ const LoginSection: FC<Props> = ({ context }) => {
           onKeyDown={(e) => e.key === 'Enter' ? handleLogin(username, password) : null }
         />
       </label>
-      {/* <label>
-          <input type="checkbox" name="remember" /> Husk meg!
-        </label> */}
       <button
         className={styles.button}
         type="button"
