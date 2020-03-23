@@ -1,0 +1,69 @@
+.dropdown{
+    display: flex;
+}
+
+.dropdownList{
+    margin-top: 0px;
+  
+    list-style: none;
+    padding: 0;
+    border: none;
+    background-color: whitesmoke;
+    display: none;
+    width: 200px;
+}
+
+.dropdownListText{
+    padding: 5px;
+}
+
+.dropdownListText:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+
+.dropdownButton{
+    background-color: whitesmoke;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    margin-right: 2px;
+    height: 55px;
+    width: 200px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: black;
+}
+
+.addButton{
+    background-color: whitesmoke;
+    border: none;
+    padding: 5px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 2px;
+    height: 55px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: black;
+}
+
+
+.rightArrow{
+    display: none;
+    padding: 5px 16px 5px 16px;
+    
+}
+
+.downArrow{
+    padding: 5px 16px 5px 16px;
+    display: block;
+}
+
+.buttonText{
+    padding: 5px 16px 5px 16px;
+}

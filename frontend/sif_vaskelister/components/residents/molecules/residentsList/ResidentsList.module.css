@@ -1,0 +1,12 @@
+.items {
+    list-style-type: none;
+    padding: 0;
+    overflow: scroll;
+  }
+
+.listArea{
+    background-color: whitesmoke;
+    padding: 10px 20px 10px 20px;
+    height: 150px;
+    margin-bottom: 5px;
+}

@@ -13,7 +13,6 @@ const LoginSection: FC<Props> = ({ context }) => {
 
   const handleLogin = async (username: string, password: string) => {
     const user = await login(username, password);
-    console.log(user)
     context.storeUser(user);
     const errorMessage = document.getElementById('errorMessage')
     if(!user.user?.id && errorMessage){
@@ -34,6 +33,7 @@ const LoginSection: FC<Props> = ({ context }) => {
           required
           value={username}
           onChange={e => setUsername(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' ? handleLogin(username, password) : null }
         />
       </label>
       <label>
@@ -44,11 +44,9 @@ const LoginSection: FC<Props> = ({ context }) => {
           required
           onChange={e => setPassword(e.target.value)}
           value={password}
+          onKeyDown={(e) => e.key === 'Enter' ? handleLogin(username, password) : null }
         />
       </label>
-      {/* <label>
-          <input type="checkbox" name="remember" /> Husk meg!
-        </label> */}
       <button
         className={styles.button}
         type="button"

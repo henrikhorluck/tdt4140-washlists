@@ -25,21 +25,21 @@ const TemplateList: FC<Props> = ({ context }) => {
       <div className={styles.list}>
         <h1>VASKELISTEMAL</h1>
         <h3>
-          Kollektiv {context.todos ? context.todos.dormroom.number : null}
+          Studentby: {context.template ? console.log(context.template.village) : null}
         </h3>
         <div className={styles.todo_list}>
-          {context.todos && context.todos.items
-            ? context.todos.items.map((todo: any, index: number) => (
+          {context.template && context.template.template_items
+            ? context.template.template_items.map((todo: any, index: number) => (
                 <TemplateItem
                   key={index}
                   id={todo.id}
                   todo={todo}
                   // completeTodo={context.completeTodo}
-                  // removeTodo={context.removeTodo}
+                  removeTodo={context.removeTodo}
                 />
               ))
             : null}
-          <TemplateAdd addTodo={context.addTodo} />
+          <TemplateAdd addTodo={context.addTodoManager} />
         </div>
       </div>
     </div>
