@@ -52,21 +52,4 @@ For running django there is a script called `/28/sif_vaskelister/run.sh`. All th
 Now the backend should be running at http://127.0.0.1:8000/admin/
 
 ## Running the frontend
-A short form instruction on how to run the frontend. 
-### Install dependencies
-Go to `/28/frontend/sif_vaskelister`, then install dependencies from the lockfile
-```
-npm ci
-```
-### Add authentication for the frontend
-First we create a token+ID set via django. So run django, then go to this URL http://127.0.0.1:8000/o/applications/register/ and create a set of credentials with `Client type = confidential` and `Authorization grant type= Resource owner password-based`. Copy the clientID and ClientSecret into the variables defined in the file `/frontend/sif_vaskelister/components/api/auth.ts`. For a picture of the credentials page see issue #41
-
-Now you should be able to authenticate and access data from django through the front-end. 
-
-### Build and run
-First build, then run the react project. 
-```
-npm run build
-npm start
-```
-Now the frontend should be running at http://localhost:3000/
+For instructions on starting the front-end see the [`front-end readme`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/blob/patch-1/frontend/sif_vaskelister/README.md)
