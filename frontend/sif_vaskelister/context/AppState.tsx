@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import AppContext from "./appContext";
 import { get, patch, post, deleteRequest} from "../api/index";
 import { AuthUser, User } from '../types/user-types';
-import { TemplateItem, TodoItem, WashlistTemplate } from '../types/washlist-types'
+import { TempItem, TodoItem, WashlistTemplate } from '../types/washlist-types'
 import { Village, Villages } from '../types/village-types'
 import { Dorm } from '../types/dorm-types'
 
@@ -163,7 +163,7 @@ const addTodoManager = async (text: string) => {
     setTodos(items);
   };
 
-  const removeTodo = async (todo: TemplateItem ) => {
+  const removeTodo = async (todo: TempItem ) => {
     await deleteRequest("/api/template_washlistitem/" + todo.id + '/', {}, {}, { token: user });
     if(villageId){
       getTemplate(villageId);

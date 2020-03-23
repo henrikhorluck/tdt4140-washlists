@@ -8,7 +8,7 @@ export interface TodoItem {
     template: number;
   }
 
-  export interface TemplateItem{
+  export interface TempItem{
     id: number;
     description: string;
     washlist: number;
@@ -18,5 +18,5 @@ export interface TodoItem {
     id: number;
     title: string;
     villages: Village[];
-    template_items: TemplateItem[];
+    template_items: TempItem[];
   }
