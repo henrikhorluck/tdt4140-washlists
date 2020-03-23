@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import Router from "next/router";
 
 import TemplateAdd from "../../atoms/templateAdd/TemplateAdd";
@@ -25,7 +25,7 @@ const TemplateList: FC<Props> = ({ context }) => {
       <div className={styles.list}>
         <h1>VASKELISTEMAL</h1>
         <h3>
-          Studentby: {context.template ? console.log(context.template.village) : null}
+          Studentby: {context.template ? context.template.villages[0].name : null}
         </h3>
         <div className={styles.todo_list}>
           {context.template && context.template.template_items

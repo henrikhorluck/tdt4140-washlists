@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { User } from "../../../../api/auth";
+import { User } from "../../../../types/user-types";
 
 import styles from "./ResidentsListItem.module.css";
 

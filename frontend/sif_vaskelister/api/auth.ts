@@ -1,23 +1,7 @@
-import ClientOAuth2, { Token } from "client-oauth2";
+import ClientOAuth2 from "client-oauth2";
 import { get } from ".";
+import { User, AuthUser } from '../types/user-types'
 
-export class AuthUser extends Token {
-  user?: User;
-}
-
-export interface User {
-  id: number;
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  is_student: boolean;
-  is_manager: boolean;
-  is_superuser: boolean;
-  dormroom: number;
-  groups: number[];
-  manager_villages: number[];
-}
 
 const vaskelisteAuth = new ClientOAuth2({
   clientId: process.env.CLIENT_ID,
