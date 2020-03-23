@@ -1,58 +1,45 @@
 import React, { FC, useState } from "react";
 import AppContext from "./appContext";
-import { get, patch, post } from "../api";
+import { get, patch, post, deleteRequest} from "../api/index";
 import { AuthUser, User } from "../api/auth";
 
 interface Props {
   children: React.ReactNode;
 }
 
+export interface TempItem{
+  id: number;
+  description: string;
+  washlist: number;
+}
 
-// interface Dorms {
-//   id: number;
-//   number: number;
-//   village: {
-//     id: number;
-//     name: string;
-//     templateWashList: {
-//       id: number;
-//       title: string;
-//     };
-//   };
-//   residents: number[];
-//   washlist: {
-//     id: number;
-//     title: string;
-//     dormroom: {
-//       id: number;
-//       number: number;
-//       village: number;
-//     };
-//   };
-// }
+interface Manager {
+  id: number;
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  dormroom: number;
+  groups: number[];
+  manager_villages: number[];
+  is_manager: boolean;
+  is_student:  boolean;
+}
 
-// interface Dorm {
-//   id: number;
-//   number: number;
-//   village: {
-//     id: number;
-//     name: string;
-//     templateWashList: {
-//       id: number;
-//       title: string;
-//     };
-//   };
-//   residents: User[];
-//   washlist: {
-//     id: number;
-//     title: string;
-//     dormroom: {
-//       id: number;
-//       number: number;
-//       village: number;
-//     };
-//   };
-// }
+interface Village {
+  id: number;
+  managers: Manager[];
+  dormrooms: number[];
+  name: string;
+  templateWashList: number[];
+}
+
+interface WashlistTemplate {
+  id: number;
+  title: string;
+  villages: Village[];
+  template_items: TempItem[];
+}
 
 interface TodoItem {
   id: number;
@@ -66,12 +53,7 @@ interface Dorm {
   id: number;
   number: number;
   residents: User[];
-  village: {
-    id: number;
-    managers: User[];
-    name: string;
-    templateWashList: number;
-  };
+  village: Village;
   items: TodoItem[];
 }
 
@@ -88,30 +70,12 @@ interface SIFUser {
   is_student: boolean;
 }
 
-interface Village {
-  id: number;
-  managers: SIFUser[];
-  dormrooms: number[];
-  name: string;
-  templateWashList: null;
-}
 
 interface Villages {
   villages: Village[];
 }
 
-interface Item {
-  id: number;
-  description: string;
-  completed: boolean;
-  dormroom_id: number;
-  template: null;
-}
 
-
-interface Dorms {
-  dorms: Dorm[];
-}
 
 const AppState: FC<Props> = ({ children }) => {
   // DATA:
@@ -122,6 +86,8 @@ const AppState: FC<Props> = ({ children }) => {
 
   const [dorms, setDorms] = useState<Dorm[]>();
   const [dorm, setDorm] = useState<Dorm>();
+  const [template, setTemplate] = useState<WashlistTemplate>()
+  const [villageId, setVillageId] = useState<number>()
 
   const [villages, setVillages] = useState<Villages>();
   const [village, setVillage] = useState<Village>();
@@ -150,6 +116,17 @@ const AppState: FC<Props> = ({ children }) => {
       { token: user }
     );
     setDorm(dorm);
+  };
+
+  const getTemplate = async (village: number) => {
+    const template = await get<WashlistTemplate>(
+      "/api/template_washlist/" + village,
+      {},
+      { token: user }
+    );
+    console.log(template)
+    setVillageId(village);
+    setTemplate(template);
   };
 
   // const getDormManager = async (id: number) => {
@@ -186,6 +163,16 @@ const AppState: FC<Props> = ({ children }) => {
       { token: user }
     );
     setTodos(newTodoList.items);
+  }
+const addTodoManager = async (text: string) => {
+  const washlist = {
+      description: text,
+      washlist: villageId
+    };
+    await post("/api/template_washlistitem/", { ...washlist }, {}, { token: user });
+    if(villageId){
+      getTemplate(villageId);
+    }
   };
 
   const completeTodo = async (id: number) => {
@@ -207,11 +194,12 @@ const AppState: FC<Props> = ({ children }) => {
     setTodos(items);
   };
 
-  // const removeTodo = (index: number) => {
-  //   const newTodos = [...todos];
-  //   newTodos.splice(index, 1);
-  //   setTodos(newTodos);
-  // };
+  const removeTodo = async (todo: TempItem ) => {
+    await deleteRequest("/api/template_washlistitem/" + todo.id + '/', {}, {}, { token: user });
+    if(villageId){
+      getTemplate(villageId);
+    }
+  };
 
   const storeUser = (userToStore: AuthUser) => {
     setUser(userToStore);
@@ -220,7 +208,6 @@ const AppState: FC<Props> = ({ children }) => {
   const state: any = {
     todos: todos,
     dorms: dorms,
-    addTodo: addTodo,
     completeTodo: completeTodo,
     // removeTodo: removeTodo,
     storeUser: storeUser,
@@ -233,6 +220,11 @@ const AppState: FC<Props> = ({ children }) => {
     getVillages: getVillages,
     village: village,
     getVillage: getVillage,
+    getTemplate,
+    template,
+    removeTodo,
+    addTodo,
+    addTodoManager
   };
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;

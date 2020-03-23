@@ -19,7 +19,7 @@ const VillageList: FC<Props>  = ({context}) => {
                     key={i}
                     village={village}
                     dorms={context.dorms}
-                    getDormManager={context.getDormManager}
+                    getTemplate={context.getTemplate}
                 /> : null
             )) : null}
         </div>

@@ -63,10 +63,10 @@ interface Dorm {
 interface Props {
     village: Village;
     dorms: Dorm[];
-    getDormManager: any;
+    getTemplate: any;
 }
 
-const VillageItem: FC<Props> = ({village, dorms, getDormManager}) => {
+const VillageItem: FC<Props> = ({village, dorms, getTemplate}) => {
     const count = (items: Item[]) => {
       let checked = 0;
       items.forEach(item => item.completed ? checked += 1 : null);
@@ -78,7 +78,7 @@ const VillageItem: FC<Props> = ({village, dorms, getDormManager}) => {
           <h1>Studentby {village.name}</h1>
           <button type="button"
                   onClick={() => {
-                    // TODO: Send to correct washlist template
+                    getTemplate(village.id);
                     Router.push("/washlist-template");
                   }}
           >

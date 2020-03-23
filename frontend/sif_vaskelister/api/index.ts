@@ -111,6 +111,21 @@ export const post = async <T>(
   return performRequest(query, parameters, opts);
 };
 
+export const deleteRequest = async <T>(
+  query: string,
+  data: T | {},
+  parameters: Query = {},
+  options: RequestOptions = {}
+): Promise<T> => {
+  const headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json"
+  };
+  const body = JSON.stringify(data);
+  const opts = { ...options, method: "DELETE", body, headers };
+  return performRequest(query, parameters, opts);
+};
+
 export interface PutParams<T> {
   query: string;
   data: T;
