@@ -174,20 +174,19 @@ const AppState: FC<Props> = ({ children }) => {
     setTodos(items);
   };
 
-  // const addTodo = async (text: string) => {
-  //   const washlist = {
-  //     desc: text,
-  //     // washlist: todos?.id
-  //   };
-  //   console.log(washlist);
-  //   await post("/api/washlistitem/", { ...washlist }, {}, { token: user });
-  //   const newTodoList = await get<TodoList>(
-  //     "/api/washlist/" + dorm?.id,
-  //     {},
-  //     { token: user }
-  //   );
-  //   setTodos(newTodoList);
-  // };
+  const addTodo = async (text: string) => {
+    const washlist = {
+      "description": text,
+      "dormroom_id": dorm?.id,
+    };
+    await post("/api/washlistitem/", { ...washlist }, {}, { token: user });
+    const newTodoList = await get<Dorm>(
+      "/api/dormroom/" + dorm?.id,
+      {},
+      { token: user }
+    );
+    setTodos(newTodoList.items);
+  };
 
   const completeTodo = async (id: number) => {
     const completedTodo = todos?.find((item: any) => item.id == id);
@@ -221,7 +220,7 @@ const AppState: FC<Props> = ({ children }) => {
   const state: any = {
     todos: todos,
     dorms: dorms,
-    // addTodo: addTodo,
+    addTodo: addTodo,
     completeTodo: completeTodo,
     // removeTodo: removeTodo,
     storeUser: storeUser,
