@@ -3,6 +3,10 @@
 This is a web based system for organising cleaning via shared cleaning list. 
 The system is designed and developed for "Studentsamskipnaden i fredrikstad SIF" a student housing organization in Fredrikstad. 
 
+An image of the login page
+
+![](/uploads/855ef9c2f8fb3b0b9fad9521a9f8c2a0/image.png)
+
 ## Basic architecture description
 The cleaning organising system is web application. It is split into a [`django back-end`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react front-end`](https://reactjs.org/).
 
