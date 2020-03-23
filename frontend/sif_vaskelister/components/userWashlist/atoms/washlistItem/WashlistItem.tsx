@@ -1,19 +1,17 @@
 import React, { FC } from "react";
-import { Todo } from "./types";
+import { TodoItem } from "../../../../types/washlist-types";
 
 import styles from "./index.module.css";
 
 interface Props {
-  todo: Todo;
+  todo: TodoItem;
   id: number;
   completeTodo: (n: number) => void;
-  // removeTodo: (n: number) => void;
 }
 const WashlistItem: FC<Props> = ({
   todo,
   id,
   completeTodo
-  // removeTodo
 }) => {
   return (
     <div

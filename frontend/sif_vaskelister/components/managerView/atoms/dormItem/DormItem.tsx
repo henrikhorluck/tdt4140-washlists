@@ -2,31 +2,10 @@ import React, { FC } from "react";
 import Router from "next/router";
 
 import styles from "./DormItem.module.css";
-import {User} from "../../../../api/auth";
+import {Dorm} from '../../../../types/dorm-types';
 
 interface Props {
-  dorm: {
-    id: number;
-    number: number;
-    village: {
-      id: number;
-      name: string;
-      templateWashList: {
-        id: number;
-        title: string;
-      };
-    };
-    residents: User[];
-    washlist: {
-      id: number;
-      title: string;
-      dormroom: {
-        id: number;
-        number: number;
-        village: number;
-      };
-    };
-  };
+  dorm: Dorm;
   context: any;
 }
 

@@ -1,64 +1,15 @@
-import React, {FC, useEffect} from "react";
+import React, { FC } from "react";
 import Router from "next/router";
-import Link from "next/link";
-
+import { Village } from '../../../../types/village-types'
+import { TodoItem } from '../../../../types/washlist-types'
+import { Dorm } from '../../../../types/dorm-types'
 import styles from "./VillageItem.module.css"
 
-interface Manager {
-  id: number;
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  dormroom: number;
-  groups: number[];
-  manager_villages: number[];
-  is_manager: boolean;
-  is_student: boolean;
-}
 
-interface Village {
-  id: number;
-  managers: Manager[];
-  dormrooms: number[];
-  name: string;
-  templateWashList: null;
-}
 
-interface SIFUser {
-  id: number;
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  dormroom: number;
-  groups: number[];
-  manager_villages: number[];
-  is_manager: boolean;
-  is_student: boolean;
-}
 
-interface Item {
-  id: number;
-  description: string;
-  completed: boolean;
-  dormroom_id: number;
-  template: null;
-}
 
-interface Dorm {
-  id: number;
-  number: number;
-  residents: SIFUser[];
-  village: {
-    id: number;
-    managers: SIFUser[];
-    dormrooms: number[];
-    name: string;
-    templateWashList: null;
-  };
-  items: Item[];
-}
+
 
 interface Props {
     village: Village;
@@ -68,7 +19,7 @@ interface Props {
 }
 
 const VillageItem: FC<Props> = ({village, dorms, getTemplate, getResidents}) => {
-    const count = (items: Item[]) => {
+    const count = (items: TodoItem[]) => {
       let checked = 0;
       items.forEach(item => item.completed ? checked += 1 : null);
       return checked;

@@ -1,13 +1,13 @@
 import React, { FC } from "react";
-import { TempItem } from "../../../../context/AppState";
+import { TemplateItem } from "../../../../types/washlist-types";
 
 import styles from "./index.module.css";
 
 interface Props {
-  todo: TempItem;
+  todo: TemplateItem;
   id: number;
   // completeTodo: (n: number) => void;
-  removeTodo: (n: TempItem) => void;
+  removeTodo: (n: TemplateItem) => void;
 }
 const TemplateItem: FC<Props> = ({
   todo,

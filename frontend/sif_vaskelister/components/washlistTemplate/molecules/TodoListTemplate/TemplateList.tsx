@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import Router from "next/router";
 
 import TemplateAdd from "../../atoms/templateAdd/TemplateAdd";
