@@ -7,29 +7,16 @@ export class AuthUser extends Token {
 
 export interface User {
   id: number;
-  password: string;
-  last_login: any;
-  is_superuser: boolean;
   username: string;
+  email: string;
   first_name: string;
   last_name: string;
-  email: string;
-  is_staff: boolean;
-  is_active: boolean;
-  date_joined: string;
-  dormroom: {
-    id: number;
-    number: number;
-    village: number;
-  };
-  groups: [
-    {
-      id: number;
-      name: string;
-      permissions: any;
-    }
-  ];
-  user_permissions: string[];
+  is_student: boolean;
+  is_manager: boolean;
+  is_superuser: boolean;
+  dormroom: number;
+  groups: number[];
+  manager_villages: number[];
 }
 
 const vaskelisteAuth = new ClientOAuth2({
@@ -40,11 +27,18 @@ const vaskelisteAuth = new ClientOAuth2({
 });
 
 export const login = async (username: string, password: string) => {
-  const token: AuthUser = await vaskelisteAuth.owner.getToken(
-    username,
-    password
+  const token: AuthUser = await vaskelisteAuth.owner
+    .getToken(username, password)
+    .catch(err => {
+      console.log("User was not logged in with error", err);
+      return err;
+    });
+  token.user = await get<User>("/api/profile/", {}, { token: token }).catch(
+    err => {
+      console.log("User could not be fetched with error", err);
+      return err;
+    }
   );
-  token.user = await get<User>("/api/profile/", {}, { token: token });
   // Returns object with both user-data and accessTokens
   return token;
 };

@@ -9,7 +9,7 @@ const VillageList: FC<Props>  = ({context}) => {
     useEffect(() => {
         context.getVillages();
         context.getDorms();
-    });
+    },[]);
 
     return (
         <div>

@@ -43,8 +43,8 @@ const DromItem: FC<Props> = ({ dorm, getDormManager }) => {
           {dorm.number}
         </button>
       </li>
-      <li>{dorm.residents.length}</li>
-      <li>{dorm.village.name}</li>
+      <li className={styles.residents}>{dorm.residents.length}</li>
+      <li className={styles.villageName}>{dorm.village.name}</li>
     </ul>
   );
 };

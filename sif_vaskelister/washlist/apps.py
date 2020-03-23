@@ -6,3 +6,4 @@ class WashlistConfig(AppConfig):
 
     def ready(self):
         import washlist.signals.TemplateListItem
+        import washlist.jobs

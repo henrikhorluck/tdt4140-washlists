@@ -26,7 +26,7 @@ const DormList: FC<Props> = ({ context }) => {
         <li>Antall beboere</li>
         <li>Studentby</li>
       </ul>
-      {context.dorms
+      {context.dorms && context.dorms.length > 0
         ? context.dorms.map((dorm: any, i: number) => (
             <DormItem
               key={i}

@@ -4,4 +4,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 0.8em;
+}
+
+.residents{
+  width: 5%;
+}
+
+.villageName{
+  width: 20%;
 }

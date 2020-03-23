@@ -20,7 +20,7 @@ const WashlistItem: FC<Props> = ({
       style={{ textDecoration: todo.completed ? "line-through" : "" }}
       className={styles.todo}
     >
-      {todo.desc}
+      {todo.description}
       <div>
         <button
           style={{ visibility: todo.completed ? "hidden" : "visible" }}
