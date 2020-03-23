@@ -14,7 +14,7 @@ The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi
 The back-end code is located in the [`sif_vaskelister folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/patch-1/sif_vaskelister).
 
 ## Running the django server
-
+The instructions for installing python + the backend project dependencies are for a linux based operating system.
 ### Installing python in a virtualenvironment
 First, install python 3.8 and create a virtual environment
 ```
