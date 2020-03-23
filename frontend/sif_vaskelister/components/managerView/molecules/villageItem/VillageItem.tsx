@@ -47,7 +47,7 @@ const VillageItem: FC<Props> = ({village, dorms, getTemplate, getResidents}) => 
                 <li>
                   <button
                     onClick={() => {
-                      getResidents(dorm.id)
+                      getResidents(dorm.number)
                       Router.push("/residents");
                     }}
                   >
