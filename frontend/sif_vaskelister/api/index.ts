@@ -93,6 +93,7 @@ export async function getAllPages<T>(
  * @param {string} query
  * @param {any} data
  * @param {object} parameters
+ * @param options
  * @returns {Promise<any>}
  */
 export const post = async <T>(

@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 
-import WashlistAdd from "../../atoms/washlistAdd/WashlistAdd";
+import TodoAdd from "../../atoms/TodoAdd/TodoAdd";
 import WashlistItem from "../../atoms/washlistItem/WashlistItem";
 
 import styles from "./index.module.css";
@@ -46,7 +46,7 @@ const Washlist: FC<Props> = ({ context }) => {
             }
           })
           : null}
-        {/* <TodoAdd addTodo={context.addTodo} /> */}
+        <TodoAdd addTodo={context.addTodo} />
       </div>
     </div>
   );
