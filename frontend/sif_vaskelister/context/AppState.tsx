@@ -1,80 +1,14 @@
 import React, { FC, useState } from "react";
 import AppContext from "./appContext";
 import { get, patch, post, deleteRequest} from "../api/index";
-import { AuthUser, User } from "../api/auth";
+import { AuthUser, User } from '../types/user-types';
+import { TemplateItem, TodoItem, WashlistTemplate } from '../types/washlist-types'
+import { Village, Villages } from '../types/village-types'
+import { Dorm } from '../types/dorm-types'
 
 interface Props {
   children: React.ReactNode;
 }
-
-export interface TempItem{
-  id: number;
-  description: string;
-  washlist: number;
-}
-
-interface Manager {
-  id: number;
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  dormroom: number;
-  groups: number[];
-  manager_villages: number[];
-  is_manager: boolean;
-  is_student:  boolean;
-}
-
-interface Village {
-  id: number;
-  managers: Manager[];
-  dormrooms: number[];
-  name: string;
-  templateWashList: number[];
-}
-
-interface WashlistTemplate {
-  id: number;
-  title: string;
-  villages: Village[];
-  template_items: TempItem[];
-}
-
-interface TodoItem {
-  id: number;
-  description: string;
-  completed: boolean;
-  dormroom_id: number;
-  template: number;
-}
-
-interface Dorm {
-  id: number;
-  number: number;
-  residents: User[];
-  village: Village;
-  items: TodoItem[];
-}
-
-interface SIFUser {
-  id: number;
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  dormroom: number;
-  groups: number[];
-  manager_villages: number[];
-  is_manager: boolean;
-  is_student: boolean;
-}
-
-
-interface Villages {
-  villages: Village[];
-}
-
 
 
 const AppState: FC<Props> = ({ children }) => {
@@ -229,7 +163,7 @@ const addTodoManager = async (text: string) => {
     setTodos(items);
   };
 
-  const removeTodo = async (todo: TempItem ) => {
+  const removeTodo = async (todo: TemplateItem ) => {
     await deleteRequest("/api/template_washlistitem/" + todo.id + '/', {}, {}, { token: user });
     if(villageId){
       getTemplate(villageId);
