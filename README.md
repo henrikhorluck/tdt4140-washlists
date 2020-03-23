@@ -2,6 +2,7 @@
 
 Studentsamskipnaden i fredrikstad vaskelister - SIF vaskelister
 
+Vaskelisteordning for Studentsamskipnaden i Fredrikstad, et system for å organisere vasking av kollektiv i studentbyene til SIF.
 
 ## Running the django server
 
