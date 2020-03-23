@@ -8,6 +8,8 @@ To run the frontend you wold have to make a file called *next.config.js* contain
     },
   }</code></pre>
 
+ to get a `client_id` and `cliend_secret` you have to register an application at `localhost:8000/o/applications/register/` when the django backed is running. See #41 for an explanation with images. 
+
 ## Available Scripts
 
 In the project directory, you can run:

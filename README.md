@@ -1,10 +1,21 @@
 # 28
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 
-Studentsamskipnaden i fredrikstad vaskelister - SIF vaskelister
+This is a web based system for organising cleaning via shared cleaning list. 
+The system is designed and developed for "Studentsamskipnaden i fredrikstad SIF" a student housing organization in Fredrikstad. 
 
+An image of the login page
+
+![](/uploads/855ef9c2f8fb3b0b9fad9521a9f8c2a0/image.png)
+
+## Basic architecture description
+The cleaning organising system is web application. It is split into a [`django back-end`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react front-end`](https://reactjs.org/).
+
+The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/patch-1/frontend/sif_vaskelister).
+The back-end code is located in the [`sif_vaskelister folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/patch-1/sif_vaskelister).
 
 ## Running the django server
-
+The instructions for installing python + the backend project dependencies are for a linux based operating system.
 ### Installing python in a virtualenvironment
 First, install python 3.8 and create a virtual environment
 ```
@@ -51,21 +62,4 @@ For running django there is a script called `/28/sif_vaskelister/run.sh`. All th
 Now the backend should be running at http://127.0.0.1:8000/admin/
 
 ## Running the frontend
-A short form instruction on how to run the frontend. 
-### Install dependencies
-Go to `/28/frontend/sif_vaskelister`, then install dependencies from the lockfile
-```
-npm ci
-```
-### Add authentication for the frontend
-First we create a token+ID set via django. So run django, then go to this URL http://127.0.0.1:8000/o/applications/register/ and create a set of credentials with `Client type = confidential` and `Authorization grant type= Resource owner password-based`. Copy the clientID and ClientSecret into the variables defined in the file `/frontend/sif_vaskelister/components/api/auth.ts`. For a picture of the credentials page see issue #41
-
-Now you should be able to authenticate and access data from django through the front-end. 
-
-### Build and run
-First build, then run the react project. 
-```
-npm run build
-npm start
-```
-Now the frontend should be running at http://localhost:3000/
+For instructions on starting the front-end see the [`front-end readme`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/blob/patch-1/frontend/sif_vaskelister/README.md)
