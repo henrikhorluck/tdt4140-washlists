@@ -93,21 +93,10 @@ const AppState: FC<Props> = ({ children }) => {
       {},
       { token: user }
     );
-    console.log(template)
     setVillageId(village);
     setTemplate(template);
   };
 
-  // const getDormManager = async (id: number) => {
-  //   const dorm = await get<Dorm>("/api/dormroom/" + id, {}, { token: user });
-  //   setDorm(dorm);
-  //   const todoList = await get<TodoList>(
-  //     "/api/washlist/" + dorm.id,
-  //     {},
-  //     { token: user }
-  //   );
-  //   setTodos(todoList);
-  // };
 
   const getTodoList = async () => {
     const dorm = await get<Dorm>(
