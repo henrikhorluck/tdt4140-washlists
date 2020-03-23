@@ -1,8 +1,13 @@
 # 28
 
-Studentsamskipnaden i fredrikstad vaskelister - SIF vaskelister
+This is a web based system for organising cleaning via shared cleaning list. 
+The system is designed and developed for "Studentsamskipnaden i fredrikstad SIF" a student housing organization in Fredrikstad. 
 
-Vaskelisteordning for Studentsamskipnaden i Fredrikstad, et system for å organisere vasking av kollektiv i studentbyene til SIF.
+## Basic architecture description
+The cleaning organising system is web application. It is split into a [`django back-end`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react front-end`](https://reactjs.org/).
+
+The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/patch-1/frontend/sif_vaskelister).
+The back-end code is located in the [`sif_vaskelister folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/patch-1/sif_vaskelister).
 
 ## Running the django server
 
