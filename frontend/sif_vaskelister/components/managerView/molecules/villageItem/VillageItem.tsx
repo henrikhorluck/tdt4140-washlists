@@ -64,9 +64,10 @@ interface Props {
     village: Village;
     dorms: Dorm[];
     getTemplate: any;
+    getResidents: any;
 }
 
-const VillageItem: FC<Props> = ({village, dorms, getTemplate}) => {
+const VillageItem: FC<Props> = ({village, dorms, getTemplate, getResidents}) => {
     const count = (items: Item[]) => {
       let checked = 0;
       items.forEach(item => item.completed ? checked += 1 : null);
@@ -92,7 +93,16 @@ const VillageItem: FC<Props> = ({village, dorms, getTemplate}) => {
           {dorms ? dorms.map((dorm: Dorm, i: number) => (
               dorm.village.id === village.id ?
               <ul key={i} className={styles.item}>
-                <li><Link href="/"><a>{dorm.number}</a></Link></li>
+                <li>
+                  <button
+                    onClick={() => {
+                      getResidents(dorm.id)
+                      Router.push("/residents");
+                    }}
+                  >
+                    {dorm.number}
+                  </button>
+                </li>
                 <li>{dorm.residents.length}</li>
                 <li>{count(dorm.items)}/{dorm.items.length}</li>
               </ul> : null

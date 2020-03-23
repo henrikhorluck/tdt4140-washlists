@@ -27,17 +27,17 @@ interface Props {
       };
     };
   };
-  getTemplate: any;
+  context: any;
 }
 
-const DromItem: FC<Props> = ({ dorm, getTemplate }) => {
+const DromItem: FC<Props> = ({ dorm, context }) => {
   return (
     <ul className={styles.item}>
       <li>
         <button
           onClick={() => {
-            getTemplate(dorm.village.id);
-            Router.push("/washlist-template");
+            context.getResidents(dorm.id)
+            Router.push("/residents");
           }}
         >
           {dorm.number}

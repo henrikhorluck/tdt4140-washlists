@@ -1,0 +1,15 @@
+.items {
+    list-style-type: none;
+    padding: 0;
+    overflow: scroll;
+  }
+
+.listArea{
+    /* border-width: 0px 0px 1px 0px;
+    border-color: black ;
+    border-style: solid; */
+    background-color: whitesmoke;
+    padding: 10px 20px 10px 20px;
+    height: 150px;
+    margin-bottom: 5px;
+}

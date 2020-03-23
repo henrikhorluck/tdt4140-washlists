@@ -33,6 +33,7 @@ const LoginSection: FC<Props> = ({ context }) => {
           required
           value={username}
           onChange={e => setUsername(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' ? handleLogin(username, password) : null }
         />
       </label>
       <label>
@@ -43,6 +44,7 @@ const LoginSection: FC<Props> = ({ context }) => {
           required
           onChange={e => setPassword(e.target.value)}
           value={password}
+          onKeyDown={(e) => e.key === 'Enter' ? handleLogin(username, password) : null }
         />
       </label>
       {/* <label>
