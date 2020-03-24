@@ -1,34 +1,34 @@
 import React, { FC, useEffect } from "react";
 import ResidentsList from '../../molecules/residentsList/ResidentsList'
 import ResidentsDropdown from '../../atoms/residentsDropdown/ResidentsDropdown'
-import Router from "next/router";
 
 import styles from "./ResidentsPage.module.css";
+import Link from "next/link";
+import { State } from "../../../../context/AppState";
 
 
 interface Props {
-  context: any;
+  context: State;
 }
 
 const ResidentsPage: FC<Props> = ({ context }) => {
 
   useEffect(() => {
-    context.getAvailableUsers()
-  }, [])
+    context.getAvailableUsers && context.getAvailableUsers()
+  }, []);
 
   return (
     <div className={styles.wrapper}>
-      <button
-        className={styles.button}
-        type="button"
-        onClick={() => {
-          Router.push("/manager-view");
-        }}
-      >
-        <p>Tilbake</p>
-      </button>
+      <Link href="/manager-view">
+        <button
+          className={styles.button}
+          type="button"
+        >
+          <p>Tilbake</p>
+        </button>
+      </Link>
       <h1>Beboere i kollektiv {context.dorm ? context.dorm.id : null}</h1>
-      <ResidentsList context={context} />
+      <ResidentsList context={context}/>
       <ResidentsDropdown context={context}/>
     </div>
   );

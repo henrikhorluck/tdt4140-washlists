@@ -2,29 +2,30 @@ import styles from "./login.module.css";
 import React, { FC, useState } from "react";
 import { login } from "../../../../api/auth";
 import Router from "next/router";
+import { State } from "../../../../context/AppState";
 
 interface Props {
-  context: any;
+  context: State;
 }
 
-const LoginSection: FC<Props> = ({ context }) => {
+const LoginSection: FC<Props> = ({ context: { storeUser } }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (username: string, password: string) => {
     const user = await login(username, password);
-    context.storeUser(user);
-    const errorMessage = document.getElementById('errorMessage')
-    if(!user.user?.id && errorMessage){
+    storeUser && storeUser(user);
+    const errorMessage = document.getElementById('errorMessage');
+    if (!user.user?.id && errorMessage) {
       errorMessage.style.display = 'block';
-    }else{
+    } else {
       (user.user?.dormroom != null) ? await Router.push("/user-washlist") : await Router.push("/manager-view");
     }
   };
 
   return (
     <>
-    <p className={styles.error} id='errorMessage' >Brukernavn og/eller Passord er feil</p>
+      <p className={styles.error} id='errorMessage'>Brukernavn og/eller Passord er feil</p>
       <label>
         <p className={styles.label}>Brukernavn</p>
         <input
@@ -33,7 +34,7 @@ const LoginSection: FC<Props> = ({ context }) => {
           required
           value={username}
           onChange={e => setUsername(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' ? handleLogin(username, password) : null }
+          onKeyDown={(e) => e.key === 'Enter' ? handleLogin(username, password) : null}
         />
       </label>
       <label>
@@ -44,7 +45,7 @@ const LoginSection: FC<Props> = ({ context }) => {
           required
           onChange={e => setPassword(e.target.value)}
           value={password}
-          onKeyDown={(e) => e.key === 'Enter' ? handleLogin(username, password) : null }
+          onKeyDown={(e) => e.key === 'Enter' ? handleLogin(username, password) : null}
         />
       </label>
       <button

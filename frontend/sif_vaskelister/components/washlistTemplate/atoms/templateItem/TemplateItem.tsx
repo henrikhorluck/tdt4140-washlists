@@ -8,16 +8,19 @@ interface Props {
   id: number;
   removeTodo: (n: TempItem) => void;
 }
+
 const TemplateItem: FC<Props> = ({
-  todo,
-  id,
-  // completeTodo,
-  removeTodo
-}) => {
+                                   todo,
+                                   id,
+                                   // completeTodo,
+                                   removeTodo
+                                 }) => {
   return (
     <div className={styles.todo}>
       {todo.description}
-      <div><button onClick={() => removeTodo(todo)}> Slett</button></div>
+      <div>
+        <button onClick={() => removeTodo(todo)}> Slett</button>
+      </div>
     </div>
   );
 };

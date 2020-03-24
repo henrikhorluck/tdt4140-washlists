@@ -1,7 +1,6 @@
 import ClientOAuth2 from "client-oauth2";
 import { get } from ".";
-import { User, AuthUser } from '../types/user-types'
-
+import { AuthUser, User } from "../types/user-types";
 
 const vaskelisteAuth = new ClientOAuth2({
   clientId: process.env.CLIENT_ID,

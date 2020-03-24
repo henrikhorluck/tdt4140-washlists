@@ -6,13 +6,14 @@ import styles from "./index.module.css";
 interface Props {
   todo: TodoItem;
   id: number;
-  completeTodo: (n: number) => void;
+  completeTodo?: (n: number) => void;
 }
+
 const WashlistItem: FC<Props> = ({
-  todo,
-  id,
-  completeTodo
-}) => {
+                                   todo,
+                                   id,
+                                   completeTodo
+                                 }) => {
   return (
     <div
       style={{ textDecoration: todo.completed ? "line-through" : "" }}
@@ -22,7 +23,7 @@ const WashlistItem: FC<Props> = ({
       <div>
         <button
           style={{ visibility: todo.completed ? "hidden" : "visible" }}
-          onClick={() => completeTodo(id)}
+          onClick={() => completeTodo && completeTodo(id)}
         >
           {" "}
           Fullført
