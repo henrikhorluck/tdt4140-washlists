@@ -1,13 +1,13 @@
-.wrapper{
-    display: flex;
-    flex-direction: column;
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .button {
-    height: 10px;
-    border: none;
-    background-color: rgb(141, 143, 51);
-    text-align: center;
-    text-decoration: underline;
-    margin-left: 80%;
-  }
+  height: 10px;
+  border: none;
+  background-color: rgb(141, 143, 51);
+  text-align: center;
+  text-decoration: underline;
+  margin-left: 80%;
+}

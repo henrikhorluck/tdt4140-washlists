@@ -1,15 +1,40 @@
 import React, { FC, useState } from "react";
 import AppContext from "./appContext";
-import { get, patch, post, deleteRequest} from "../api/index";
-import { AuthUser, User } from '../types/user-types';
-import { TempItem, TodoItem, WashlistTemplate } from '../types/washlist-types'
-import { Village, Villages } from '../types/village-types'
-import { Dorm } from '../types/dorm-types'
+import { deleteRequest, get, patch, post } from "../api";
+import { AuthUser, User } from "../types/user-types";
+import { TempItem, TodoItem, WashlistTemplate } from "../types/washlist-types";
+import { Village } from "../types/village-types";
+import { Dorm } from "../types/dorm-types";
 
 interface Props {
   children: React.ReactNode;
 }
 
+export interface State {
+  user?: AuthUser;
+  dorm?: Dorm;
+  village?: Village;
+  todos?: TodoItem[];
+  dorms?: Dorm[];
+  villages?: Village[];
+  template?: WashlistTemplate;
+  availableUsers?: User[];
+  getTodoList?: () => Promise<void>;
+  getDorm?: () => Promise<void>;
+  getVillages?: () => Promise<void>;
+  getDorms?: () => Promise<void>;
+  getTemplate?: (templateWashlist?: number, village?: Village) => Promise<void>;
+  addUser?: (userId: number, dormId: number) => Promise<void>;
+  getResidents?: (id: number) => Promise<void>;
+  getVillage?: (id: number) => Promise<void>;
+  getAvailableUsers?: () => Promise<void>;
+  addTodo?: (text: string) => Promise<void>;
+  removeTodo?: (todo: TempItem) => Promise<void>;
+  completeTodo?: (id: number) => Promise<void>;
+  removeUser?: (userId: number, dormId: number) => Promise<void>;
+  storeUser?: (userToStore: AuthUser) => void;
+  addTodoManager?: (text: string) => Promise<void>;
+}
 
 const AppState: FC<Props> = ({ children }) => {
   // DATA:
@@ -21,21 +46,28 @@ const AppState: FC<Props> = ({ children }) => {
 
   const [dorms, setDorms] = useState<Dorm[]>();
   const [dorm, setDorm] = useState<Dorm>();
-  const [template, setTemplate] = useState<WashlistTemplate>()
-  const [villageId, setVillageId] = useState<number>()
+  const [template, setTemplate] = useState<WashlistTemplate>();
 
-  const [villages, setVillages] = useState<Villages>();
+  const [villages, setVillages] = useState<Village[]>();
   const [village, setVillage] = useState<Village>();
 
   // METHODS:
 
   const getVillages = async () => {
-    const villages = await get<Villages>("/api/villages/", {}, {token: user});
+    const villages = await get<Village[]>(
+      "/api/villages/",
+      {},
+      { token: user }
+    );
     setVillages(villages);
   };
 
   const getVillage = async (id: number) => {
-    const village = await get<Village>("/api/villages/" + id, {}, {token: user});
+    const village = await get<Village>(
+      "/api/villages/" + id,
+      {},
+      { token: user }
+    );
     setVillage(village);
   };
 
@@ -49,33 +81,34 @@ const AppState: FC<Props> = ({ children }) => {
     setDorm(dorm);
   };
 
-
   const getAvailableUsers = async () => {
     const users = await get<User[]>("/api/users/", {}, { token: user });
-    const availableUsers = users.filter(user => (user.dormroom === null && user.is_student))
+    const availableUsers = users.filter(
+      user => user.dormroom === null && user.is_student
+    );
     setAvailableUsers(availableUsers);
   };
 
   const addUser = async (userId: number, dormId: number) => {
     await patch({
-      query: "/api/users/" + userId + '/',
+      query: "/api/users/" + userId + "/",
       data: { dormroom: dormId },
       parameters: {},
       options: { token: user }
     });
-    getResidents(dormId);
-    getAvailableUsers();
+    await getResidents(dormId);
+    await getAvailableUsers();
   };
 
   const removeUser = async (userId: number, dormId: number) => {
     await patch({
-      query: "/api/users/" + userId + '/',
+      query: "/api/users/" + userId + "/",
       data: { dormroom: null },
       parameters: {},
       options: { token: user }
     });
-    getResidents(dormId);
-    getAvailableUsers();
+    await getResidents(dormId);
+    await getAvailableUsers();
   };
 
   const getDorm = async () => {
@@ -87,16 +120,34 @@ const AppState: FC<Props> = ({ children }) => {
     setDorm(dorm);
   };
 
-  const getTemplate = async (village: number) => {
-    const template = await get<WashlistTemplate>(
-      "/api/template_washlist/" + village,
-      {},
-      { token: user }
-    );
-    setVillageId(village);
+  const getTemplate = async (templateWashlist?: number, village?: Village) => {
+    const template = templateWashlist
+      ? await get<WashlistTemplate>(
+        "/api/template_washlist/" + templateWashlist,
+        {},
+        { token: user }
+      )
+      : await post<WashlistTemplate>(
+        "/api/template_washlist/",
+        { "title": village?.name + " vaskeliste" },
+        {},
+        { token: user }
+      );
+
+    // Link Template and village, this only happens if there are already villages in state
+    if (template?.villages.length === 0) {
+      const updated_village = await patch<Village>({
+        query: "/api/villages/" + village!.id + "/",
+        data: { templateWashList: template.id },
+        parameters: {},
+        options: { token: user }
+      });
+      setVillages([updated_village, ...villages!.filter(v => v.id !== updated_village.id)])
+      template.villages = [updated_village]
+    }
+
     setTemplate(template);
   };
-
 
   const getTodoList = async () => {
     const dorm = await get<Dorm>(
@@ -111,8 +162,8 @@ const AppState: FC<Props> = ({ children }) => {
 
   const addTodo = async (text: string) => {
     const washlist = {
-      "description": text,
-      "dormroom_id": dorm?.id,
+      description: text,
+      dormroom_id: dorm?.id
     };
     await post("/api/washlistitem/", { ...washlist }, {}, { token: user });
     const newTodoList = await get<Dorm>(
@@ -121,20 +172,20 @@ const AppState: FC<Props> = ({ children }) => {
       { token: user }
     );
     setTodos(newTodoList.items);
-  }
-const addTodoManager = async (text: string) => {
-  const washlist = {
+  };
+  const addTodoManager = async (text: string) => {
+    const washlist = {
       description: text,
-      washlist: villageId
+      washlist: template!.id
     };
     await post("/api/template_washlistitem/", { ...washlist }, {}, { token: user });
-    if(villageId){
-      getTemplate(villageId);
+    if (template?.id) {
+      await getTemplate(template.id);
     }
   };
 
   const completeTodo = async (id: number) => {
-    const completedTodo = todos?.find((item: any) => item.id == id);
+    const completedTodo = todos?.find((item: TodoItem) => item.id == id);
     const completed = completedTodo ? (completedTodo.completed = true) : null;
     await patch({
       query: "/api/washlistitem/" + id + "/",
@@ -152,10 +203,10 @@ const addTodoManager = async (text: string) => {
     setTodos(items);
   };
 
-  const removeTodo = async (todo: TempItem ) => {
+  const removeTodo = async (todo: TempItem) => {
     await deleteRequest("/api/template_washlistitem/" + todo.id + '/', {}, {}, { token: user });
-    if(villageId){
-      getTemplate(villageId);
+    if (template?.id) {
+      await getTemplate(template.id);
     }
   };
 
@@ -163,7 +214,7 @@ const addTodoManager = async (text: string) => {
     setUser(userToStore);
   };
 
-  const state: any = {
+  const state: State = {
     villages,
     getVillages,
     village,

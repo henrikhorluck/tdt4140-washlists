@@ -38,14 +38,15 @@ const performRequest = async (
   if (response.status === 204) {
     return null;
   }
-  const data = await response.json();
-
-  return data;
+  return await response.json();
 };
 
 /**
  * @summary Simple fetch-API wrapper for HTTP GET
+ * @template T
  * @param {string} query API endpoint URL
+ * @param parameters
+ * @param options
  * @returns {Promise<T>} API data
  */
 export const get = async <T>(
@@ -60,7 +61,8 @@ export const get = async <T>(
 /**
  * @summary Returns all pages of results from a standard REST API endpoint.
  * @param query The API endpoint to fetch results from.
- * @param page An optional page to start fetching data on.
+ * @param parameters
+ * @param options
  */
 export async function getAllPages<T>(
   query: string,
@@ -83,18 +85,17 @@ export async function getAllPages<T>(
   );
   /** Await all the fetches to a single array */
   const data: Array<APIData<T>> = await Promise.all(requests);
-  /** Reduce all results to a single array for all objects in the resource */
-  const results = data.reduce<T[]>((res, d) => res.concat(d.results), []);
-  return results;
+  return data.reduce<T[]>((res, d) => res.concat(d.results), []);
 }
 
 /**
  * @summary Simple fetch-API wrapper for HTTP POST
+ * @template T
  * @param {string} query
- * @param {any} data
+ * @param {T} data
  * @param {object} parameters
  * @param options
- * @returns {Promise<any>}
+ * @returns {Promise<T>}
  */
 export const post = async <T>(
   query: string,

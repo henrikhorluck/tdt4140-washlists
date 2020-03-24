@@ -12,10 +12,10 @@ const Main: FC<Props> = ({ children }) => {
     <>
       <Head>
         <title>SIF Vaskelister - Hjem</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico"/>
       </Head>
 
-      <Nav />
+      <Nav/>
 
       <div className={styles.test}>{children}</div>
     </>

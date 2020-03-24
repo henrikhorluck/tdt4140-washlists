@@ -1,13 +1,9 @@
-import { Manager } from './user-types'
+import { User } from "./user-types";
 
 export interface Village {
-    id: number;
-    managers: Manager[];
-    dormrooms: number[];
-    name: string;
-    templateWashList: number[];
-  }
-
-  export interface Villages {
-    villages: Village[];
-  }
+  id: number;
+  managers: User[];
+  dormrooms: number[];
+  name: string;
+  templateWashList?: number;
+}
