@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from Dormroom.models import Dormroom
+from StudentVillage.models import StudentVillage
 from StudentVillage.serializer import StudentVillageSerializer
 from washlist.models.Templates import TemplateListItem, TemplateWashList
 from washlist.models.WashLists import ListItem
@@ -30,8 +31,8 @@ class TemplateListItemSerializer(serializers.ModelSerializer):
 
 
 class TemplateWashListSerializer(serializers.ModelSerializer):
-    villages = StudentVillageSerializer(many=True)
-    template_items = TemplateListItemSerializer(many=True)
+    villages = StudentVillageSerializer(many=True, required=False)
+    template_items = TemplateListItemSerializer(many=True, required=False)
 
     class Meta:
         model = TemplateWashList

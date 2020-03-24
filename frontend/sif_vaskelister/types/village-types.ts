@@ -5,5 +5,5 @@ export interface Village {
   managers: User[];
   dormrooms: number[];
   name: string;
-  templateWashList: number[];
+  templateWashList?: number;
 }

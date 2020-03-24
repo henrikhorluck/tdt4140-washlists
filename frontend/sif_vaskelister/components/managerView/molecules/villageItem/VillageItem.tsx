@@ -4,13 +4,14 @@ import { TodoItem } from '../../../../types/washlist-types'
 import { Dorm } from '../../../../types/dorm-types'
 import styles from "./VillageItem.module.css"
 import Link from "next/link";
+import { State } from "../../../../context/AppState";
 
 
 interface Props {
   village: Village;
   dorms?: Dorm[];
-  getTemplate?: (village: number) => Promise<void>;
-  getResidents?: (id: number) => Promise<void>;
+  getTemplate?: State["getTemplate"];
+  getResidents?: State["getResidents"];
 }
 
 const VillageItem: FC<Props> = ({ village, dorms, getTemplate, getResidents }) => {
@@ -26,7 +27,7 @@ const VillageItem: FC<Props> = ({ village, dorms, getTemplate, getResidents }) =
       <Link href="/washlist-template">
         <button type="button"
                 onClick={() => {
-                  getTemplate && getTemplate(village.id);
+                  getTemplate && getTemplate(village.templateWashList, village);
                 }}
         >
           Endre vaskeliste

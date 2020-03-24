@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 
 import TemplateAdd from "../../atoms/templateAdd/TemplateAdd";
 import TemplateItem from "../../atoms/templateItem/TemplateItem";
@@ -16,7 +16,7 @@ const TemplateList: FC<Props> = ({ context }) => {
   return (
     <div className={styles.page}>
       <Link href="/manager-view">
-        Tilbake
+        <a>Tilbake</a>
       </Link>
       <div className={styles.list}>
         <h1>VASKELISTEMAL</h1>
