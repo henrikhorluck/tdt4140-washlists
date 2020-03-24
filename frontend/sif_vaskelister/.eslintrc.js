@@ -15,4 +15,9 @@ module.exports = {
         "@typescript-eslint/explicit-function-return-type": 0,
         "@typescript-eslint/camelcase": 0
     },
+    settings: {
+        "react": {
+            "version": "detect"
+        }
+    }
 };
