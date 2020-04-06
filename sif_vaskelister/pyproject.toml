@@ -35,8 +35,10 @@ sections = [ "FUTURE",
              "LOCALFOLDER" ]
 
 [tool.coverage.run]
-source = ["Dormroom", "sif_vaskelister", "SIFUser", "StudentVillage", "washlist"]
-omit = ["*/migrations/*", "tests.py", "*_test.py", "*_tests.py"]
+source = ["Dormroom", "SIFUser", "StudentVillage", "washlist"]
+
+[tool.coverage.report]
+omit = ["*/migrations/*", "*/tests.py", "*_test.py", "*_tests.py"]
 
 [build-system]
 requires = ["poetry>=0.12"]
