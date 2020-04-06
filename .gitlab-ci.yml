@@ -24,7 +24,8 @@ test:
     - cd sif_vaskelister
     - pip install poetry
     - poetry install
-    - python manage.py test
+    - coverage run ./manage.py test
+    - coverage report
 
 variables:
   POETRY_VIRTUALENVS_CREATE: "false"
