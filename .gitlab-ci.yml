@@ -1,13 +1,22 @@
 cache:
+  key: one-key-to-rule-them-all
   paths:
-    - ~/.cache/pip/
+    - .cache/pip
+    - venv/
 
-lint-python:
-  image: python:3.8
-  script:
+.before_script_template:
+  before_script:
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
     - cd sif_vaskelister
     - pip install poetry
     - poetry install
+
+lint-python:
+  image: python:3.8
+  extends: .before_script_template
+  script:
     - isort -rc -c .
     - black --check .
 
@@ -20,11 +29,11 @@ lint-typescript:
 
 test:
   image: python:3.8
+  extends: .before_script_template
   script:
-    - cd sif_vaskelister
-    - pip install poetry
-    - poetry install
-    - python manage.py test
+    - coverage run ./manage.py test
+    - coverage report
 
 variables:
   POETRY_VIRTUALENVS_CREATE: "false"
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
