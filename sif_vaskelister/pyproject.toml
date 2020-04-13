@@ -2,7 +2,10 @@
 name = "sif_vaskelister"
 version = "0.1.0"
 description = "A web cleaning management system"
-authors = ["Aksel Lenes <aksel.lenes@gmail.com>"]
+authors = [
+"Aksel Lenes <aksel.lenes@gmail.com>",
+"Henrik Hørlück Berg <henrik@horluck.no>",
+]
 license = "MIT"
 
 [tool.poetry.dependencies]
