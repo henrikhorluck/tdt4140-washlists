@@ -9,11 +9,12 @@ from SIFUser.models import User
 
 class AuthTestMixin(APITestCase):
     def setUp(self):
-        self.user = User.objects.create(email="test@example.com", password="hunter2")
+        self.user = User.objects.create(
+            username="admin", email="test@example.com", password="hunter2"
+        )
         self.application = Application.objects.create(
             name="Test Application",
             redirect_uris="http://localhost",
-            user=self.user,
             client_type=Application.CLIENT_CONFIDENTIAL,
             authorization_grant_type=Application.GRANT_AUTHORIZATION_CODE,
         )
