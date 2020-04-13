@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 
+from rest_framework import status
+
 from Dormroom.models import Dormroom
 from SIFUser.mixins import AuthTestMixin
 from StudentVillage.models import StudentVillage
@@ -70,14 +72,59 @@ class WashlistTemplateAPITest(AuthTestMixin):
             pk=1, dormroom=self.room, desc="Vask badet", completed=True
         )
 
-    def test_get_template(self):
+    def test_get_template_list(self):
         url = reverse("templatewashlist-list")
         response = self.client.get(url, HTTP_AUTHORIZATION=self.auth)
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data[0],
             TemplateWashListSerializer(
                 TemplateWashList.objects.get(title="Moholt")
             ).data,
         )
+
+    def test_get_detail_template_list(self):
+        url = reverse("templatewashlist-detail", args=[1])
+        response = self.client.get(url, HTTP_AUTHORIZATION=self.auth)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data,
+            TemplateWashListSerializer(
+                TemplateWashList.objects.get(title="Moholt")
+            ).data,
+        )
+
+    def test_add_template_washlist(self):
+        url = reverse("templatewashlist-list")
+        response = self.client.post(
+            url, {"title": "Tyholt", "village": 1}, HTTP_AUTHORIZATION=self.auth
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(
+            response.data,
+            TemplateWashListSerializer(
+                TemplateWashList.objects.get(title="Tyholt")
+            ).data,
+        )
+
+    def test_partial_update(self):
+        url = reverse("templatewashlist-detail", args=[1])
+        response = self.client.patch(
+            url, {"title": "Berg"}, HTTP_AUTHORIZATION=self.auth
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data,
+            TemplateWashListSerializer(TemplateWashList.objects.get(title="Berg")).data,
+        )
+
+    def test_destroy(self):
+        url = reverse("templatewashlist-detail", args=[1])
+        response = self.client.delete(url, HTTP_AUTHORIZATION=self.auth)
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(TemplateWashList.objects.count(), 0)
