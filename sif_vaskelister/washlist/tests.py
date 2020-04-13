@@ -1,10 +1,13 @@
 from django.test import TestCase
+from django.urls import reverse
 
 from Dormroom.models import Dormroom
+from SIFUser.mixins import AuthTestMixin
 from StudentVillage.models import StudentVillage
 from washlist.jobs import reset_washlists
 from washlist.models.Templates import TemplateListItem, TemplateWashList
 from washlist.models.WashLists import ListItem
+from washlist.serializer import TemplateWashListSerializer
 
 
 class WashListTemplateTest(TestCase):
@@ -53,3 +56,28 @@ class WeeklyResetOfWashlistsTest(TestCase):
         """
         reset_washlists()
         self.assertEqual(False, ListItem.objects.get(pk=1).completed)
+
+
+class WashlistTemplateAPITest(AuthTestMixin):
+    def setUp(self):
+        super().setUp()
+        self.temp_list = TemplateWashList.objects.create(title="Moholt")
+        village = StudentVillage.objects.create(
+            name="Moholt", templateWashList=self.temp_list
+        )
+        self.room = Dormroom.objects.create(number=1, village=village)
+        self.item = ListItem.objects.create(
+            pk=1, dormroom=self.room, desc="Vask badet", completed=True
+        )
+
+    def test_get_template(self):
+        url = reverse("templatewashlist-list")
+        response = self.client.get(url, HTTP_AUTHORIZATION=self.auth)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.data[0],
+            TemplateWashListSerializer(
+                TemplateWashList.objects.get(title="Moholt")
+            ).data,
+        )
