@@ -6,13 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watch",
+    "test": "jest",
     "test:ci": "jest --ci"
   },
   "dependencies": {
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/react-test-renderer": "^16.9.2",
     "client-oauth2": "^4.2.5",
+    "fetch-mock": "^9.3.1",
     "next": "9.2.1",
     "react": "16.12.0",
     "react-dom": "16.12.0"

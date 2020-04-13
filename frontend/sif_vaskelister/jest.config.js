@@ -4,15 +4,18 @@ module.exports = {
     "roots": [
       "<rootDir>/components",
       "<rootDir>/pages",
-      "<rootDir>/_tests_"
+      "<rootDir>/_tests_",
+      "<rootDir>/api"
     ],
-    "collectCoverage": true,
     "preset": 'ts-jest',
     "setupFilesAfterEnv": ["<rootDir>/setupTests.ts"],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "modulePaths": [
+      "<rootDir>/__mocks__"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -35,5 +38,7 @@ module.exports = {
       "ts-jest": {
         "tsConfig": "<rootDir>/tsconfig.jest.json"
       }
-    }
+    },
+    "collectCoverage": true,
+    "automock": false,
   }

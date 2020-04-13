@@ -20,30 +20,3 @@ export const toQueryString = (queryObject: Query): string => {
   return `?${queries.join("&")}`;
 };
 
-/**
- * TODO: Add validation
- * @param {string} queryString e.g. ?foo=bar&hello=world
- * @return {object} e.g. {foo: 'bar', hello: 'world'}
- */
-export const toQueryObject = (queryString: string): Query => {
-  if (queryString.startsWith("?")) {
-    queryString = queryString.substring(1);
-  }
-  /*let queryObject: IQueryObject = {}
-  for (const query of queryString.split('&')) {
-    const pair = query.split('=');
-    queryObject[pair[0]] = pair[1];
-  }*/
-  const queryObject = queryString
-    .split("&")
-    .map((query: string) => {
-      const pair = query.split("=");
-      return { [pair[0]]: pair[1] };
-    })
-    .reduce((accumulator, query) => {
-      accumulator[query.key] = query[query.key];
-      return accumulator;
-    });
-
-  return queryObject;
-};

@@ -58,35 +58,6 @@ export const get = async <T>(
   return performRequest(query, parameters, options);
 };
 
-/**
- * @summary Returns all pages of results from a standard REST API endpoint.
- * @param query The API endpoint to fetch results from.
- * @param parameters
- * @param options
- */
-export async function getAllPages<T>(
-  query: string,
-  parameters: BaseAPIParameters = {},
-  options: RequestOptions = {}
-): Promise<T[]> {
-  const { page = 1, page_size = 80 } = parameters;
-  /** Get the amount of objects to get in total by fetching a single object */
-  const { count }: APIData<T> = await get<APIData<T>>(
-    query,
-    { ...parameters, page, page_size: 1 },
-    options
-  );
-  /** Prepare an array with an index for each page which will be fetched */
-  const pageNumber = Math.ceil(count / page_size);
-  const requestCount = [...Array(pageNumber)];
-  /** Initialize the fetches for all the pages at the same time */
-  const requests = requestCount.map((_, i) =>
-    get<APIData<T>>(query, { ...parameters, page: i + 1, page_size }, options)
-  );
-  /** Await all the fetches to a single array */
-  const data: Array<APIData<T>> = await Promise.all(requests);
-  return data.reduce<T[]>((res, d) => res.concat(d.results), []);
-}
 
 /**
  * @summary Simple fetch-API wrapper for HTTP POST
@@ -134,18 +105,6 @@ export interface PutParams<T> {
   options?: RequestOptions;
 }
 
-export const put = async <T, K = Partial<T>>(
-  putParams: PutParams<K>
-): Promise<T> => {
-  const { query, data, parameters = {}, options = {} } = putParams;
-  const headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json"
-  };
-  const body = JSON.stringify(data);
-  const opts = { ...options, method: "PUT", body, headers };
-  return performRequest(query, parameters, opts);
-};
 
 export const patch = async <T, K = Partial<T>>(
   patchParams: PutParams<K>
