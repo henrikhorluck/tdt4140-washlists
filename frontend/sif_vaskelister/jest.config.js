@@ -23,6 +23,9 @@ module.exports = {
     ],
     "testPathIgnorePatterns": ["<rootDir>/.next/", "<rootDir>/node_modules/"],
     "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    },
   
     // https://github.com/zeit/next.js/issues/8663#issue-490553899
     "globals": {

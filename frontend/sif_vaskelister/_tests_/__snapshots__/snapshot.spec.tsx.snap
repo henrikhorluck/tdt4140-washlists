@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <nav>
+    <ul
+      className="test"
+    >
+      <li>
+        <h1
+          className="home"
+        >
+          Sif Vaskelisteordning
+        </h1>
+      </li>
+      <li>
+        <button
+          className="button"
+          onClick={[Function]}
+          type="button"
+        >
+          <p>
+            Logg ut
+          </p>
+        </button>
+      </li>
+    </ul>
+  </nav>,
+  <div
+    className="test"
+  >
+    <h1>
+      Velkommen til SIF Vaskelister!
+    </h1>
+    <h2>
+      Logg inn
+    </h2>
+    <p
+      className="error"
+      id="errorMessage"
+    >
+      Brukernavn og/eller Passord er feil
+    </p>
+    <label>
+      <p
+        className="label"
+      >
+        Brukernavn
+      </p>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Brukernavn"
+        required={true}
+        type="text"
+        value=""
+      />
+    </label>
+    <label>
+      <p
+        className="label"
+      >
+        Passord
+      </p>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Passord"
+        required={true}
+        type="password"
+        value=""
+      />
+    </label>
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      <p>
+        Logg inn
+      </p>
+    </button>
+  </div>,
+]
+`;
