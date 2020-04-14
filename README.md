@@ -14,8 +14,8 @@ An image of the login page
 ## Basic architecture description
 The cleaning organising system is web application. It is split into a [`django back-end`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react front-end`](https://reactjs.org/).
 
-The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/patch-1/frontend/sif_vaskelister).
-The back-end code is located in the [`sif_vaskelister folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/patch-1/sif_vaskelister).
+The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/frontend%2Fsif_vaskelister).
+The back-end code is located in the [`sif_vaskelister folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/sif_vaskelister).
 
 ## Running the django server
 The instructions for installing python + the backend project dependencies are for a linux based operating system.
@@ -65,4 +65,4 @@ For running django there is a script called `/28/sif_vaskelister/run.sh`. All th
 Now the backend should be running at http://127.0.0.1:8000/admin/
 
 ## Running the frontend
-For instructions on starting the front-end see the [`front-end readme`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/blob/patch-1/frontend/sif_vaskelister/README.md)
+Add instructions for running front end here!
