@@ -12,13 +12,14 @@ An image of the login page
 ![](/uploads/855ef9c2f8fb3b0b9fad9521a9f8c2a0/image.png)
 
 ## Basic architecture description
-The cleaning organising system is web application. It is split into a [`django back-end`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react front-end`](https://reactjs.org/).
+The cleaning organising system is a web application. It is split into a [`django back-end`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react front-end`](https://reactjs.org/).
 
-The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/frontend%2Fsif_vaskelister).
-The back-end code is located in the [`sif_vaskelister folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/sif_vaskelister).
+The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/frontend).
+The back-end code is located in the [`backend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/backend).
 
 ## Running the django server
-The instructions for installing python + the backend project dependencies are for a linux based operating system.
+Following are instructions  for installing python 3.8 in a virtual environment and the backend project dependencies. The instructions are are for a linux based operating system. 
+If you already have Python 3.8 installed you can skip ahead to the `Install depdendencies with poetry` section.
 ### Installing python in a virtualenvironment
 First, install python 3.8 and create a virtual environment
 ```
@@ -47,22 +48,22 @@ We use poetry to manage the dependencies of the python project for the backend. 
 ```
 pip install poetry
 ```
-The dependencies of the project are defined in `/28/sif_vaskelister/pyproject.toml`. There is also a lockfile that specifies a specific version of the packages used in the project. We can install dependencies from the lockfile by running poetry install from the `/28/sif_vaskelister/` directory (where the pyproject.toml file is). 
+The dependencies of the project are defined in `/28/backend/pyproject.toml`. There is also a lockfile that specifies a specific version of the packages used in the project. We can install dependencies from the lockfile by running poetry install from the `/28/sif_vaskelister/` directory (where the pyproject.toml file is). 
 ```
 poetry install
 ```
 ### Migrate database
-Now we should be able to run django. To set up the database tables we must migrate the database, to do this run
+Now we should be able to run django. To set up the database tables we must first apply the migrations. To do this run
 ```
 python manage.py migrate
 ```
 
 ### Run django
-For running django there is a script called `/28/sif_vaskelister/run.sh`. All this script does is that is pre-loads the database with some usefull data using fixtures, then it runs `python manage.py runserver`. Thus you can run the django server by doing
+For running django there is a script called `/28/backend/run.sh`. All this script does is that is pre-loads the database with some usefull data using fixtures, then it runs `python manage.py runserver`. Thus you can run the django server by doing
 ```
 ./run.sh
 ```
-Now the backend should be running at http://127.0.0.1:8000/admin/
+Now the backend should be running at http://127.0.0.1:8000/admin/ pre populated with some data for testing the system.
 
 ## Running the frontend
 Add instructions for running front end here!
