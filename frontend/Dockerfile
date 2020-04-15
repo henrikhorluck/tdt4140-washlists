@@ -1,5 +1,8 @@
 FROM node:lts as Builder
 
+ARG SIF_BACKEND_DOMAIN
+ARG SIF_DOMAIN
+
 WORKDIR /usr/src/app
 
 COPY . .
