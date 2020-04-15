@@ -5,7 +5,7 @@ import { AuthUser, User } from "../types/user-types";
 const vaskelisteAuth = new ClientOAuth2({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  accessTokenUri: "http://localhost:8000/o/token/",
+  accessTokenUri: `${process.env.BACKEND_DOMAIN}/o/token/`,
   scopes: ["read", "write"]
 });
 

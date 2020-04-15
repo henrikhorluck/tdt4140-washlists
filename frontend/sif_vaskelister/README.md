@@ -1,14 +1,11 @@
 ## Setup
-To run the frontend you wold have to make a file called *next.config.js* containing this code: 
 
-<pre><code>module.exports = {
-    env: {
-      CLIENT_ID: your_client_id,
-      CLIENT_SECRET: your_client_secret
-    },
-  }</code></pre>
+To run the frontend you would need to set the `SIF_CLIENT_ID` and `SIF_CLIENT_SECRET` envrionment variables, if you are 
+not running the backend through `./run.sh`. 
 
- to get a `client_id` and `cliend_secret` you have to register an application at `localhost:8000/o/applications/register/` when the django backed is running. See #41 for an explanation with images. 
+You can get the values by  
+  registering an application at `<backend-domain>/o/applications/register/` when the django backed is running, the 
+  default domain for local development is `http://localhost:8000`. See #41 for an explanation with images. 
 
 ## Available Scripts
 
