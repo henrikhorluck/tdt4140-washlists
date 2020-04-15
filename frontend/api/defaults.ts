@@ -1,1 +1,1 @@
-export const DOMAIN = process.env.BACKEND_DOMAIN;
+export const DOMAIN = "http://localhost:8000";
