@@ -9,7 +9,7 @@ cache:
     - pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate
-    - cd sif_vaskelister
+    - cd backend
     - pip install poetry
     - poetry install
 
@@ -29,7 +29,7 @@ check-missing-migrations:
 lint-typescript:
   image: node:12
   script:
-    - cd frontend/sif_vaskelister
+    - cd frontend
     - npm ci
     - node_modules/eslint/bin/eslint.js --ext .tsx,.ts .
 
