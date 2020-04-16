@@ -1,5 +1,7 @@
 FROM node:lts as Builder
 
+LABEL maintainer="Henrik Hørlück Berg <henrik@horluck.no>"
+
 ARG SIF_BACKEND_DOMAIN
 ARG SIF_DOMAIN
 
