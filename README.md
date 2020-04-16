@@ -84,6 +84,30 @@ npm run build
 npm run start
 ```
 
+## Testing
+
+To run the unittests in the backend run the following command from the `/backend`-directory, as long as you have installed all the dependencies:
+
+```bash
+python manage.py test
+```
+
+For code-coveage, run the following, also from `/backend`:
+
+```bash
+coverage run manage.py test
+coverage report
+```
+
+To run the tests in the frontend, run the following, from the  `/frontend`-directory:
+```bash
+npm run test
+```
+Or with code coverage:
+```bash
+npm run test --coverage
+```
+
 ## Available environment variables
 
 ### Frontend
