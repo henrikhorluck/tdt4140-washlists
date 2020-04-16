@@ -23,7 +23,7 @@ The back-end code is located in the [`backend folder`](https://gitlab.stud.idi.n
 Following are the instructions for installing the dependencies and running the backend django project.
 The instructions are for a linux based operating system, but should be similar for other operating systems.
 
-## Install Python 3.8 
+### Install Python 3.8 
 First, install python 3.8. See the instructions for installing Python 3.8 at the [Python website](https://www.python.org/downloads/). 
 We also recommend installing the project dependencies in a virtual environment, we have good expriences using [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) for this. 
 
@@ -61,7 +61,7 @@ This is needed to connect the frontend instance with the backend.
 You can see `django-oauth-toolkit`'s [docs](https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html#step-3-register-an-application) for details.
 The default domain for local development is `http://localhost:8000`. See #41 for an explanation with images of how to create a client id and secret.
 
-## Start the front end
+### Start the front end
 
 First move to the `/frontend` directory:
 ```
