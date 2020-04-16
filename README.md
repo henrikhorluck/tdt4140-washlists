@@ -17,34 +17,17 @@ The cleaning organising system is a web application. It is split into a [`django
 The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/frontend).
 The back-end code is located in the [`backend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/backend).
 
-## Running the django server
-Following are instructions  for installing python 3.8 in a virtual environment and the backend project dependencies. The instructions are are for a linux based operating system. 
-If you already have Python 3.8 installed you can skip ahead to the `Install depdendencies with poetry` section.
-### Installing python in a virtualenvironment
-First, install python 3.8 and create a virtual environment
-```
-curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-pyenv update
-```
-Install deps needed for python 3.8
-```
-sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
-libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-xz-utils tk-dev libffi-dev liblzma-dev python-openssl
-```
-Install python 3.8.1
-```
-pyenv install 3.8.1
-```
-Make a virtual environment and activate it (activate the virtual environment whenever you want to interact with the django project)
-```
-pyenv virtualenv 3.8.1 pu_django
-pyenv activate pu_django
-```
+## Running the backend
 
+Following are the instructions for installing the dependencies and running the backend django project.
+The instructions are are for a linux based operating system, but should be similar for other operating systems.
+
+## Install Python 3.8 
+First, install python 3.8. See the instructions for installing Python 3.8 at the [Python website](https://www.python.org/downloads/). 
+We also recommend installing the project dependencies in a virtual environment, we have good expriences using [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) for this. 
 
 ### Install dependencies with poetry
-We use poetry to manage the dependencies of the python project for the backend. To install dependencie via poetry, first install poetry(with the virtualenv from last section active):
+We use poetry to manage the dependencies of the python project for the backend. To install dependencie via poetry, first install poetry
 ```
 pip install poetry
 ```
@@ -88,8 +71,6 @@ The page will reload if you make edits.
 ```shell
 npm run build
 ```
-
-
 
 ```shell
 npm run start
