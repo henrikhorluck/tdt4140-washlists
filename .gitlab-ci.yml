@@ -38,6 +38,7 @@ test-frontend:
   image: node:12
   script:
     - cd frontend
+    - cd sif_vaskelister
     - npm ci
     - npm test
     
