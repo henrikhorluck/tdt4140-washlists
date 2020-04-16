@@ -12,7 +12,7 @@ An image of the login page
 ![](/uploads/855ef9c2f8fb3b0b9fad9521a9f8c2a0/image.png)
 
 ## Basic architecture description
-The cleaning organising system is a web application. It is split into a [`django back-end`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react front-end`](https://reactjs.org/).
+The cleaning organising system is a web application. It is split into a [`django backend`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react frontend`](https://reactjs.org/).
 
 The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/frontend).
 The back-end code is located in the [`backend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/backend).
@@ -68,11 +68,12 @@ Now the backend should be running at http://127.0.0.1:8000/admin/ pre populated 
 ## Running the frontend
 To run the front end follow these steps.
 
-First start the django back end with the instructions above. If you do as described above and run the back end via the `run.sh` script the front end will automatically authenticated with the backend. 
+First start the django back end with the instructions above. If you do as described above and run the back end via the `run.sh` script the front end will automatically connect with the backend. 
 
-If you run the backend manually withuot the `run.sh` script you must set the `SIF_CLIENT_ID` and `SIF_CLIENT_SECRET` envrionment variables manually. This is needed to authenticates the front end instance with the backend.
-You can get the values by registering an application at `<backend-domain>/o/applications/register/` when the django backed is running, the 
-default domain for local development is `http://localhost:8000`. See #41 for an explanation with images of how to create a client id and secret.
+If you run the backend manually withuot the `run.sh` script, or on a different domain than localhost, you must set the `SIF_CLIENT_ID` and `SIF_CLIENT_SECRET` envrionment variables manually. 
+This is needed to connect the frontend instance with the backend.
+You can see `django-oauth-toolkit`'s [docs](https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html#step-3-register-an-application) for details.
+The default domain for local development is `http://localhost:8000`. See #41 for an explanation with images of how to create a client id and secret.
 
 ## Start the front end
 
@@ -117,7 +118,7 @@ Most of these variables are so that the frontend knows _which_ backend it should
 
 ### Backend
 
-These values are mostly used for [Django-settings](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/blob/dev/backend/sif_vaskelister/settings.py).
+These values are primarily used for [Django-settings](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/blob/dev/backend/sif_vaskelister/settings.py).
 
 <dl>
   <dt><code>DJANGO_SECRET_KEY</code></dt>
