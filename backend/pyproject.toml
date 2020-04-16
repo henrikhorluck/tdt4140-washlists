@@ -51,7 +51,7 @@ sections = [ "FUTURE",
              "LOCALFOLDER" ]
 
 [tool.coverage.run]
-source = ["Dormroom", "SIFUser", "StudentVillage", "washlist"]
+source = ["Dormroom", "SIFUser", "StudentVillage", "Washlist"]
 
 [tool.coverage.report]
 omit = ["*/migrations/*", "*/tests.py", "*_test.py", "*_tests.py"]
