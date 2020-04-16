@@ -66,7 +66,34 @@ For running django there is a script called `/28/backend/run.sh`. All this scrip
 Now the backend should be running at http://127.0.0.1:8000/admin/ pre populated with some data for testing the system.
 
 ## Running the frontend
-Add instructions for running front end here!
+To run the front end follow these steps.
+
+First start the django back end with the instructions above. If you do as described above and run the back end via the `run.sh` script the front end will automatically authenticated with the backend. 
+
+If you run the backend manually withuot the `run.sh` script you must set the `SIF_CLIENT_ID` and `SIF_CLIENT_SECRET` envrionment variables manually. This is needed to authenticates the front end instance with the backend.
+You can get the values by registering an application at `<backend-domain>/o/applications/register/` when the django backed is running, the 
+default domain for local development is `http://localhost:8000`. See #41 for an explanation with images of how to create a client id and secret.
+
+## Start the front end
+
+In the `/28/frontend` directory, run:
+
+```shell
+npm run dev
+```
+This runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The page will reload if you make edits.
+
+```shell
+npm run build
+```
+
+
+
+```shell
+npm run start
+```
 
 ## Available environment variables
 
