@@ -71,6 +71,8 @@ Add instructions for running front end here!
 
 ### Frontend
 
+Most of these variables are so that the frontend knows _which_ backend it should communicate to.
+
 <dl>
     <dt><code>SIF_BACKEND_CLIENT_ID</code></dt>
         <dd>Related to OAuth authorization.You can get the values by  
@@ -78,7 +80,7 @@ Add instructions for running front end here!
         default domain for local development is <code>http://localhost:8000</code>. See #41 for an explanation with images. 
         </dd>
     <dt><code>SIF_BACKEND_CLIENT_SECRET</code></dt>
-        <dd>Also used for OAuth authorization. See SIF_BACKEND_CLIENT_ID</dd>
+        <dd>Also used for OAuth authorization. See SIF_BACKEND_CLIENT_ID.</dd>
     <dt><code>SIF_BACKEND_DOMAIN</code></dt>
         <dd>The domain the backend is running on. Defaults to <a href="http://localhost:8000">http://localhost:8000</a> unless overriden.</dd>
     <dt><code>SIF_DOMAIN</code></dt>
@@ -102,5 +104,5 @@ These values are mostly used for [Django-settings](https://gitlab.stud.idi.ntnu.
   <dt><code>POETRY_VIRTUALENVS_CREATE</code></dt>
     <dd>We use <a href="https://python-poetry.org">Poetry</a> for dependency management, which autmatically uses a virtualenv, when we run the frontend in Docker, that is not necessary.</dd>
   <dt><code>PYTHONUNBUFFERED</code></dt>
-    <dd>Ensures Python prints to stdout, seee e.g. <a href="https://stackoverflow.com/questions/29663459/python-app-does-not-print-anything-when-running-detached-in-docker">this</a> Stack OVerflow question</dd> 
+    <dd>Ensures Python prints to stdout, seee e.g. <a href="https://stackoverflow.com/questions/29663459/python-app-does-not-print-anything-when-running-detached-in-docker">this</a> Stack Overflow question.</dd> 
 </dl>
