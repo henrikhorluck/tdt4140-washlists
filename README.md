@@ -21,19 +21,21 @@ The back-end code is located in the [`backend folder`](https://gitlab.stud.idi.n
 ## Running the backend
 
 Following are the instructions for installing the dependencies and running the backend django project.
-The instructions are are for a linux based operating system, but should be similar for other operating systems.
+The instructions are for a linux based operating system, but should be similar for other operating systems.
 
 ## Install Python 3.8 
 First, install python 3.8. See the instructions for installing Python 3.8 at the [Python website](https://www.python.org/downloads/). 
 We also recommend installing the project dependencies in a virtual environment, we have good expriences using [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) for this. 
 
 ### Install dependencies with poetry
-We use poetry to manage the dependencies of the python project for the backend. To install dependencie via poetry, first install poetry
+We use poetry to manage the dependencies of the python project for the backend. To install dependencie via poetry, first install [Poetry](https://python-poetry.org):
 ```
 pip install poetry
 ```
-The dependencies of the project are defined in `/28/backend/pyproject.toml`. There is also a lockfile that specifies a specific version of the packages used in the project. We can install dependencies from the lockfile by running poetry install from the `/28/sif_vaskelister/` directory (where the pyproject.toml file is). 
+The dependencies for the backend are specificed in `/backend/pyproject.toml`. There is also a lockfile that specifies a specific version of the packages used in the project 
+We can install dependencies from the lockfile by running poetry install from the `/backend` directory (where the pyproject.toml file is). 
 ```
+cd backend
 poetry install
 ```
 ### Migrate database
@@ -43,11 +45,11 @@ python manage.py migrate
 ```
 
 ### Run django
-For running django there is a script called `/28/backend/run.sh`. All this script does is that is pre-loads the database with some usefull data using fixtures, then it runs `python manage.py runserver`. Thus you can run the django server by doing
+For running django there is a script called `/backend/run.sh`. All this script does is that is pre-loads the database with some usefull data using fixtures, then it runs `python manage.py runserver`. Thus you can run the django server by running
 ```
 ./run.sh
 ```
-Now the backend should be running at http://127.0.0.1:8000/admin/ pre populated with some data for testing the system.
+Now the backend should be running at http://localhost:8000/admin/ prepopulated with some data for testing the system.
 
 ## Running the frontend
 To run the front end follow these steps.
@@ -61,7 +63,12 @@ The default domain for local development is `http://localhost:8000`. See #41 for
 
 ## Start the front end
 
-In the `/28/frontend` directory, run:
+First move to the `/frontend` directory:
+```
+cd frontend
+```
+
+In the `/frontend` directory, run:
 
 ```shell
 npm run dev
@@ -76,6 +83,30 @@ npm run build
 
 ```shell
 npm run start
+```
+
+## Testing
+
+To run the unittests in the backend run the following command from the `/backend`-directory, as long as you have installed all the dependencies:
+
+```bash
+python manage.py test
+```
+
+For code-coveage, run the following, also from `/backend`:
+
+```bash
+coverage run manage.py test
+coverage report
+```
+
+To run the tests in the frontend, run the following, from the  `/frontend`-directory:
+```bash
+npm run test
+```
+Or with code coverage:
+```bash
+npm run test --coverage
 ```
 
 ## Available environment variables
