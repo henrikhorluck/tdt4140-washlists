@@ -20,7 +20,7 @@ The back-end code is located in the [`backend folder`](https://gitlab.stud.idi.n
 ## Running the backend
 
 Following are the instructions for installing the dependencies and running the backend django project.
-The instructions are are for a linux based operating system, but should be similar for other operating systems.
+The instructions are for a linux based operating system, but should be similar for other operating systems.
 
 ## Install Python 3.8 
 First, install python 3.8. See the instructions for installing Python 3.8 at the [Python website](https://www.python.org/downloads/). 
@@ -31,8 +31,10 @@ We use poetry to manage the dependencies of the python project for the backend. 
 ```
 pip install poetry
 ```
-The dependencies of the project are defined in `/backend/pyproject.toml`. There is also a lockfile that specifies a specific version of the packages used in the project. We can install dependencies from the lockfile by running poetry install from the `/28/sif_vaskelister/` directory (where the pyproject.toml file is). 
+The dependencies for the backend are specificed in `/backend/pyproject.toml`. There is also a lockfile that specifies a specific version of the packages used in the project 
+We can install dependencies from the lockfile by running poetry install from the `/backend` directory (where the pyproject.toml file is). 
 ```
+cd backend
 poetry install
 ```
 ### Migrate database
@@ -42,7 +44,7 @@ python manage.py migrate
 ```
 
 ### Run django
-For running django there is a script called `/backend/run.sh`. All this script does is that is pre-loads the database with some usefull data using fixtures, then it runs `python manage.py runserver`. Thus you can run the django server by doing
+For running django there is a script called `/backend/run.sh`. All this script does is that is pre-loads the database with some usefull data using fixtures, then it runs `python manage.py runserver`. Thus you can run the django server by running
 ```
 ./run.sh
 ```
@@ -59,6 +61,11 @@ You can see `django-oauth-toolkit`'s [docs](https://django-oauth-toolkit.readthe
 The default domain for local development is `http://localhost:8000`. See #41 for an explanation with images of how to create a client id and secret.
 
 ## Start the front end
+
+First move to the `/frontend` directory:
+```
+cd frontend
+```
 
 In the `/frontend` directory, run:
 
