@@ -1,7 +1,21 @@
 {
   "name": "sif_vaskelister",
   "version": "0.1.0",
+  "homepage": "https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28#README",
+  "bugs": {
+    "url": "https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/issues",
+    "email": "support@sif.no"
+  },
+  "license": "MIT",
+  "browser": true,
   "private": true,
+  "engines": {
+    "node": ">=12 <13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
