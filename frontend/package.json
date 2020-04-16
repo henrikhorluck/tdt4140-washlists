@@ -13,6 +13,12 @@
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
+  "//dependencies": {
+    "client-oauth2": "Helper-library for OAuth authentication",
+    "next": "Framework for React, so that we have a server, and fills in the unsolved problems from React, e.g. routing",
+    "react": "Web framework, that gives a more structured way to think about components and data-flow",
+    "react-dom": "Se above, required with React"
+  },
   "devDependencies": {
     "@types/node": "^13.7.1",
     "@types/react": "^16.9.19",
@@ -23,5 +29,11 @@
     "eslint-plugin-react": "^7.18.3",
     "prettier": "^1.19.1",
     "typescript": "^3.7.5"
+  },
+  "//devDependencies": {
+    "@types/*": "Typescript type definitons",
+    "eslint": "Linting, to increase code-quality, and avoid common pitfalls, we use plugins that are required for out frameworks",
+    "prettier": "Code-formatting, so that we don't have to argue about whitespace in Merge requests",
+    "typescript": "Gives us types in javascript, which helps a lot in avoiding errors"
   }
 }
