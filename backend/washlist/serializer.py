@@ -1,10 +1,9 @@
 from rest_framework import serializers
 
 from Dormroom.models import Dormroom
-from StudentVillage.models import StudentVillage
 from StudentVillage.serializer import StudentVillageSerializer
-from washlist.models.Templates import TemplateListItem, TemplateWashList
-from washlist.models.WashLists import ListItem
+from Washlist.models.Templates import TemplateListItem, TemplateWashList
+from Washlist.models.WashLists import ListItem
 
 
 class ListItemSerializer(serializers.ModelSerializer):

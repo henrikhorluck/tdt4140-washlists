@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("washlist", "0004_auto_20200229_1420"),
+        ("Washlist", "0004_auto_20200229_1420"),
         ("StudentVillage", "0005_merge_20200228_1005"),
     ]
 
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.SET_NULL,
                 related_name="villages",
-                to="washlist.TemplateWashList",
+                to="Washlist.TemplateWashList",
             ),
         )
     ]

@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     "SIFUser",
     "Dormroom",
     "StudentVillage",
-    "washlist",
+    "Washlist",
 ]
 
 AUTHENTICATION_BACKENDS = (

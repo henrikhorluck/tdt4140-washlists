@@ -1,1 +1,1 @@
-default_app_config = "washlist.apps.WashlistConfig"
+default_app_config = "Washlist.apps.WashlistConfig"

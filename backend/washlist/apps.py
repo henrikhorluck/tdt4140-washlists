@@ -2,8 +2,8 @@ from django.apps import AppConfig
 
 
 class WashlistConfig(AppConfig):
-    name = "washlist"
+    name = "Washlist"
 
     def ready(self):
-        import washlist.signals.TemplateListItem
-        import washlist.jobs
+        import Washlist.signals.TemplateListItem
+        import Washlist.jobs
