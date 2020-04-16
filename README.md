@@ -56,7 +56,7 @@ To run the front end follow these steps.
 
 First start the django back end with the instructions above. If you do as described above and run the back end via the `run.sh` script the front end will automatically connect with the backend. 
 
-If you run the backend manually withuot the `run.sh` script, or on a different domain than localhost, you must set the `SIF_CLIENT_ID` and `SIF_CLIENT_SECRET` envrionment variables manually. 
+If you run the backend manually without the `run.sh` script, or on a different domain than localhost, you must set the `SIF_CLIENT_ID` and `SIF_CLIENT_SECRET` envrionment variables manually. 
 This is needed to connect the frontend instance with the backend.
 You can see `django-oauth-toolkit`'s [docs](https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html#step-3-register-an-application) for details.
 The default domain for local development is `http://localhost:8000`. See #41 for an explanation with images of how to create a client id and secret.
@@ -77,13 +77,7 @@ This runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload if you make edits.
 
-```shell
-npm run build
-```
-
-```shell
-npm run start
-```
+See the [next.js documentation](https://nextjs.org/docs#manual-setup) for optional scripts to run for deployment and production.
 
 ## Testing
 
