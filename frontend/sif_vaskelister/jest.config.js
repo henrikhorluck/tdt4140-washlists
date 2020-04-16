@@ -39,6 +39,11 @@ module.exports = {
         "tsConfig": "<rootDir>/tsconfig.jest.json"
       }
     },
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
     "collectCoverage": true,
     "automock": false,
   }
