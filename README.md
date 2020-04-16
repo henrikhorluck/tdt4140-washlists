@@ -67,3 +67,43 @@ Now the backend should be running at http://127.0.0.1:8000/admin/ pre populated 
 
 ## Running the frontend
 Add instructions for running front end here!
+
+## Available environment variables
+
+### Frontend
+
+Most of these variables are so that the frontend knows _which_ backend it should communicate to.
+
+<dl>
+    <dt><code>SIF_BACKEND_CLIENT_ID</code></dt>
+        <dd>Related to OAuth authorization.You can get the values by  
+        registering an application at <code>&lt;backend-domain&gt;/o/applications/register/</code> when the backed is running, the 
+        default domain for local development is <code>http://localhost:8000</code>. See #41 for an explanation with images. 
+        </dd>
+    <dt><code>SIF_BACKEND_CLIENT_SECRET</code></dt>
+        <dd>Also used for OAuth authorization. See SIF_BACKEND_CLIENT_ID.</dd>
+    <dt><code>SIF_BACKEND_DOMAIN</code></dt>
+        <dd>The domain the backend is running on. Defaults to <a href="http://localhost:8000">http://localhost:8000</a> unless overriden.</dd>
+    <dt><code>SIF_DOMAIN</code></dt>
+        <dd>The domain the frontend is running on. Defaults to <a href="http://localhost:3000">http://localhost:3000</a> unless overriden.</dd>
+</dl>
+
+### Backend
+
+These values are mostly used for [Django-settings](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/blob/dev/backend/sif_vaskelister/settings.py).
+
+<dl>
+  <dt><code>DJANGO_SECRET_KEY</code></dt>
+    <dd>See Django's <a href="https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-SECRET_KEY">docs</a>.</dd>
+  <dt><code>DJANGO_DEBUG_MODE</code></dt>
+    <dd>Sets Django debug mode. Defaults to <code>true</code>, set it to any other value to deactivate debug-mode.</dd>
+  <dt><code>DJANGO_ALLOWED_HOSTS</code></dt>
+    <dd>Says which host/domain names the backend can run from, see Django <a href="https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts">docs</a>. Defaults to "*", which means any.</dd>
+  <dt><code>DJANGO_CORS_ORIGIN_ALLOW_ALL</code></dt>
+    <dd>Practically sets if CORS is enabled or disabled, helpful during development. See django-cors-headers <a href="https://github.com/adamchainz/django-cors-headers#configuration">docs</a>.
+  For production setup, an environment variable for <code>CORS_ORIGIN_WHITELIST</code> should be set up.</dd>
+  <dt><code>POETRY_VIRTUALENVS_CREATE</code></dt>
+    <dd>We use <a href="https://python-poetry.org">Poetry</a> for dependency management, which autmatically uses a virtualenv, when we run the frontend in Docker, that is not necessary.</dd>
+  <dt><code>PYTHONUNBUFFERED</code></dt>
+    <dd>Ensures Python prints to stdout, seee e.g. <a href="https://stackoverflow.com/questions/29663459/python-app-does-not-print-anything-when-running-detached-in-docker">this</a> Stack Overflow question.</dd> 
+</dl>

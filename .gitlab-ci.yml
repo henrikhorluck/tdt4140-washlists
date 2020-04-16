@@ -20,6 +20,12 @@ lint-python:
     - isort -rc -c .
     - black --check .
 
+check-missing-migrations:
+  image: python:3.8
+  extends: .before_script_template
+  script:
+    - python manage.py makemigrations --check
+
 lint-typescript:
   image: node:12
   script:
