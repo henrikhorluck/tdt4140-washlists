@@ -9,9 +9,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install --pure-lockfile
-
-RUN npm run build
+RUN npm install --pure-lockfile && npm run build
 
 EXPOSE 3000
 
