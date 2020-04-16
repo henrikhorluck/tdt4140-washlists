@@ -13,9 +13,9 @@
     "@types/react-test-renderer": "^16.9.2",
     "client-oauth2": "^4.2.5",
     "fetch-mock": "^9.3.1",
-    "next": "9.2.1",
-    "react": "16.12.0",
-    "react-dom": "16.12.0"
+    "next": "9.3.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.0",
@@ -24,6 +24,7 @@
     "@types/jest": "^25.2.1",
     "@types/node": "^13.7.1",
     "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.6",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "babel-jest": "^25.1.0",

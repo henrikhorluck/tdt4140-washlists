@@ -19,10 +19,10 @@ it('GET request returns a successful response', async () => {
 
 it('POST request returns a successful response', async () => {
 
-    fetchMock.mock('http://localhost:8000/', JSON.stringify({status: 200}));
+    fetchMock.mock('http://localhost:8000/1', JSON.stringify({status: 200}));
     
       const res = await post<any>(
-            "",
+            "/1",
             {},
             {}
       );
@@ -33,10 +33,10 @@ it('POST request returns a successful response', async () => {
 
 it('DELETE request returns a successful response', async () => {
 
-    fetchMock.mock('http://localhost:8000/', JSON.stringify({status: 200}));
+    fetchMock.mock('http://localhost:8000/2', JSON.stringify({status: 200}));
     
       const res = await deleteRequest<any>(
-            "",
+            "/2",
             {},
             {}
       );
@@ -47,11 +47,11 @@ it('DELETE request returns a successful response', async () => {
 
 it('PATCH request returns a successful response', async () => {
 
-    fetchMock.mock('http://localhost:8000/', JSON.stringify({status: 200}));
+    fetchMock.mock('http://localhost:8000/3', JSON.stringify({status: 200}));
     
       const res = await patch<any>(
         {
-            query: "",
+            query: "/3",
             data: {},
             parameters: {},
             options: {}
@@ -64,10 +64,10 @@ it('PATCH request returns a successful response', async () => {
 
 it('GET request returns a unsuccessfull response', async () => {
 
-    fetchMock.mock('http://localhost:8000/', 204);
+    fetchMock.mock('http://localhost:8000/4', 204);
     
       const res = await get<any>(
-            "",
+            "/4",
             {},
             {}
       );

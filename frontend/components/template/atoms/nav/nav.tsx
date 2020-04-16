@@ -12,7 +12,8 @@ const Nav = () => (
           className={style.button}
           type="button"
           onClick={() => {
-            window.location.href = "http://localhost:3000";
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            window.location.href = process.env.DOMAIN!;
           }}
         >
           <p>Logg ut</p>
