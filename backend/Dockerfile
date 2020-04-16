@@ -12,8 +12,10 @@ WORKDIR /code
 COPY poetry.lock pyproject.toml /code/
 
 RUN pip install poetry && \
-    poetry install --no-dev
+    poetry install
 
 COPY . /code/
+
+EXPOSE 8000
 
 CMD ["bash"]
