@@ -11,6 +11,7 @@ An image of the login page
 
 ![](/uploads/855ef9c2f8fb3b0b9fad9521a9f8c2a0/image.png)
 
+Below is a quick start guide on how to run the web applications backend and frontend. Be sure to check out the [`wiki`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/wikis/home) for more detailed documentation.
 ## Basic architecture description
 The cleaning organising system is a web application. It is split into a [`django backend`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react frontend`](https://reactjs.org/).
 
