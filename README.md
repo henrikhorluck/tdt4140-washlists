@@ -4,8 +4,8 @@
 [![coverage report](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/badges/dev/coverage.svg)](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/commits/dev)
 
 
-This is a web based system for organising cleaning via shared cleaning list. 
-Designed and developed for "Studentsamskipnaden i fredrikstad SIF", a student housing organization in Fredrikstad. 
+This is a web-based system for organizing cleaning via a shared cleaning list. 
+Designed and developed for "Studentsamskipnaden i Fredrikstad SIF", a student housing organization in Fredrikstad. 
 
 An image of the login page
 
@@ -17,7 +17,7 @@ Below is a quick start guide on how to run the web applications backend and fron
 ## Basic architecture description
 
 The cleaning organising system is a web application. It consists of a [`django backend`](https://www.djangoproject.com/)
-using a SQLite database managment system, which provides a REST-API, that the frontend uses for persistence, and logic.
+using a SQLite database management system, which provides a REST-API, that the frontend uses for persistence, and logic.
 The frontend uses [react](https://reactjs.org/), with [Next.js](https://nextjs.org).
 
 The frontend code is in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/frontend).
@@ -25,10 +25,10 @@ The backend code is in the [`backend folder`](https://gitlab.stud.idi.ntnu.no/td
 
 ## Running the backend
 
-Following are the instructions for installing the dependencies and running the backend.
-The instructions are for a linux based operating system, but should be similar for other operating systems.
+The following are the instructions for installing the dependencies and running the backend.
+The instructions are for a Linux based operating system, but should be similar for other operating systems.
 
-### Prerequisits
+### Prerequisites
 
 Django is written in Python, you can use any 3.8.* version of python. You can download it
 from Python's [website](https://www.python.org/downloads/). 
@@ -51,8 +51,8 @@ All commands from here and below assume you are in the `backend`-directory, whic
 cd backend
 ```
 
-The dependencies for the backend are specificed in `/backend/pyproject.toml`. Here we specify which dependencies 
-the project depends on, and which range of version are valid. At any given time, the version is locked to a specific
+The dependencies for the backend are specified in `/backend/pyproject.toml`. Here we specify which dependencies 
+the project depends on, and which range of versions are valid. At any given time, the version is locked to a specific
 version, which is listed in `backend/poetry.lock`.
    
 To install the dependencies (django, djangorestframework, and more), run the following: 
@@ -63,7 +63,7 @@ poetry install
 
 ### Migrating the database
 
-Now we should be able to run django. To set up the database tables we must first apply the migrations. To do this run
+Now we should be able to run Django. To set up the database tables we must first apply the migrations. To do this run
 
 ```
 python manage.py migrate
@@ -71,9 +71,9 @@ python manage.py migrate
 
 ### Running the server
 
-We have created a script, `run.sh` to help the set up process. The script loads initial data into the database, so that,
+We have created a script, `run.sh` to help the setup process. The script loads initial data into the database, so that,
 you can start developing faster, or if you just want a working backend when working in the frontend. For how it is done,
-see the [docs](https://docs.djangoproject.com/en/3.0/howto/initial-data/). After loading the inital data, it starts the
+see the [docs](https://docs.djangoproject.com/en/3.0/howto/initial-data/). After loading the initial data, it starts the
 server, with the command `python manage.py runserver`. To execute the script: 
 
 ```
@@ -101,7 +101,7 @@ cd frontend
 ```
 
 ### Prerequisits
-We assume that you have version of `node` >= 12 installed, and that the Node package manager, `npm`, is in your PATH.
+We assume that you have a version of `node` >= 12 installed, and that the Node package manager, `npm`, is in your PATH.
 You can install Node from their [website](https://nodejs.org). 
 
 ### Install dependencies
@@ -112,7 +112,7 @@ npm install
 ``` 
 
 ### Start the front end
-Once you have the dependencies install, you can start the frontend in development mode:
+Once you have the dependencies installed, you can start the frontend in development mode:
 
 ```bash
 npm run dev
@@ -122,7 +122,7 @@ The website should then be available from [http://localhost:3000](http://localho
 any changes to the code, it will hot-reload.
 
 #### Production
-To run in prodction mode, you will instead need to first build the project, before starting the server in production
+To run in production mode, you will instead need to first build the project, before starting the server in production
 mode which is done using the following commands:
 
 ```bash
@@ -141,7 +141,7 @@ dependencies:
 python manage.py test
 ```
 
-For code coveage, run the following when in `backend`:
+For code coverage, run the following when in `backend`:
 
 ```bash
 coverage run manage.py test
