@@ -4,7 +4,7 @@
 [![coverage report](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/badges/dev/coverage.svg)](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/commits/dev)
 
 
-This is a web based system for organising cleaning via shared cleaning list. 
+This is a web-based system for organizing cleaning via a shared cleaning list. 
 Designed and developed for _Studentsamskipnaden i Fredrikstad_ (SIF), a student housing organization in Fredrikstad. 
 
 An image of the login page
@@ -18,7 +18,7 @@ and development routines.
 ## Basic architecture description
 
 The cleaning organising system is a web application. It consists of a [Django](https://www.djangoproject.com/) backend
-using a SQLite database managment system. The backend provides a REST-API, which the frontend uses for persistence, and 
+using a SQLite database management system. The backend provides a REST-API, which the frontend uses for persistence, and 
 other logic, like resetting washlists. The frontend uses [react](https://reactjs.org/), with
 [Next.js](https://nextjs.org).
 
@@ -27,9 +27,9 @@ The backend code is in the [`backend`](https://gitlab.stud.idi.ntnu.no/tdt4140-2
 
 ## Running the backend
 
-The following instructions are for a linux based operating system, but should are similar for other operating systems.
+The following instructions are for a Linux based operating system, but should are similar for other operating systems.
 
-### Prerequisits
+### Prerequisites
 
 Django is written in Python so you will need that, any 3.8.* version will work. You can download it from Python's 
 [website](https://www.python.org/downloads/). We also recommend installing the project dependencies in a virtual
@@ -57,8 +57,9 @@ All commands from here and below assume you are in the `backend`-directory, whic
 cd backend
 ```
 
-The dependencies for the backend are specificed in `backend/pyproject.toml`. Here we specify which dependencies 
-the project depends on, and which range of version are valid. At any given time, the version is locked to a specific
+
+The dependencies for the backend are specified in `backend/pyproject.toml`. Here we specify which dependencies 
+the project depends on, and which range of versions are valid. At any given time, the version is locked to a specific
 version, which is listed in `backend/poetry.lock`.
    
 To install the dependencies (Django, Django REST Framework, and more), run the following: 
@@ -119,7 +120,7 @@ cd frontend
 ```
 
 ### Prerequisits
-We assume that you have version of `node` >= 12 installed, and that the Node package manager, `npm`, is in your PATH.
+We assume that you have a version of `node` >= 12 installed, and that the Node package manager, `npm`, is in your PATH.
 You can install Node from their [website](https://nodejs.org). 
 
 > Advanced users _can_ use our Dockerfiles, but that is **not** recommended for local development, and much more
@@ -133,7 +134,7 @@ npm install
 ``` 
 
 ### Start the front end
-Once you have the dependencies install, you can start the frontend in development mode:
+Once you have the dependencies installed, you can start the frontend in development mode:
 
 ```bash
 npm run dev
@@ -143,7 +144,7 @@ The website should then be available from [http://localhost:3000](http://localho
 any changes to the code, it will hot-reload.
 
 #### Production
-To run in prodction mode, you will instead need to first build the project, before starting the server in production
+To run in production mode, you will instead need to first build the project, before starting the server in production
 mode which is done using the following commands:
 
 ```bash
@@ -162,7 +163,7 @@ dependencies:
 python manage.py test
 ```
 
-For code coveage, run the following when in `backend`:
+For code coverage, run the following when in `backend`:
 
 ```bash
 coverage run manage.py test
