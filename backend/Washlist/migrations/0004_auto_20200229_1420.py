@@ -6,7 +6,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("washlist", "0003_auto_20200227_2222")]
+    dependencies = [("Washlist", "0003_auto_20200227_2222")]
 
     operations = [
         migrations.AlterField(
@@ -17,16 +17,16 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.SET_NULL,
                 related_name="based_items",
-                to="washlist.TemplateListItem",
+                to="Washlist.TemplateListItem",
             ),
         ),
         migrations.AlterField(
             model_name="listitem",
-            name="washlist",
+            name="Washlist",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
                 related_name="items",
-                to="washlist.WashList",
+                to="Washlist.WashList",
             ),
         ),
     ]

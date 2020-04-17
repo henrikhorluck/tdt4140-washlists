@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from washlist.models.Templates import TemplateListItem, TemplateWashList
-from washlist.models.WashLists import ListItem
+from .models.Templates import TemplateListItem, TemplateWashList
+from .models.WashLists import ListItem
 
 # Register your models here.
 

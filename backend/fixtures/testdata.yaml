@@ -1,0 +1,509 @@
+- model: auth.group
+  pk: 1
+  fields:
+    name: Manager
+    permissions: []
+- model: auth.group
+  pk: 2
+  fields:
+    name: Administrator
+    permissions:
+    - - add_dormroom
+      - Dormroom
+      - dormroom
+    - - change_dormroom
+      - Dormroom
+      - dormroom
+    - - delete_dormroom
+      - Dormroom
+      - dormroom
+    - - view_dormroom
+      - Dormroom
+      - dormroom
+    - - add_user
+      - SIFUser
+      - user
+    - - change_user
+      - SIFUser
+      - user
+    - - delete_user
+      - SIFUser
+      - user
+    - - view_user
+      - SIFUser
+      - user
+    - - add_studentvillage
+      - StudentVillage
+      - studentvillage
+    - - change_studentvillage
+      - StudentVillage
+      - studentvillage
+    - - delete_studentvillage
+      - StudentVillage
+      - studentvillage
+    - - view_studentvillage
+      - StudentVillage
+      - studentvillage
+    - - add_group
+      - auth
+      - group
+    - - change_group
+      - auth
+      - group
+    - - delete_group
+      - auth
+      - group
+    - - view_group
+      - auth
+      - group
+    - - add_permission
+      - auth
+      - permission
+    - - change_permission
+      - auth
+      - permission
+    - - delete_permission
+      - auth
+      - permission
+    - - view_permission
+      - auth
+      - permission
+    - - add_listitem
+      - Washlist
+      - listitem
+    - - change_listitem
+      - Washlist
+      - listitem
+    - - delete_listitem
+      - Washlist
+      - listitem
+    - - view_listitem
+      - Washlist
+      - listitem
+    - - add_templatelistitem
+      - Washlist
+      - templatelistitem
+    - - change_templatelistitem
+      - Washlist
+      - templatelistitem
+    - - delete_templatelistitem
+      - Washlist
+      - templatelistitem
+    - - view_templatelistitem
+      - Washlist
+      - templatelistitem
+    - - add_templatewashlist
+      - Washlist
+      - templatewashlist
+    - - change_templatewashlist
+      - Washlist
+      - templatewashlist
+    - - delete_templatewashlist
+      - Washlist
+      - templatewashlist
+    - - view_templatewashlist
+      - Washlist
+      - templatewashlist
+- model: auth.group
+  pk: 3
+  fields:
+    name: Student
+    permissions:
+    - - add_listitem
+      - Washlist
+      - listitem
+    - - change_listitem
+      - Washlist
+      - listitem
+    - - view_listitem
+      - Washlist
+      - listitem
+- model: SIFUser.user
+  pk: 6
+  fields:
+    password: pbkdf2_sha256$180000$AW4jrcVWN4dJ$Qfn0LuzKG8XG4MkYX5ornWHNgbw84NtJHncfgvZcQ6I=  # jeg elsker norge
+    last_login: null
+    is_superuser: false
+    username: KariNordmann
+    first_name: Kari
+    last_name: Nordmann
+    email: kari@norge.no
+    is_staff: false
+    is_active: true
+    date_joined: 2020-02-14 10:49:34+00:00
+    dormroom: null
+    groups:
+    - - Manager
+    user_permissions: []
+- model: SIFUser.user
+  pk: 7
+  fields:
+    password: pbkdf2_sha256$180000$dyvinyWZDvUC$eiD+/CAHBaSe06RHzYN8KMpvutEm39xW2StNJY+kpT4= # jeg hater norge
+    last_login: null
+    is_superuser: false
+    username: OlaNordmann
+    first_name: 'Ola'
+    last_name: 'Nordmann'
+    email: 'ola@norge.no'
+    is_staff: false
+    is_active: true
+    date_joined: 2020-02-14 10:49:49+00:00
+    dormroom: 1
+    groups:
+    - - Student
+    user_permissions: []
+- model: SIFUser.user
+  pk: 8
+  fields:
+    password: pbkdf2_sha256$180000$Qf1VXJc36lOc$/1wBUNS0ukKNWmYTuG4VSdaTfha34y3yDcg+NYlu82c= # hunter2hunter2
+    last_login: null
+    is_superuser: false
+    username: MohammedAli
+    first_name: 'Mohammed'
+    last_name: 'Ali'
+    email: 'mohammed@ali.com'
+    is_staff: false
+    is_active: true
+    date_joined: 2020-02-14 10:50:04+00:00
+    dormroom: 1
+    groups:
+    - - Student
+    user_permissions: []
+- model: SIFUser.user
+  pk: 9
+  fields:
+    password: pbkdf2_sha256$180000$oyR57MObMUpW$68K1i9W9N3+JTb/cOyJ8L6qRJlYHcYST+tb9sPNBBLA=
+    last_login: null
+    is_superuser: false
+    username: jonathan
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-09 11:58:01+00:00
+    dormroom: 2
+    groups:
+    - - Student
+    user_permissions: []
+- model: SIFUser.user
+  pk: 10
+  fields:
+    password: pbkdf2_sha256$180000$v4pxg1o161Rn$stemPWaK31LzIM69AtKKfYCOkEowjDvHXrIYncAsccQ= # admin
+    last_login: 2020-03-09 15:22:00.125658+00:00
+    is_superuser: true
+    username: admin
+    first_name: ''
+    last_name: ''
+    email: admin@ex.com
+    is_staff: true
+    is_active: true
+    date_joined: 2020-03-09 15:21:56.213551+00:00
+    dormroom: null
+    groups: []
+    user_permissions: []
+- model: SIFUser.user
+  pk: 11
+  fields:
+    password: pbkdf2_sha256$180000$Lzvz9LfcHvpy$75j5/pMyU44GjoXxjsypspn9GKccpkf8wZ4GTgsIfVA= # manager
+    last_login: null
+    is_superuser: false
+    username: manager
+    first_name: Mr.Manager
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:41:31+00:00
+    dormroom: null
+    groups:
+    - - Manager
+    user_permissions: []
+- model: SIFUser.user
+  pk: 12
+  fields:
+    password: pbkdf2_sha256$180000$S7DzN1QOlKVk$OXTSiYI7OUrfC8tOjjJaXDrEx9wUOJOYxhmCQHDFpZs= # siljepassord
+    last_login: null
+    is_superuser: false
+    username: silje
+    first_name: 'Silje'
+    last_name: 'Nordmann'
+    email: 'silje@norge.no'
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:51:19+00:00
+    dormroom: 2
+    groups:
+    - - Student
+    user_permissions: []
+- model: SIFUser.user
+  pk: 13
+  fields:
+    password: pbkdf2_sha256$180000$iuTeE5kyGE58$uyEjsFqCWf0lJgFyU+aNuitRvujNMt2kvWPgRj6lvMk= # jenspassord
+    last_login: null
+    is_superuser: false
+    username: jens
+    first_name: 'Jens'
+    last_name: 'Jensen'
+    email: 'jens@sif.no'
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:52:05+00:00
+    dormroom: 2
+    groups:
+    - - Student
+    user_permissions: []
+- model: SIFUser.user
+  pk: 14
+  fields:
+    password: pbkdf2_sha256$180000$FgXfrHPXNvEB$MSwsCQchbyBBMIjWcdZCeWBIqN0Kic2tCZJRF5QgnJU= # jørgenpassord
+    last_login: null
+    is_superuser: false
+    username: "j\xF8rgen"
+    first_name: 'Jørgen'
+    last_name: 'Jørgensen'
+    email: 'jorgen@sif.no'
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:53:31+00:00
+    dormroom: 3
+    groups:
+    - - Student
+    user_permissions: []
+- model: SIFUser.user
+  pk: 15
+  fields:
+    password: pbkdf2_sha256$180000$GHGGjj9PDLCf$Ds6/EnwqmxHHBB221eil9zYygkSIexdS3cIquNgXiSg= # egilpassord
+    last_login: null
+    is_superuser: false
+    username: egil
+    first_name: 'Egil'
+    last_name: 'Egilsen'
+    email: 'egil@sif.no'
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:54:38+00:00
+    dormroom: 6
+    groups:
+    - - Student
+    user_permissions: []
+- model: SIFUser.user
+  pk: 16
+  fields:
+    password: pbkdf2_sha256$180000$Vzd6vcubNTqM$4nQpd7QBEgIgx+bGmDlZkNhvutOw2gbqPTfMwHh8EuA= # bobpassord
+    last_login: null
+    is_superuser: false
+    username: bob
+    first_name: 'Bob'
+    last_name: 'Brown'
+    email: 'bob@sif.no'
+    is_staff: false
+    is_active: true
+    date_joined: 2020-03-10 06:55:00+00:00
+    dormroom: 6
+    groups:
+    - - Student
+    user_permissions: []
+- model: Dormroom.dormroom
+  pk: 1
+  fields:
+    number: 1
+    village: 1
+- model: Dormroom.dormroom
+  pk: 2
+  fields:
+    number: 1
+    village: 2
+- model: Dormroom.dormroom
+  pk: 3
+  fields:
+    number: 2
+    village: 2
+- model: Dormroom.dormroom
+  pk: 4
+  fields:
+    number: 2
+    village: 1
+- model: Dormroom.dormroom
+  pk: 6
+  fields:
+    number: 3
+    village: 2
+- model: StudentVillage.studentvillage
+  pk: 1
+  fields:
+    name: Moholt
+    templateWashList: null
+    managers:
+    - - KariNordmann
+- model: StudentVillage.studentvillage
+  pk: 2
+  fields:
+    name: Berg
+    templateWashList: 2
+    managers:
+    - - manager
+- model: Washlist.templatewashlist
+  pk: 1
+  fields:
+    title: Moholt-vaskeliste-mal
+- model: Washlist.templatewashlist
+  pk: 2
+  fields:
+    title: Berg-vaskeliste-mal
+- model: Washlist.templatelistitem
+  pk: 1
+  fields:
+    washlist: 1
+    description: "Vask kj\xF8leskapet"
+- model: Washlist.templatelistitem
+  pk: 2
+  fields:
+    washlist: 1
+    description: Vask gangen
+- model: Washlist.templatelistitem
+  pk: 3
+  fields:
+    washlist: 1
+    description: "Vask kj\xF8kkenet"
+- model: Washlist.templatelistitem
+  pk: 4
+  fields:
+    washlist: 2
+    description: Vask stua
+- model: Washlist.templatelistitem
+  pk: 5
+  fields:
+    washlist: 2
+    description: Vask badet
+- model: Washlist.templatelistitem
+  pk: 6
+  fields:
+    washlist: 2
+    description: Vask skohylla
+- model: Washlist.listitem
+  pk: 1
+  fields:
+    dormroom: 1
+    desc: Test
+    template: null
+    completed: false
+- model: Washlist.listitem
+  pk: 2
+  fields:
+    dormroom: 1
+    desc: null
+    template: 1
+    completed: true
+- model: Washlist.listitem
+  pk: 3
+  fields:
+    dormroom: 4
+    desc: null
+    template: 1
+    completed: false
+- model: Washlist.listitem
+  pk: 4
+  fields:
+    dormroom: 1
+    desc: null
+    template: 2
+    completed: false
+- model: Washlist.listitem
+  pk: 5
+  fields:
+    dormroom: 4
+    desc: null
+    template: 2
+    completed: false
+- model: Washlist.listitem
+  pk: 6
+  fields:
+    dormroom: 1
+    desc: null
+    template: 3
+    completed: false
+- model: Washlist.listitem
+  pk: 7
+  fields:
+    dormroom: 4
+    desc: null
+    template: 3
+    completed: false
+- model: Washlist.listitem
+  pk: 8
+  fields:
+    dormroom: 2
+    desc: null
+    template: 4
+    completed: false
+- model: Washlist.listitem
+  pk: 9
+  fields:
+    dormroom: 3
+    desc: null
+    template: 4
+    completed: false
+- model: Washlist.listitem
+  pk: 10
+  fields:
+    dormroom: 6
+    desc: null
+    template: 4
+    completed: true
+- model: Washlist.listitem
+  pk: 11
+  fields:
+    dormroom: 2
+    desc: null
+    template: 5
+    completed: false
+- model: Washlist.listitem
+  pk: 12
+  fields:
+    dormroom: 3
+    desc: null
+    template: 5
+    completed: false
+- model: Washlist.listitem
+  pk: 13
+  fields:
+    dormroom: 6
+    desc: null
+    template: 5
+    completed: true
+- model: Washlist.listitem
+  pk: 14
+  fields:
+    dormroom: 2
+    desc: null
+    template: 6
+    completed: false
+- model: Washlist.listitem
+  pk: 15
+  fields:
+    dormroom: 3
+    desc: null
+    template: 6
+    completed: false
+- model: Washlist.listitem
+  pk: 16
+  fields:
+    dormroom: 6
+    desc: null
+    template: 6
+    completed: false
+- model: oauth2_provider.application
+  pk: 1
+  fields:
+    client_id: SLDhkx2m08A3c357d4WihIWGzcUQ4duc0TeWhUGL
+    user:
+    - admin
+    redirect_uris: ''
+    client_type: confidential
+    authorization_grant_type: password
+    client_secret: XA1f55cdS3UVmX5bk5Rjb9kqMV4v79a2gATGcvehoXR9BAMkjlda8KA0pTiBtBa2k5LAuxGNTJmQVrp8GaCs7P2IQ146f5KIzFmNOOcNz6sgqIeEYllKyDU2RbcoeFwX
+    name: test
+    skip_authorization: false
+    created: 2020-03-06 10:09:35.185996+00:00
+    updated: 2020-03-06 10:09:35.186065+00:00

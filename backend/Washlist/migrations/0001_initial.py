@@ -44,10 +44,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "washlist",
+                    "Washlist",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="washlist.WashList",
+                        to="Washlist.WashList",
                     ),
                 ),
             ],

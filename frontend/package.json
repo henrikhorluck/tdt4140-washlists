@@ -1,7 +1,21 @@
 {
   "name": "sif_vaskelister",
   "version": "0.1.0",
+  "homepage": "https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28#README",
+  "bugs": {
+    "url": "https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/issues",
+    "email": "support@sif.no"
+  },
+  "license": "MIT",
+  "browser": true,
   "private": true,
+  "engines": {
+    "node": ">=12 <13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,6 +27,12 @@
     "next": "9.3.5",
     "react": "16.13.1",
     "react-dom": "16.13.1"
+  },
+  "//dependencies": {
+    "client-oauth2": "Helper-library for OAuth authentication",
+    "next": "Framework for React, so that we have a server, and fills in the unsolved problems from React, e.g. routing",
+    "react": "Web framework, that gives a more structured way to think about components and data-flow",
+    "react-dom": "Se above, required with React"
   },
   "devDependencies": {
     "@types/enzyme-adapter-react-16": "^1.0.6",
@@ -39,5 +59,11 @@
     "react-test-renderer": "^16.13.1",
     "ts-jest": "^25.3.1",
     "typescript": "^3.8.3"
+  },
+  "//devDependencies": {
+    "@types/*": "Typescript type definitons",
+    "eslint": "Linting, to increase code-quality, and avoid common pitfalls, we use plugins that are required for out frameworks",
+    "prettier": "Code-formatting, so that we don't have to argue about whitespace in Merge requests",
+    "typescript": "Gives us types in javascript, which helps a lot in avoiding errors"
   }
 }

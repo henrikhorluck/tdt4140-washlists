@@ -6,10 +6,10 @@ from rest_framework import status
 from Dormroom.models import Dormroom
 from SIFUser.mixins import AuthTestMixin
 from StudentVillage.models import StudentVillage
-from washlist.jobs import reset_washlists
-from washlist.models.Templates import TemplateListItem, TemplateWashList
-from washlist.models.WashLists import ListItem
-from washlist.serializer import TemplateWashListSerializer
+from Washlist.jobs import reset_washlists
+from Washlist.models.Templates import TemplateListItem, TemplateWashList
+from Washlist.models.WashLists import ListItem
+from Washlist.serializer import TemplateWashListSerializer
 
 
 class WashListTemplateTest(TestCase):
@@ -34,8 +34,8 @@ class WashListTemplateTest(TestCase):
 class WeeklyResetOfWashlistsTest(TestCase):
     def setUp(self):
         """
-        Create a washlist item that is completed
-        the method also sets up a village and a room to relate the washlist item to
+        Create a Washlist item that is completed
+        the method also sets up a village and a room to relate the Washlist item to
         satisfy the db constraints
         """
 
@@ -53,8 +53,8 @@ class WeeklyResetOfWashlistsTest(TestCase):
 
     def test_job_resets_items(self):
         """
-        Test that job to reset washlist items when run manually actually rests the databases
-        washlist items
+        Test that job to reset Washlist items when run manually actually rests the databases
+        Washlist items
         """
         reset_washlists()
         self.assertEqual(False, ListItem.objects.get(pk=1).completed)

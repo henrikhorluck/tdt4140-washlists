@@ -5,7 +5,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("washlist", "0002_auto_20200227_2219")]
+    dependencies = [("Washlist", "0002_auto_20200227_2219")]
 
     operations = [
         migrations.AddConstraint(

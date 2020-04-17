@@ -8,11 +8,11 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("Dormroom", "0005_auto_20200305_1252"),
-        ("washlist", "0005_auto_20200305_1154"),
+        ("Washlist", "0005_auto_20200305_1154"),
     ]
 
     operations = [
-        migrations.RemoveField(model_name="listitem", name="washlist"),
+        migrations.RemoveField(model_name="listitem", name="Washlist"),
         migrations.AddField(
             model_name="listitem",
             name="dormroom",
