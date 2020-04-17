@@ -11,7 +11,7 @@ An image of the login page
 
 ![](/uploads/855ef9c2f8fb3b0b9fad9521a9f8c2a0/image.png)
 
-Below is a quick start guide on how to run the web applications backend and frontend. Be sure to check out the 
+Below is a guide on how to run the web application's backend and frontend. Be sure to check out the 
 [wiki](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/wikis/home) for more detailed documentation like a user manual 
 and development routines.
 
@@ -27,7 +27,7 @@ The backend code is in the [`backend`](https://gitlab.stud.idi.ntnu.no/tdt4140-2
 
 ## Running the backend
 
-The following instructions are for a Linux based operating system, but should are similar for other operating systems.
+The following instructions are for a Linux based operating system, but should be similar for other operating systems.
 
 ### Prerequisites
 
