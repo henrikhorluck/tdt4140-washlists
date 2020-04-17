@@ -7,7 +7,7 @@
 This is a web-based system for organizing cleaning via a shared cleaning list. 
 Designed and developed for _Studentsamskipnaden i Fredrikstad_ (SIF), a student housing organization in Fredrikstad. 
 
-An image of the login page
+An image of the login page is shown below:
 
 ![](/uploads/855ef9c2f8fb3b0b9fad9521a9f8c2a0/image.png)
 
