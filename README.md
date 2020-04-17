@@ -194,7 +194,7 @@ Most of these variables are so that the frontend knows _which_ backend it should
         explanation with images. See <code>django-oauth-toolkit</code>'s <a href="https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html#step-3-register-an-application">docs</a> for details. 
         </dd>
     <dt><code>SIF_BACKEND_CLIENT_SECRET</code></dt>
-        <dd>Also used for OAuth authorization. See SIF_BACKEND_CLIENT_ID. See above.</dd>
+        <dd>Also used for OAuth authorization. See above.</dd>
     <dt><code>SIF_BACKEND_DOMAIN</code></dt>
         <dd>
         The domain the backend is running on. Defaults to <a href="http://localhost:8000">http://localhost:8000</a> unless overriden.
