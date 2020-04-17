@@ -81,7 +81,7 @@ python manage.py migrate
 
 Before running the server, we highly suggest that you first load our testdata, which will add a set of test-users, with
 roles, dormrooms, and student villages, and lets you connect from the frontend without any further setup. Credentials
-for the supplied users lie in `backend/fixtures/testdata.yaml` as comments to the password-field on each user. Do note
+for the supplied users lieare found in `backend/fixtures/testdata.yaml` as comments to the password-field on each user. Do note
 only the users with `is_staff = true` can access the admin site, and it varies how much they have access to. For local 
 backend development, the user `admin` with password `admin` is usually sufficient.
 
@@ -100,7 +100,7 @@ python manage.py runserver
 ```
 
 The project should then be live at `http://localhost:8000`. The admin site can be found by going to `/admin`, there you
-can add users, create dormooms (kollektiver), and student villages. You can browse the available API at `/api` after
+can add users, create dormooms, and student villages. You can browse the available API at `/api` after
 first logging into the admin site. 
 
 For a full list of available commands, see Django's [docs](https://docs.djangoproject.com/en/3.0/ref/django-admin/#available-commands).
