@@ -30,7 +30,7 @@ The instructions are for a linux based operating system, but should be similar f
 
 ### Prerequisits
 
-Django is written in Python, you can use any 3.8.* version of python, see `backend/pyproject.toml`. You can download python
+Django is written in Python, you can use any 3.8.* version of python. You can download it
 from Python's [website](https://www.python.org/downloads/). 
 We also recommend installing the project dependencies in a virtual environment, like [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv).
 
@@ -51,8 +51,8 @@ All commands from here and below assume you are in the `backend`-directory, whic
 cd backend
 ```
 
-The dependencies for the backend are specificed in `/backend/pyproject.toml`. Here we which specify which dependencies 
-the project depends on, and which range of version we can depend on. At any given time, the version is locked to a specific
+The dependencies for the backend are specificed in `/backend/pyproject.toml`. Here we specify which dependencies 
+the project depends on, and which range of version are valid. At any given time, the version is locked to a specific
 version, which is listed in `backend/poetry.lock`.
    
 To install the dependencies (django, djangorestframework, and more), run the following: 
@@ -81,10 +81,10 @@ server, with the command `python manage.py runserver`. To execute the script:
 ```
 
 The project should then be live at `http://localhost:8000`. The admin site, to manage the data is located in `/admin`. 
-You can browse the available API at `/api` after first logging into the admin site. Credentials for the supplied lie in 
-`backend/fixtures/testdata.yaml` as comments to the password-fields on each user. Do note only the users with `is_staff = true`
-can access the admin site, and it varies how much they have access to. For local development the user `admin`, with
-password `admin` is usually sufficient for backend development.
+You can browse the available API at `/api` after first logging into the admin site. Credentials for the supplied users 
+lie in `backend/fixtures/testdata.yaml` as comments to the password-field on each user. Do note only the users with 
+`is_staff = true` can access the admin site, and it varies how much they have access to. For local development the user 
+`admin`, with password `admin` is usually sufficient for backend development.
 
 ## How to run the frontend
 
