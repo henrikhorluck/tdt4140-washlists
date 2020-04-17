@@ -11,45 +11,31 @@ An image of the login page
 
 ![](/uploads/855ef9c2f8fb3b0b9fad9521a9f8c2a0/image.png)
 
+Below is a quick start guide on how to run the web applications backend and frontend. Be sure to check out the [`wiki`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/wikis/home) for more detailed documentation.
 ## Basic architecture description
-The cleaning organising system is a web application. It is split into a [`django back-end`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react front-end`](https://reactjs.org/).
+The cleaning organising system is a web application. It is split into a [`django backend`](https://www.djangoproject.com/) using a SQLite database managment system, and a [`react frontend`](https://reactjs.org/).
 
 The front-end code is located in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/frontend).
 The back-end code is located in the [`backend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/backend).
 
-## Running the django server
-Following are instructions  for installing python 3.8 in a virtual environment and the backend project dependencies. The instructions are are for a linux based operating system. 
-If you already have Python 3.8 installed you can skip ahead to the `Install depdendencies with poetry` section.
-### Installing python in a virtualenvironment
-First, install python 3.8 and create a virtual environment
-```
-curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-pyenv update
-```
-Install deps needed for python 3.8
-```
-sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
-libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-xz-utils tk-dev libffi-dev liblzma-dev python-openssl
-```
-Install python 3.8.1
-```
-pyenv install 3.8.1
-```
-Make a virtual environment and activate it (activate the virtual environment whenever you want to interact with the django project)
-```
-pyenv virtualenv 3.8.1 pu_django
-pyenv activate pu_django
-```
+## Running the backend
 
+Following are the instructions for installing the dependencies and running the backend django project.
+The instructions are for a linux based operating system, but should be similar for other operating systems.
+
+### Install Python 3.8 
+First, install python 3.8. See the instructions for installing Python 3.8 at the [Python website](https://www.python.org/downloads/). 
+We also recommend installing the project dependencies in a virtual environment, we have good expriences using [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) for this. 
 
 ### Install dependencies with poetry
-We use poetry to manage the dependencies of the python project for the backend. To install dependencie via poetry, first install poetry(with the virtualenv from last section active):
+We use poetry to manage the dependencies of the python project for the backend. To install dependencie via poetry, first install [Poetry](https://python-poetry.org):
 ```
 pip install poetry
 ```
-The dependencies of the project are defined in `/28/backend/pyproject.toml`. There is also a lockfile that specifies a specific version of the packages used in the project. We can install dependencies from the lockfile by running poetry install from the `/28/sif_vaskelister/` directory (where the pyproject.toml file is). 
+The dependencies for the backend are specificed in `/backend/pyproject.toml`. There is also a lockfile that specifies a specific version of the packages used in the project 
+We can install dependencies from the lockfile by running poetry install from the `/backend` directory (where the pyproject.toml file is). 
 ```
+cd backend
 poetry install
 ```
 ### Migrate database
@@ -59,14 +45,60 @@ python manage.py migrate
 ```
 
 ### Run django
-For running django there is a script called `/28/backend/run.sh`. All this script does is that is pre-loads the database with some usefull data using fixtures, then it runs `python manage.py runserver`. Thus you can run the django server by doing
+For running django there is a script called `/backend/run.sh`. All this script does is that is pre-loads the database with some usefull data using fixtures, then it runs `python manage.py runserver`. Thus you can run the django server by running
 ```
 ./run.sh
 ```
-Now the backend should be running at http://127.0.0.1:8000/admin/ pre populated with some data for testing the system.
+Now the backend should be running at http://localhost:8000/admin/ prepopulated with some data for testing the system.
 
 ## Running the frontend
-Add instructions for running front end here!
+To run the front end follow these steps.
+
+First start the django back end with the instructions above. If you do as described above and run the back end via the `run.sh` script the front end will automatically connect with the backend. 
+
+If you run the backend manually without the `run.sh` script, or on a different domain than localhost, you must set the `SIF_CLIENT_ID` and `SIF_CLIENT_SECRET` envrionment variables manually. 
+This is needed to connect the frontend instance with the backend.
+You can see `django-oauth-toolkit`'s [docs](https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html#step-3-register-an-application) for details.
+The default domain for local development is `http://localhost:8000`. See #41 for an explanation with images of how to create a client id and secret.
+
+### Start the front end
+
+First move to the `/frontend` directory:
+```
+cd frontend
+```
+
+In the `/frontend` directory, run:
+
+```shell
+npm run dev
+```
+This runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The page will reload if you make edits.
+
+See the [next.js documentation](https://nextjs.org/docs#manual-setup) for optional scripts to run for deployment and production.
+
+## Testing
+
+To run the unittests in the backend run the following command from the `/backend`-directory, as long as you have installed all the dependencies:
+
+```bash
+python manage.py test
+```
+
+For code coveage, run the following, also from `/backend`:
+
+```bash
+coverage run manage.py test
+coverage report
+```
+
+To run the tests in the frontend, run the following, from the  `/frontend`-directory:
+```bash
+npm run test
+```
+This also prints code coverage.
 
 ## Available environment variables
 
@@ -90,7 +122,7 @@ Most of these variables are so that the frontend knows _which_ backend it should
 
 ### Backend
 
-These values are mostly used for [Django-settings](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/blob/dev/backend/sif_vaskelister/settings.py).
+These values are primarily used for [Django-settings](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/blob/dev/backend/sif_vaskelister/settings.py).
 
 <dl>
   <dt><code>DJANGO_SECRET_KEY</code></dt>
