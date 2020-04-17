@@ -4,7 +4,7 @@
 [![coverage report](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/badges/dev/coverage.svg)](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/commits/dev)
 
 
-This is a web-based system for organizing cleaning via a shared cleaning list. 
+This is a web-based system for organizing cleaning via a shared washlist. 
 Designed and developed for _Studentsamskipnaden i Fredrikstad_ (SIF), a student housing organization in Fredrikstad. 
 
 An image of the login page is shown below:
