@@ -19,7 +19,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest"
   },
   "dependencies": {
     "client-oauth2": "^4.2.5",
@@ -34,15 +35,30 @@
     "react-dom": "Se above, required with React"
   },
   "devDependencies": {
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "fetch-mock": "^9.3.1",
+    "@types/react-test-renderer": "^16.9.2",
+    "@testing-library/jest-dom": "^5.1.0",
+    "@testing-library/react": "^9.4.0",
+    "@types/enzyme": "^3.10.5",
+    "@types/jest": "^25.2.1",
     "@types/node": "^13.7.1",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.6",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
+    "babel-jest": "^25.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.18.3",
+    "jest": "^25.3.0",
+    "jest-css-modules": "^2.1.0",
     "prettier": "^1.19.1",
-    "typescript": "^3.7.5"
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^25.3.1",
+    "typescript": "^3.8.3"
   },
   "//devDependencies": {
     "@types/*": "Typescript type definitons",

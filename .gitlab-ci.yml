@@ -33,12 +33,20 @@ lint-typescript:
     - npm ci
     - node_modules/eslint/bin/eslint.js --ext .tsx,.ts .
 
-test:
+test-backend:
   image: python:3.8
   extends: .before_script_template
   script:
     - coverage run ./manage.py test
     - coverage report
+
+test-frontend:
+  image: node:12
+  script:
+    - cd frontend
+    - npm ci
+    - npm test
+    
 
 variables:
   POETRY_VIRTUALENVS_CREATE: "false"
