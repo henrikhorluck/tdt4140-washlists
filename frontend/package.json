@@ -9,15 +9,15 @@
     "test": "jest"
   },
   "dependencies": {
-    "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/react-test-renderer": "^16.9.2",
     "client-oauth2": "^4.2.5",
-    "fetch-mock": "^9.3.1",
     "next": "9.3.5",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "devDependencies": {
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "fetch-mock": "^9.3.1",
+    "@types/react-test-renderer": "^16.9.2",
     "@testing-library/jest-dom": "^5.1.0",
     "@testing-library/react": "^9.4.0",
     "@types/enzyme": "^3.10.5",
@@ -33,7 +33,6 @@
     "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.18.3",
-    "identity-obj-proxy": "^3.0.0",
     "jest": "^25.3.0",
     "jest-css-modules": "^2.1.0",
     "prettier": "^1.19.1",
