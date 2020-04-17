@@ -81,7 +81,7 @@ python manage.py migrate
 
 Before running the server, we highly suggest that you first load our testdata, which will add a set of test-users, with
 roles, dormrooms, and student villages, and lets you connect from the frontend without any further setup. Credentials
-for the supplied users lieare found in `backend/fixtures/testdata.yaml` as comments to the password-field on each user. Do note
+for the supplied users are found in `backend/fixtures/testdata.yaml` as comments to the password-field on each user. Do note
 only the users with `is_staff = true` can access the admin site, and it varies how much they have access to. For local 
 backend development, the user `admin` with password `admin` is usually sufficient.
 
