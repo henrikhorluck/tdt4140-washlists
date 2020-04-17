@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from SIFUser.serializer import UserSerializer
 from StudentVillage.serializer import StudentVillageSerializer
-from washlist.serializer import ListItemSerializer
+from Washlist.serializer import ListItemSerializer
 
 from .models import Dormroom
 

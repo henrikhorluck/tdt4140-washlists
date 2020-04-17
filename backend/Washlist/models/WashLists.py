@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import Q
 
 from Dormroom.models import Dormroom
-from washlist.models.Templates import TemplateListItem
+from Washlist.models.Templates import TemplateListItem
 
 
 class ListItem(models.Model):

@@ -1,9 +1,9 @@
 from oauth2_provider.contrib.rest_framework import permissions
 from rest_framework import viewsets
 
-from washlist.models.Templates import TemplateListItem, TemplateWashList
-from washlist.models.WashLists import ListItem
-from washlist.serializer import (
+from Washlist.models.Templates import TemplateListItem, TemplateWashList
+from Washlist.models.WashLists import ListItem
+from Washlist.serializer import (
     ListItemSerializer,
     TemplateListItemSerializer,
     TemplateWashListSerializer,

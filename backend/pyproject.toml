@@ -9,19 +9,32 @@ authors = [
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+# NOTE: This specifies the valid ranges of versions we can use, the exact versions are listen in poetry.lock
+
+python = "^3.8.0"
+# This is not a library, so we are fine to use a recent version of Python
 django = "^3.0.3"
+# Very feature-rich web server.
 django-oauth-toolkit = "^1.2.0"
+# For OAuth authentication, gives us the most flexibility, and possibilty for extension
 djangorestframework = "^3.11.0"
+# Makes writing the REST-API a breeze
 django-cors-headers = "^3.2.1"
+# So that one can access the API from a different domain, should one want to
 apscheduler = "^3.6.3"
-markdown = "^3.2.1"
+# Let's us clear the washlists at the end of each week,
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
+# Code formatting
 isort = { version = "^4.3.21", extras = ["pyproject"] }
+# Gives conistent import-sorting
 pyyaml = "^5.3"
+# Let's us write fixtures in a more human-readable format than JSON
 coverage = { version = "^5.0.4", extras = ["toml"] }
+# For code coverage
+markdown = "^3.2.1"
+# So that we can format the API-documentation that is shown when looking at each endpoint with djangorestframework
 
 [tool.isort]
 multi_line_output = 3
@@ -38,7 +51,7 @@ sections = [ "FUTURE",
              "LOCALFOLDER" ]
 
 [tool.coverage.run]
-source = ["Dormroom", "SIFUser", "StudentVillage", "washlist"]
+source = ["Dormroom", "SIFUser", "StudentVillage", "Washlist"]
 
 [tool.coverage.report]
 omit = ["*/migrations/*", "*/tests.py", "*_test.py", "*_tests.py"]

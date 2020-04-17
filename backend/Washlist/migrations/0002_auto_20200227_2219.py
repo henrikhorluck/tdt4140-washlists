@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("Dormroom", "0002_auto_20200227_2157"),
-        ("washlist", "0001_initial"),
+        ("Washlist", "0001_initial"),
     ]
 
     operations = [
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
             ),
         ),
         migrations.AddField(
-            model_name="washlist",
+            model_name="Washlist",
             name="dormroom",
             field=models.OneToOneField(
                 blank=True,
@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
             ),
         ),
         migrations.AddField(
-            model_name="washlist",
+            model_name="Washlist",
             name="title",
             field=models.CharField(default="", max_length=250),
         ),
@@ -75,10 +75,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "washlist",
+                    "Washlist",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="washlist.TemplateWashList",
+                        to="Washlist.TemplateWashList",
                     ),
                 ),
             ],
@@ -90,7 +90,7 @@ class Migration(migrations.Migration):
                 blank=True,
                 null=True,
                 on_delete=django.db.models.deletion.SET_NULL,
-                to="washlist.TemplateListItem",
+                to="Washlist.TemplateListItem",
             ),
         ),
     ]

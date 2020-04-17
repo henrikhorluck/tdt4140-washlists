@@ -6,16 +6,16 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("washlist", "0006_auto_20200305_1252")]
+    dependencies = [("Washlist", "0006_auto_20200305_1252")]
 
     operations = [
         migrations.AlterField(
             model_name="templatelistitem",
-            name="washlist",
+            name="Washlist",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
                 related_name="template_items",
-                to="washlist.TemplateWashList",
+                to="Washlist.TemplateWashList",
             ),
         )
     ]
