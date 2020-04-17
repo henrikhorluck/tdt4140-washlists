@@ -5,39 +5,45 @@
 
 
 This is a web based system for organising cleaning via shared cleaning list. 
-Designed and developed for "Studentsamskipnaden i fredrikstad SIF", a student housing organization in Fredrikstad. 
+Designed and developed for _Studentsamskipnaden i Fredrikstad_ (SIF), a student housing organization in Fredrikstad. 
 
 An image of the login page
 
 ![](/uploads/855ef9c2f8fb3b0b9fad9521a9f8c2a0/image.png)
 
 Below is a quick start guide on how to run the web applications backend and frontend. Be sure to check out the 
-[`wiki`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/wikis/home) for more detailed documentation.
+[wiki](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/wikis/home) for more detailed documentation like a user manual 
+and development routines.
 
 ## Basic architecture description
 
-The cleaning organising system is a web application. It consists of a [`django backend`](https://www.djangoproject.com/)
-using a SQLite database managment system, which provides a REST-API, that the frontend uses for persistence, and logic.
-The frontend uses [react](https://reactjs.org/), with [Next.js](https://nextjs.org).
+The cleaning organising system is a web application. It consists of a [Django](https://www.djangoproject.com/) backend
+using a SQLite database managment system. The backend provides a REST-API, which the frontend uses for persistence, and 
+other logic, like resetting washlists. The frontend uses [react](https://reactjs.org/), with
+[Next.js](https://nextjs.org).
 
-The frontend code is in the [`frontend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/frontend).
-The backend code is in the [`backend folder`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/backend).
+The frontend code is in the [`frontend`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/frontend) directory.
+The backend code is in the [`backend`](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/tree/dev/backend) directory.
 
 ## Running the backend
 
-Following are the instructions for installing the dependencies and running the backend.
-The instructions are for a linux based operating system, but should be similar for other operating systems.
+The following instructions are for a linux based operating system, but should are similar for other operating systems.
 
 ### Prerequisits
 
-Django is written in Python, you can use any 3.8.* version of python. You can download it
-from Python's [website](https://www.python.org/downloads/). 
-We also recommend installing the project dependencies in a virtual environment, like [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv).
+Django is written in Python so you will need that, any 3.8.* version will work. You can download it from Python's 
+[website](https://www.python.org/downloads/). We also recommend installing the project dependencies in a virtual
+environment, like [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv), to avoid conflicts with existing 
+installations. 
+
+> Advanced users can use our supplied Dockerfiles, but they are intended for eventual production usage, and not for
+local development, however you can find instructions for setup in `docker_setup.md`.
 
 Once you have verified that you have a valid version of Python available (`python --version` prints 3.8.*). You need to 
 install [Poetry](https://python-poetry.org), which can be done through Python standard package installer pip, or any of
 the methods listed on Poetry's website:
-```
+
+```bash
 pip install poetry
 ```
 
@@ -51,11 +57,11 @@ All commands from here and below assume you are in the `backend`-directory, whic
 cd backend
 ```
 
-The dependencies for the backend are specificed in `/backend/pyproject.toml`. Here we specify which dependencies 
+The dependencies for the backend are specificed in `backend/pyproject.toml`. Here we specify which dependencies 
 the project depends on, and which range of version are valid. At any given time, the version is locked to a specific
 version, which is listed in `backend/poetry.lock`.
    
-To install the dependencies (django, djangorestframework, and more), run the following: 
+To install the dependencies (Django, Django REST Framework, and more), run the following: 
 
 ```bash
 poetry install
@@ -63,28 +69,40 @@ poetry install
 
 ### Migrating the database
 
-Now we should be able to run django. To set up the database tables we must first apply the migrations. To do this run
+We are almost ready to run the backend. We first need to set up the database tables, by applying the migrations.
+You can do that by running the following command:
 
-```
+```bash
 python manage.py migrate
 ```
 
-### Running the server
+### Loading testdata and running the server
 
-We have created a script, `run.sh` to help the set up process. The script loads initial data into the database, so that,
-you can start developing faster, or if you just want a working backend when working in the frontend. For how it is done,
-see the [docs](https://docs.djangoproject.com/en/3.0/howto/initial-data/). After loading the inital data, it starts the
-server, with the command `python manage.py runserver`. To execute the script: 
+Before running the server, we highly suggest that you first load our testdata, which will add a set of test-users, with
+roles, dormrooms, and student villages, and lets you connect from the frontend without any further setup. Credentials
+for the supplied users lie in `backend/fixtures/testdata.yaml` as comments to the password-field on each user. Do note
+only the users with `is_staff = true` can access the admin site, and it varies how much they have access to. For local 
+backend development, the user `admin` with password `admin` is usually sufficient.
 
+The test data can be loaded with the following commands:
+
+```bash
+python manage.py loaddata fixtures/testdata.yaml
 ```
-./run.sh
+
+See the [docs](https://docs.djangoproject.com/en/3.0/howto/initial-data/) for details about this process.
+
+You can then start the server with the following command:
+
+```bash
+python manage.py runserver
 ```
 
-The project should then be live at `http://localhost:8000`. The admin site, to manage the data is located in `/admin`. 
-You can browse the available API at `/api` after first logging into the admin site. Credentials for the supplied users 
-lie in `backend/fixtures/testdata.yaml` as comments to the password-field on each user. Do note only the users with 
-`is_staff = true` can access the admin site, and it varies how much they have access to. For local development the user 
-`admin`, with password `admin` is usually sufficient for backend development.
+The project should then be live at `http://localhost:8000`. The admin site can be found by going to `/admin`, there you
+can add users, create dormooms (kollektiver), and student villages. You can browse the available API at `/api` after
+first logging into the admin site. 
+
+For a full list of available commands, see Django's [docs](https://docs.djangoproject.com/en/3.0/ref/django-admin/#available-commands).
 
 ## How to run the frontend
 
@@ -103,6 +121,9 @@ cd frontend
 ### Prerequisits
 We assume that you have version of `node` >= 12 installed, and that the Node package manager, `npm`, is in your PATH.
 You can install Node from their [website](https://nodejs.org). 
+
+> Advanced users _can_ use our Dockerfiles, but that is **not** recommended for local development, and much more
+cubersome to set up. If you still want to set up Docker see `docker_setup.md`.
 
 ### Install dependencies
 We first need to install our dependencies, consisting mostly of React and Next.js. You can install them by running:
@@ -134,7 +155,7 @@ This is normally not needed for local development, but can be useful if you are 
 
 ## Testing
 
-To run the unittests in the backend run the following command in the `backend`-directory, if you have installed the 
+To run the unittests in the backend run the following command in the `backend`-directory, after installing the 
 dependencies:
 
 ```bash
@@ -202,5 +223,5 @@ Used for [Django-settings](https://gitlab.stud.idi.ntnu.no/tdt4140-2020/28/-/blo
   <dt><code>POETRY_VIRTUALENVS_CREATE</code></dt>
     <dd>We use <a href="https://python-poetry.org">Poetry</a> for dependency management, which autmatically sets up a virtualenv, but when we run the frontend in Docker, that is not necessary.</dd>
   <dt><code>PYTHONUNBUFFERED</code></dt>
-    <dd>Ensures Python prints to stdout, seee e.g. <a href="https://stackoverflow.com/questions/29663459/python-app-does-not-print-anything-when-running-detached-in-docker">this</a> Stack Overflow question.</dd> 
+    <dd>Ensures Python prints to stdout, see e.g. <a href="https://stackoverflow.com/questions/29663459/python-app-does-not-print-anything-when-running-detached-in-docker">this</a> Stack Overflow question.</dd> 
 </dl>
